@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Hareka | HubSpot・CRM・営業DXの知識・事例</title>
+  <meta name="description" content="HubSpotの活用Tips、CRM導入のポイント、営業DXに関する情報をHareka代表・岩間悠一が発信します。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .blog-categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .category-btn {
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      color: var(--text-gray);
+      background: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .category-btn:hover, .category-btn.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+    .blog-coming-soon {
+      background: var(--bg-light);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 72px 40px;
+      text-align: center;
+    }
+    .blog-coming-soon__icon {
+      width: 64px; height: 64px;
+      background: rgba(77,141,181,.10);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--blue);
+    }
+    .blog-coming-soon__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .blog-coming-soon__text {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .blog-topics {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .blog-topic-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: var(--transition);
+    }
+    .blog-topic-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+    .blog-topic-card__icon {
+      width: 36px; height: 36px;
+      background: rgba(77,141,181,.10);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .blog-topic-card__text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+    @media(max-width:768px){
+      .blog-topics { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="header__inner">
+      <a href="index.html" class="logo" aria-label="Hareka ホーム">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="200" height="46">
+          <polyline points="8,52 32,12 56,52" fill="none" stroke="#1A2E44" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="52" x2="48" y2="52" stroke="#4D8DB5" stroke-width="2" stroke-linecap="round"/>
+          <text x="72" y="42" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" fill="#1A2E44" letter-spacing="6">HAREKA</text>
+        </svg>
+      </a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="cases.html">Cases</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="nav__cta">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="cases.html">Cases</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html" class="mobile-cta">お問い合わせ</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="page-hero__label">Blog</span>
+    <h1 class="page-hero__title">ブログ</h1>
+    <p class="page-hero__lead">HubSpotの活用Tips、CRM導入・移管のポイント、AIを活用した業務効率化など、営業・マーケティング・オペレーション担当者に役立つ情報を発信します。</p>
+  </div>
+</section>
+
+<!-- BLOG CONTENT -->
+<section class="section">
+  <div class="container">
+
+    <!-- Categories -->
+    <div class="blog-categories">
+      <button class="category-btn active">すべて</button>
+      <button class="category-btn">HubSpot活用</button>
+      <button class="category-btn">CRM導入・移管</button>
+      <button class="category-btn">AI × 営業</button>
+      <button class="category-btn">営業組織</button>
+      <button class="category-btn">事例・インサイト</button>
+    </div>
+
+    <!-- Coming Soon -->
+    <div class="blog-coming-soon">
+      <div class="blog-coming-soon__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h2 class="blog-coming-soon__title">記事を準備中です</h2>
+      <p class="blog-coming-soon__text">HubSpotの活用Tips、CRM導入・移管のベストプラクティス、AIを活用した業務効率化など、現場で役立つ情報を順次公開予定です。</p>
+    </div>
+
+    <!-- Upcoming Topics -->
+    <div style="margin-top:56px;">
+      <div class="section__header">
+        <span class="section__label">Upcoming Topics</span>
+        <h2 class="section__title" style="font-size:22px;">近日公開予定のトピック</h2>
+      </div>
+      <div class="blog-topics">
+        <div class="blog-topic-card">
+          <div class="blog-topic-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <p class="blog-topic-card__text">HubSpotで営業活用率を高める5つのポイント</p>
+        </div>
+        <div class="blog-topic-card">
+          <div class="blog-topic-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <p class="blog-topic-card__text">SalesforceからHubSpotへの移行前に確認すべきこと</p>
+        </div>
+        <div class="blog-topic-card">
+          <div class="blog-topic-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <p class="blog-topic-card__text">AIとHubSpotの組み合わせで営業生産性を2倍にする方法</p>
+        </div>
+        <div class="blog-topic-card">
+          <div class="blog-topic-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <p class="blog-topic-card__text">HubSpotが形骸化する本当の理由と対策</p>
+        </div>
+        <div class="blog-topic-card">
+          <div class="blog-topic-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <p class="blog-topic-card__text">休眠リードを掘り起こすHubSpotワークフロー設計術</p>
+        </div>
+        <div class="blog-topic-card">
+          <div class="blog-topic-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <p class="blog-topic-card__text">データドリブン営業組織をゼロから構築する手順</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner__inner">
+      <div>
+        <h2 class="cta-banner__title">記事の更新をいち早く受け取る</h2>
+        <p class="cta-banner__text">お問い合わせ時にブログ更新通知をご希望いただけます。</p>
+      </div>
+      <a href="contact.html" class="btn btn--blue btn--lg">お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="180" height="41">
+          <polyline points="8,52 32,12 56,52" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="52" x2="48" y2="52" stroke="#4D8DB5" stroke-width="2" stroke-linecap="round"/>
+          <text x="72" y="42" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" fill="#FFFFFF" letter-spacing="6">HAREKA</text>
+        </svg>
+        <p class="footer__tagline">経営の無駄を晴らす。<br>経営の不透明を晴らす。<br>最先端技術への不安を晴らす。</p>
+      </div>
+      <div class="footer__nav">
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">Navigation</p>
+          <ul class="footer__nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="cases.html">Cases</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Hareka合同会社. All rights reserved.</p>
+      <p>hareka.io</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

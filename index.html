@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hareka — 経営を、晴らす。CRM・HubSpot導入・活用支援</title>
+  <meta name="description" content="HubSpotの導入・活用支援、SalesforceからHubSpotへの移管、AIと組み合わせた業務効率化まで。中小企業・スタートアップの営業組織を支援するHareka合同会社。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Hero decorative caret bg */
+    .hero-caret-bg {
+      position: absolute;
+      top: 40px; right: 5%;
+      opacity: .04;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* Challenges */
+    .challenge-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .challenge-item {
+      display: flex;
+      gap: 14px;
+      padding: 20px 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      align-items: flex-start;
+    }
+    .challenge-text {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.75;
+    }
+    .services-overview-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .services-overview-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .services-overview-item:hover {
+      border-color: var(--blue);
+      box-shadow: var(--shadow);
+    }
+    .services-overview-item__num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .services-overview-item__title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      flex: 1;
+    }
+    .services-overview-item__arrow {
+      color: var(--blue);
+      font-size: 18px;
+    }
+    .concept-box {
+      background: linear-gradient(135deg, var(--navy) 0%, #243d57 100%);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      color: var(--white);
+      text-align: center;
+    }
+    .concept-box__title {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .concept-box__text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: rgba(255,255,255,.8);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .concept-box { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="top">
+  <div class="container">
+    <div class="header__inner">
+      <a href="index.html" class="logo" aria-label="Hareka ホーム">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="200" height="46">
+          <polyline points="8,52 32,12 56,52" fill="none" stroke="#1A2E44" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="52" x2="48" y2="52" stroke="#4D8DB5" stroke-width="2" stroke-linecap="round"/>
+          <text x="72" y="42" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" fill="#1A2E44" letter-spacing="6">HAREKA</text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <ul class="nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="cases.html">Cases</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="nav__cta">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" aria-hidden="true">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="cases.html">Cases</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html" class="mobile-cta">お問い合わせ</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-caret-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" width="480" height="480" aria-hidden="true">
+    <polyline points="20,240 140,40 260,240" fill="none" stroke="#1A2E44" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="container">
+    <div class="hero__content">
+      <div class="hero__tag">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
+        CRM・HubSpot専門支援
+      </div>
+      <h1 class="hero__title">経営を、<em>晴らす</em>。</h1>
+      <p class="hero__subtitle">HubSpotで、営業組織を本当に強くする。</p>
+      <p class="hero__lead">
+        CRMを導入したのに成果が出ない。使われていない。コストが高い。<br>
+        そのモヤモヤを、Harekaが一緒に晴らします。<br>
+        HubSpot専門のコンサルタントが、導入から自走まで一貫支援。
+      </p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn--primary btn--lg">無料相談を申し込む</a>
+        <a href="services.html" class="btn btn--outline btn--lg">サービスを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat__num"><em>200</em>社以上</div>
+        <div class="stat__label">HubSpot Japan CSM時代の支援実績</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num"><em>3.5</em>年</div>
+        <div class="stat__label">HubSpot Japanでの専門経験</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num"><em>10</em>資格</div>
+        <div class="stat__label">Salesforce・HubSpot認定資格数</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGES -->
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__label">課題</span>
+      <h2 class="section__title">こんなお悩み、ありませんか？</h2>
+      <p class="section__lead">CRMは経営の要。しかし多くの企業が、期待した成果を得られないまま運用しています。</p>
+    </div>
+    <div class="pain-grid">
+      <div class="challenge-item">
+        <span class="challenge-number">1</span>
+        <p class="challenge-text">CRMを導入・活用しているが、<strong>期待していた成果につながっていない</strong></p>
+      </div>
+      <div class="challenge-item">
+        <span class="challenge-number">2</span>
+        <p class="challenge-text">CRMの<strong>利用定着が進まず</strong>、機能を十分に活用できていない</p>
+      </div>
+      <div class="challenge-item">
+        <span class="challenge-number">3</span>
+        <p class="challenge-text">現行CRMの<strong>コストが高く</strong>、より適切なツールへの乗り換えを検討している</p>
+      </div>
+      <div class="challenge-item">
+        <span class="challenge-number">4</span>
+        <p class="challenge-text">CRMにとどまらず、<strong>AIも組み合わせた業務効率化・売上向上</strong>を実現したい</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__label">Services</span>
+      <h2 class="section__title">Harekaのサービス</h2>
+      <p class="section__lead">HubSpotの導入から移管・活用・AI活用まで、営業組織強化に必要な支援をワンストップで提供します。</p>
+    </div>
+    <div class="services-overview-list">
+      <a href="services.html" class="services-overview-item">
+        <span class="services-overview-item__num">01</span>
+        <span class="services-overview-item__title">HubSpot 導入支援</span>
+        <span class="services-overview-item__arrow">→</span>
+      </a>
+      <a href="services.html" class="services-overview-item">
+        <span class="services-overview-item__num">02</span>
+        <span class="services-overview-item__title">SalesforceからHubSpotへの移管支援</span>
+        <span class="services-overview-item__arrow">→</span>
+      </a>
+      <a href="services.html" class="services-overview-item">
+        <span class="services-overview-item__num">03</span>
+        <span class="services-overview-item__title">HubSpot 活用支援</span>
+        <span class="services-overview-item__arrow">→</span>
+      </a>
+      <a href="services.html" class="services-overview-item">
+        <span class="services-overview-item__num">04</span>
+        <span class="services-overview-item__title">AIとHubSpotを組み合わせた業務効率化支援</span>
+        <span class="services-overview-item__arrow">→</span>
+      </a>
+      <a href="services.html" class="services-overview-item">
+        <span class="services-overview-item__num">05</span>
+        <span class="services-overview-item__title">HubSpotを活用した営業組織の効率化支援</span>
+        <span class="services-overview-item__arrow">→</span>
+      </a>
+    </div>
+    <div style="margin-top:32px; text-align:center;">
+      <a href="services.html" class="btn btn--primary">サービス詳細を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="section">
+  <div class="container">
+    <div class="concept-box">
+      <p style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;">OUR CONCEPT</p>
+      <h2 class="concept-box__title">経営の無駄を晴らす。<br>経営の不透明を晴らす。<br>最先端技術への不安を晴らす。</h2>
+      <p class="concept-box__text">
+        経営者と従業員が、晴れやかな気持ちで仕事に向き合える状態をつくる支援を提供します。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY HAREKA -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header section__header--center">
+      <span class="section__label">Why Hareka</span>
+      <h2 class="section__title">Harekaを選ぶ理由</h2>
+    </div>
+    <div class="cards cards--2" style="gap:16px;">
+      <div class="why-card">
+        <div class="why-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="why-card__body">
+          <h3 class="why-card__title">信頼第一</h3>
+          <p class="why-card__text">お客様の大切な顧客情報を扱う仕事だからこそ、徹底したリスク管理のもと、安心・安全を最優先とした支援を実施します。</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <div class="why-card__body">
+          <h3 class="why-card__title">一貫したクオリティ</h3>
+          <p class="why-card__text">全ての案件は、HubSpot・Salesforceに精通した代表が一貫して担当します。担当者の当たり外れや、頻繁な引き継ぎが生じることはありません。</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="why-card__body">
+          <h3 class="why-card__title">リーズナブルな価格</h3>
+          <p class="why-card__text">代表が一人で運営する会社です。余分な人件費や間接コストがかからない分、お客様にはリーズナブルな価格でサービスを提供します。</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="why-card__body">
+          <h3 class="why-card__title">強い営業支援</h3>
+          <p class="why-card__text">キーエンスやWeWork Japanといったデータ活用で急成長を遂げた営業組織での実務経験を持ちます。データドリブンな営業組織の構築に必要な要素を現場目線で熟知しています。</p>
+        </div>
+      </div>
+      <div class="why-card" style="grid-column: 1 / -1;">
+        <div class="why-card__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="why-card__body">
+          <h3 class="why-card__title">お客様の自走をゴールとした支援</h3>
+          <p class="why-card__text">HubSpotはもともと、テクノロジーに詳しくない方でも直感的に使えるCRMとして設計されました。Harekaでは、HubSpotの設計思想に沿ったシンプルな実装を心がけ、最終的にはお客様自身が運用から設定変更まで自走できる状態を目指します。外部に頼らず、自分たちで使いこなせるCRM。その実現を、長期的な視点でサポートします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES TEASER -->
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="section__label">Cases</span>
+      <h2 class="section__title">支援実績</h2>
+      <p class="section__lead">法人・個人問わず、様々な規模・業種の企業のCRM課題解決を支援してきました。</p>
+    </div>
+    <div class="cards cards--3">
+      <div class="card">
+        <div class="card__number">法人支援 01</div>
+        <h3 class="card__title">IT企業 — Sales Hub活用率を60%以上改善</h3>
+        <p class="card__text">バラバラだったエクセルデータをHubSpotに一元化。自動レポートで現状把握と打ち手の分析が容易に。</p>
+        <div class="service-tags" style="margin-top:14px;">
+          <span class="tag">データ移管</span>
+          <span class="tag">パイプライン設計</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__number">法人支援 02</div>
+        <h3 class="card__title">人材企業 — 休眠リードからの案件創出に貢献</h3>
+        <p class="card__text">属人的な営業から脱却。IS部隊が休眠・失注リードをフォローする仕組みで新たな案件創出チャネルを確立。</p>
+        <div class="service-tags" style="margin-top:14px;">
+          <span class="tag">マーケメール設計</span>
+          <span class="tag">ホットリスト作成</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__number">個人支援 01</div>
+        <h3 class="card__title">IT企業 — SalesforceからHubSpotへのCRM移管</h3>
+        <p class="card__text">適切な設計により2ヶ月以内に利用開始。関連付けも正確に再現され、SaaSコスト削減にも貢献。</p>
+        <div class="service-tags" style="margin-top:14px;">
+          <span class="tag">CRM移管</span>
+          <span class="tag">コスト削減</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:36px; text-align:center;">
+      <a href="cases.html" class="btn btn--outline">全ての事例を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner__inner">
+      <div>
+        <h2 class="cta-banner__title">まずは無料でご相談ください</h2>
+        <p class="cta-banner__text">CRMの課題感やお悩みを、お気軽にお話しください。状況をお伺いしたうえで、最適なアドバイスをご提案します。</p>
+      </div>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn--blue btn--lg">無料相談を申し込む</a>
+        <a href="about.html" class="btn btn--outline-white">Harekaについて</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="180" height="41">
+          <polyline points="8,52 32,12 56,52" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="52" x2="48" y2="52" stroke="#4D8DB5" stroke-width="2" stroke-linecap="round"/>
+          <text x="72" y="42" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" fill="#FFFFFF" letter-spacing="6">HAREKA</text>
+        </svg>
+        <p class="footer__tagline">経営の無駄を晴らす。<br>経営の不透明を晴らす。<br>最先端技術への不安を晴らす。</p>
+      </div>
+      <div class="footer__nav">
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">Navigation</p>
+          <ul class="footer__nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="cases.html">Cases</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">Services</p>
+          <ul class="footer__nav-list">
+            <li><a href="services.html">HubSpot 導入支援</a></li>
+            <li><a href="services.html">Salesforce → HubSpot 移管</a></li>
+            <li><a href="services.html">HubSpot 活用支援</a></li>
+            <li><a href="services.html">AI × HubSpot 効率化支援</a></li>
+            <li><a href="services.html">営業組織 効率化支援</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Hareka合同会社. All rights reserved.</p>
+      <p>hareka.io</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

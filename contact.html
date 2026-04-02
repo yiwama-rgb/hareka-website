@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Hareka | お問い合わせ・無料相談</title>
+  <meta name="description" content="HubSpotの導入・移管・活用支援に関するお問い合わせ・無料相談はこちらから。Hareka合同会社 代表・岩間悠一が対応します。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-submit-wrap {
+      margin-top: 8px;
+    }
+    .form-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+    #form-success {
+      display: none;
+      background: #EDF7F0;
+      border: 1px solid #A8D5B4;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      text-align: center;
+    }
+    #form-success h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1D6A35;
+      margin-bottom: 10px;
+    }
+    #form-success p {
+      font-size: 14px;
+      color: #3A8050;
+      line-height: 1.8;
+    }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .step__num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .step__body {}
+    .step__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .step__text {
+      font-size: 12px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    @media(max-width:600px){
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="header__inner">
+      <a href="index.html" class="logo" aria-label="Hareka ホーム">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="200" height="46">
+          <polyline points="8,52 32,12 56,52" fill="none" stroke="#1A2E44" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="52" x2="48" y2="52" stroke="#4D8DB5" stroke-width="2" stroke-linecap="round"/>
+          <text x="72" y="42" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" fill="#1A2E44" letter-spacing="6">HAREKA</text>
+        </svg>
+      </a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="cases.html">Cases</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="nav__cta">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="cases.html">Cases</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html" class="mobile-cta">お問い合わせ</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="page-hero__label">Contact</span>
+    <h1 class="page-hero__title">お問い合わせ・無料相談</h1>
+    <p class="page-hero__lead">CRMの課題やお悩みを、お気軽にご相談ください。どのサービスが合うかわからない場合も、現状をお聞きした上で最適な支援方法をご提案します。</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div>
+        <!-- Success message -->
+        <div id="form-success">
+          <h3>お問い合わせを受け付けました</h3>
+          <p>ご連絡いただきありがとうございます。<br>2営業日以内にご返信いたします。</p>
+        </div>
+
+        <!-- Form -->
+        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none;"><label>Bot field: <input name="bot-field" /></label></p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">お名前<span class="required">*必須</span></label>
+              <input type="text" id="name" name="name" placeholder="岩間 悠一" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="company">会社名</label>
+              <input type="text" id="company" name="company" placeholder="Hareka合同会社" autocomplete="organization" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">メールアドレス<span class="required">*必須</span></label>
+            <input type="email" id="email" name="email" placeholder="example@hareka.io" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">電話番号</label>
+            <input type="tel" id="phone" name="phone" placeholder="03-0000-0000" autocomplete="tel" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">ご関心のあるサービス</label>
+            <select id="service" name="service">
+              <option value="">選択してください（任意）</option>
+              <option value="hubspot-intro">HubSpot 導入支援</option>
+              <option value="migration">SalesforceからHubSpotへの移管支援</option>
+              <option value="hubspot-use">HubSpot 活用支援</option>
+              <option value="ai-hubspot">AIとHubSpotを組み合わせた業務効率化支援</option>
+              <option value="sales-org">HubSpotを活用した営業組織の効率化支援</option>
+              <option value="unsure">まだ決まっていない／相談したい</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">お問い合わせ内容<span class="required">*必須</span></label>
+            <textarea id="message" name="message" placeholder="現在のCRM環境、課題感、ご要望などをご自由にお書きください。" required></textarea>
+          </div>
+
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn--primary btn--lg" style="width:100%; justify-content:center;">
+              送信する
+            </button>
+            <p class="form-note">送信いただいた個人情報は、お問い合わせへの回答のみに使用し、第三者に提供することはありません。通常2営業日以内にご返信いたします。</p>
+          </div>
+        </form>
+      </div>
+
+      <!-- INFO SIDEBAR -->
+      <div>
+        <div class="contact-info">
+          <h3 class="contact-info__title">ご相談の流れ</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step__num">1</div>
+              <div class="step__body">
+                <p class="step__title">フォームを送信</p>
+                <p class="step__text">現状の課題やご要望をご記入ください。</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step__num">2</div>
+              <div class="step__body">
+                <p class="step__title">2営業日以内にご返信</p>
+                <p class="step__text">代表の岩間より直接ご連絡いたします。</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step__num">3</div>
+              <div class="step__body">
+                <p class="step__title">無料ヒアリング（30〜60分）</p>
+                <p class="step__text">ZoomまたはGoogle Meetにて現状をお伺いし、最適な支援方法をご提案します。</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step__num">4</div>
+              <div class="step__body">
+                <p class="step__title">ご提案・お見積もり</p>
+                <p class="step__text">ヒアリング内容をもとにご提案書とお見積もりをお送りします。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info" style="margin-top:20px;">
+          <h3 class="contact-info__title">会社情報</h3>
+          <div class="contact-info__item">
+            <span class="contact-info__item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </span>
+            <div>
+              <strong style="display:block;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:2px;">所在地</strong>
+              〒150-0043 東京都渋谷区道玄坂1丁目10番8号<br>渋谷道玄坂東急ビル2F−C
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <span class="contact-info__item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </span>
+            <div>
+              <strong style="display:block;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:2px;">ウェブサイト</strong>
+              hareka.io
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <span class="contact-info__item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+            <div>
+              <strong style="display:block;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:2px;">返信について</strong>
+              通常2営業日以内にご返信します
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px; background:rgba(77,141,181,.08); border:1px solid rgba(77,141,181,.2); border-radius:var(--radius); padding:20px;">
+          <p style="font-size:13px; color:var(--navy); font-weight:600; margin-bottom:6px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            安心してご相談ください
+          </p>
+          <p style="font-size:12px; color:var(--text-gray); line-height:1.75;">いただいた情報は厳格に管理し、支援目的以外で使用することはありません。まずは雑談レベルでのご相談も歓迎です。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header section__header--center">
+      <span class="section__label">FAQ</span>
+      <h2 class="section__title">よくあるご質問</h2>
+    </div>
+    <div style="max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:16px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;">
+        <p style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:10px;">Q. 相談は無料ですか？</p>
+        <p style="font-size:14px;color:var(--text-gray);line-height:1.8;">はい、初回のヒアリング・相談は無料です。現状の課題をお伺いし、最適な支援方法をご提案します。ご提案後、進めるかどうかはお客様のご判断でお決めください。</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;">
+        <p style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:10px;">Q. 小規模なプロジェクトでも対応可能ですか？</p>
+        <p style="font-size:14px;color:var(--text-gray);line-height:1.8;">はい、法人だけでなく個人のお客様や小規模なご相談も承っています。まずは現状をお聞かせください。</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;">
+        <p style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:10px;">Q. オンラインでの対応は可能ですか？</p>
+        <p style="font-size:14px;color:var(--text-gray);line-height:1.8;">はい、基本的にZoomやGoogle Meetなどのオンラインで対応しています。全国のお客様にご利用いただけます。</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;">
+        <p style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:10px;">Q. HubSpotを契約していない場合でも相談できますか？</p>
+        <p style="font-size:14px;color:var(--text-gray);line-height:1.8;">もちろんです。HubSpotの導入前のご相談、他CRMからの移管を検討している段階でのご相談も大歓迎です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="180" height="41">
+          <polyline points="8,52 32,12 56,52" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="52" x2="48" y2="52" stroke="#4D8DB5" stroke-width="2" stroke-linecap="round"/>
+          <text x="72" y="42" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" fill="#FFFFFF" letter-spacing="6">HAREKA</text>
+        </svg>
+        <p class="footer__tagline">経営の無駄を晴らす。<br>経営の不透明を晴らす。<br>最先端技術への不安を晴らす。</p>
+      </div>
+      <div class="footer__nav">
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">Navigation</p>
+          <ul class="footer__nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="cases.html">Cases</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Hareka合同会社. All rights reserved.</p>
+      <p>hareka.io</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
