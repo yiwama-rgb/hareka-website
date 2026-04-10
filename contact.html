@@ -3,46 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Hareka | お問い合わせ・無料相談</title>
+  <title>お問い合わせ | Hareka</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="description" content="HubSpotの導入・移管・活用支援に関するお問い合わせ・無料相談はこちらから。Hareka合同会社 代表・岩間悠一が対応します。" />
+  <meta property="og:title" content="お問い合わせ | Hareka">
+  <meta property="og:description" content="HubSpotの導入・移管・活用支援に関するお問い合わせ・無料相談はこちらから。Hareka合同会社 代表・岩間悠一が対応します。">
+  <meta property="og:image" content="https://hareka.io/ogp.png">
+  <meta property="og:url" content="https://hareka.io/contact.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .form-submit-wrap {
-      margin-top: 8px;
-    }
-    .form-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 10px;
-      line-height: 1.7;
-    }
-    #form-success {
-      display: none;
-      background: #EDF7F0;
-      border: 1px solid #A8D5B4;
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      text-align: center;
-    }
-    #form-success h3 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #1D6A35;
-      margin-bottom: 10px;
-    }
-    #form-success p {
-      font-size: 14px;
-      color: #3A8050;
-      line-height: 1.8;
-    }
     .steps {
       display: flex;
       flex-direction: column;
@@ -76,10 +50,10 @@
       color: var(--text-gray);
       line-height: 1.7;
     }
-    @media(max-width:600px){
-      .form-row { grid-template-columns: 1fr; }
-    }
   </style>
+  <!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245774122.js"></script>
+  <!-- End of HubSpot Embed Code -->
 </head>
 <body>
 
@@ -135,63 +109,8 @@
 
       <!-- FORM -->
       <div>
-        <!-- Success message -->
-        <div id="form-success">
-          <h3>お問い合わせを受け付けました</h3>
-          <p>ご連絡いただきありがとうございます。<br>2営業日以内にご返信いたします。</p>
-        </div>
-
-        <!-- Form -->
-        <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact" />
-          <p style="display:none;"><label>Bot field: <input name="bot-field" /></label></p>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">お名前<span class="required">*必須</span></label>
-              <input type="text" id="name" name="name" placeholder="岩間 悠一" required autocomplete="name" />
-            </div>
-            <div class="form-group">
-              <label for="company">会社名</label>
-              <input type="text" id="company" name="company" placeholder="Hareka合同会社" autocomplete="organization" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">メールアドレス<span class="required">*必須</span></label>
-            <input type="email" id="email" name="email" placeholder="example@hareka.io" required autocomplete="email" />
-          </div>
-
-          <div class="form-group">
-            <label for="phone">電話番号</label>
-            <input type="tel" id="phone" name="phone" placeholder="03-0000-0000" autocomplete="tel" />
-          </div>
-
-          <div class="form-group">
-            <label for="service">ご関心のあるサービス</label>
-            <select id="service" name="service">
-              <option value="">選択してください（任意）</option>
-              <option value="hubspot-intro">HubSpot 導入支援</option>
-              <option value="migration">SalesforceからHubSpotへの移管支援</option>
-              <option value="hubspot-use">HubSpot 活用支援</option>
-              <option value="ai-hubspot">AIとHubSpotを組み合わせた業務効率化支援</option>
-              <option value="sales-org">HubSpotを活用した営業組織の効率化支援</option>
-              <option value="unsure">まだ決まっていない／相談したい</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message">お問い合わせ内容<span class="required">*必須</span></label>
-            <textarea id="message" name="message" placeholder="現在のCRM環境、課題感、ご要望などをご自由にお書きください。" required></textarea>
-          </div>
-
-          <div class="form-submit-wrap">
-            <button type="submit" class="btn btn--primary btn--lg" style="width:100%; justify-content:center;">
-              送信する
-            </button>
-            <p class="form-note">送信いただいた個人情報は、お問い合わせへの回答のみに使用し、第三者に提供することはありません。通常2営業日以内にご返信いたします。</p>
-          </div>
-        </form>
+        <script src="https://js-na2.hsforms.net/forms/embed/245774122.js" defer></script>
+        <div class="hs-form-frame" data-region="na2" data-form-id="00676bb9-2914-49d5-881a-30b1f0f4a89d" data-portal-id="245774122"></div>
       </div>
 
       <!-- INFO SIDEBAR -->
