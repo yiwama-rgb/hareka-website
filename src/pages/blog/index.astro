@@ -13,15 +13,6 @@ const postMeta = allPosts.map(post => ({
   readTime: Math.max(1, Math.ceil(post.body.length / 400)),
 }));
 
-// Category gradient map (same as BlogPostLayout)
-const categoryGradients: Record<string, { from: string; to: string; accent: string }> = {
-  'HubSpot活用':     { from: '#1B3558', to: '#2D6A9F', accent: '#4D8DB5' },
-  'CRM導入・移管':   { from: '#1B3558', to: '#1E5F74', accent: '#2E8B9A' },
-  'AI・自動化':      { from: '#1A2B4A', to: '#2D3A6B', accent: '#5B6EC7' },
-  'レポート・分析':  { from: '#1B3A2D', to: '#1E6B4A', accent: '#2EA87A' },
-  'HubSpot基礎':     { from: '#3A1B1B', to: '#6B2D2D', accent: '#C75B5B' },
-};
-const defaultGradient = { from: '#1B3558', to: '#2D6A9F', accent: '#4D8DB5' };
 ---
 
 <BaseLayout
@@ -247,7 +238,6 @@ const defaultGradient = { from: '#1B3558', to: '#2D6A9F', accent: '#4D8DB5' };
           <!-- Grid -->
           <div class="blog-grid" id="blog-grid">
             {postMeta.map(post => {
-              const grad = categoryGradients[post.data.category] ?? defaultGradient;
               return (
                 <a
                   href={`/blog/${post.slug}`}
@@ -255,19 +245,12 @@ const defaultGradient = { from: '#1B3558', to: '#2D6A9F', accent: '#4D8DB5' };
                   data-category={post.data.category}
                   data-tags={(post.data.tags ?? []).join(',')}
                 >
-                  {/* Thumbnail */}
-                  <div class="card-thumb">
-                    {post.data.heroImage ? (
+                  {/* Thumbnail: heroImageがある場合のみ表示 */}
+                  {post.data.heroImage && (
+                    <div class="card-thumb">
                       <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
-                    ) : (
-                      <div
-                        class="card-thumb__gradient"
-                        style={`background: linear-gradient(135deg, ${grad.from} 0%, ${grad.to} 100%);`}
-                      >
-                        <span class="card-thumb__category">{post.data.category}</span>
-                      </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   {/* Body */}
                   <div class="card-body">

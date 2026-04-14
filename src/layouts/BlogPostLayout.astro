@@ -43,19 +43,15 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   ogType="article"
 >
 
-<!-- ヒーロー画像 / グラデーション背景 -->
-<div class="post-hero" style={heroImage ? '' : `background:${heroGradient}`}>
-  {heroImage
-    ? <img src={heroImage} alt={title} class="post-hero__img" />
-    : <div class="post-hero__gradient-content">
-        <span class="post-hero__category-label">{category}</span>
-        <h1 class="post-hero__title-overlay">{title}</h1>
-      </div>
-  }
-</div>
+<!-- ヒーロー画像（heroImageがある場合のみ表示） -->
+{heroImage && (
+  <div class="post-hero">
+    <img src={heroImage} alt={title} class="post-hero__img" />
+  </div>
+)}
 
 <!-- 記事ラッパー -->
-<div class="post-outer">
+<div class={`post-outer${heroImage ? '' : ' post-outer--no-hero'}`}>
   <div class="post-container">
 
     <!-- メインコンテンツ -->
@@ -422,8 +418,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 
 /* 本文中途 CTA（JS で挿入） */
 .prose-mid-cta {
-  background: linear-gradient(135deg, #EBF4FA 0%, #dbeeff 100%);
-  border: 2px solid #4D8DB5;
+  background: linear-gradient(135deg, #1a7a4a 0%, #15a05e 100%);
   border-radius: 10px;
   padding: 1.4em 1.6em;
   margin: 2em 0;
@@ -437,14 +432,14 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   flex: 1;
   min-width: 200px;
   font-size: 0.95em;
-  color: #1A2E44;
+  color: #fff;
   font-weight: 600;
   margin: 0;
 }
 
 .prose-mid-cta__btn {
-  background: #1A2E44;
-  color: #fff;
+  background: #fff;
+  color: #1a7a4a;
   padding: 10px 20px;
   border-radius: 6px;
   font-size: 0.88em;
@@ -455,9 +450,9 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .prose-mid-cta__btn:hover {
-  background: #4D8DB5;
+  background: rgba(255,255,255,0.88);
   transform: translateY(-1px);
-  color: #fff;
+  color: #1a7a4a;
 }
 </style>
 
@@ -516,6 +511,11 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 .post-outer {
   background: #f8fafc;
   padding: 40px 0 80px;
+}
+
+/* heroImageなし：ヘッダー分の上余白 */
+.post-outer--no-hero {
+  margin-top: 76px;
 }
 
 /* コンテナ（本文 + サイドバー） */
@@ -601,6 +601,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: top center;
   flex-shrink: 0;
   border: 2px solid #e2e8f0;
 }
