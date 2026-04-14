@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="支援実績 | Hareka"
+  description="IT企業・人材企業・IoT製造業・金融企業など、様々な業種のCRM活用・HubSpot導入・移管支援の実績事例を掲載しています。"
+  ogUrl="https://hareka.io/cases"
+>
+  <style>
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .case-card__result-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      background: rgba(77,141,181,.25);
+      border-radius: 20px;
+      font-size: 12px;
+      color: #fff;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .cases-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero__label">Cases</span>
+      <h1 class="page-hero__title">支援実績</h1>
+      <p class="page-hero__lead">法人・個人を問わず、様々な規模・業種の企業のCRM課題解決を支援してきました。Before / After 形式で、具体的な変化をご確認いただけます。</p>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="section">
+    <div class="container">
+      <div class="cases-grid">
+
+        <div class="case-card">
+          <div class="case-card__head">
+            <div>
+              <p class="case-card__category">01 — IT企業</p>
+              <p class="case-card__client">Sales Hub活用率を60%以上改善</p>
+            </div>
+            <span class="case-card__result-badge">活用率 +60%</span>
+          </div>
+          <div class="case-card__body">
+            <div class="case-ba">
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--before">Before</p>
+                <p class="case-ba__text case-ba__text--before">データがバラバラのエクセルに点在。集計作業やエクセル保守に膨大な工数がかかっている状態。</p>
+              </div>
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--after">After</p>
+                <p class="case-ba__text case-ba__text--after">データがHubSpotに一元化。必要なレポートが自動整備され、現状把握と打ち手の分析が容易になった。</p>
+              </div>
+            </div>
+            <div class="service-tags">
+              <span class="tag">データ移管</span>
+              <span class="tag">オブジェクト・プロパティ設計</span>
+              <span class="tag">パイプライン・自動化設計</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__head">
+            <div>
+              <p class="case-card__category">02 — 人材企業</p>
+              <p class="case-card__client">休眠リードからの案件創出・成約に貢献</p>
+            </div>
+            <span class="case-card__result-badge">新チャネル確立</span>
+          </div>
+          <div class="case-card__body">
+            <div class="case-ba">
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--before">Before</p>
+                <p class="case-ba__text case-ba__text--before">属人的な営業活動が中心。休眠リードや失注リードが放置されていることが多かった。</p>
+              </div>
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--after">After</p>
+                <p class="case-ba__text case-ba__text--after">営業は重要顧客に集中。IS部隊が休眠・失注をフォローする仕組みを構築し、新たな案件創出チャネルが確立。</p>
+              </div>
+            </div>
+            <div class="service-tags">
+              <span class="tag">マーケメール設計</span>
+              <span class="tag">ホットリードリスト作成</span>
+              <span class="tag">分析・アプローチレクチャー</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__head">
+            <div>
+              <p class="case-card__category">03 — IoT製造業</p>
+              <p class="case-card__client">放置されていたHubSpotを全社の武器へ</p>
+            </div>
+            <span class="case-card__result-badge">全社CRM定着</span>
+          </div>
+          <div class="case-card__body">
+            <div class="case-ba">
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--before">Before</p>
+                <p class="case-ba__text case-ba__text--before">HubSpotを導入したものの、現場で全く使われていない形骸化した状態。</p>
+              </div>
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--after">After</p>
+                <p class="case-ba__text case-ba__text--after">上層部を巻き込み、CRM活用を全社プロジェクトとして再策定。全ての営業情報を集約することで対策策定まで実行可能に。</p>
+              </div>
+            </div>
+            <div class="service-tags">
+              <span class="tag">社内調整・意義説明</span>
+              <span class="tag">全社プロジェクト再策定</span>
+              <span class="tag">ステージ・レポート設計</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__head">
+            <div>
+              <p class="case-card__category">04 — IT企業</p>
+              <p class="case-card__client">SalesforceからService HubへのCRM移管</p>
+            </div>
+            <span class="case-card__result-badge">2ヶ月以内に移管完了</span>
+          </div>
+          <div class="case-card__body">
+            <div class="case-ba">
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--before">Before</p>
+                <p class="case-ba__text case-ba__text--before">移管ノウハウがなく、データをどう移行すべきか調べてもベストプラクティスがわからず困っていた。</p>
+              </div>
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--after">After</p>
+                <p class="case-ba__text case-ba__text--after">適切な設計により2ヶ月以内に利用開始。関連付けも正確に再現され、SaaSコスト削減にもつながった。</p>
+              </div>
+            </div>
+            <div class="service-tags">
+              <span class="tag">インポート・連携レクチャー</span>
+              <span class="tag">ヘルプデスク・ナレッジベース構築</span>
+              <span class="tag">ワークフロー活用支援</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__head">
+            <div>
+              <p class="case-card__category">05 — 金融企業</p>
+              <p class="case-card__client">SalesforceからHubSpotへのCRM移管</p>
+            </div>
+            <span class="case-card__result-badge">運用負荷・コスト削減</span>
+          </div>
+          <div class="case-card__body">
+            <div class="case-ba">
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--before">Before</p>
+                <p class="case-ba__text case-ba__text--before">過去のコンサル設計により自社で運用不能に。移行のための現状把握すら困難な状態。</p>
+              </div>
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--after">After</p>
+                <p class="case-ba__text case-ba__text--after">複雑な関連付けをHubSpotで再現。移行により運用負荷の軽減と月々のコスト削減を達成。</p>
+              </div>
+            </div>
+            <div class="service-tags">
+              <span class="tag">データローダー移行</span>
+              <span class="tag">エラー解消・関連付け再現</span>
+              <span class="tag">コスト削減支援</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card__head">
+            <div>
+              <p class="case-card__category">06 — 投資ファンド</p>
+              <p class="case-card__client">Sales Hub導入・自走支援</p>
+            </div>
+            <span class="case-card__result-badge">社内運用力を強化</span>
+          </div>
+          <div class="case-card__body">
+            <div class="case-ba">
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--before">Before</p>
+                <p class="case-ba__text case-ba__text--before">HubSpotを導入したばかりで、何から始めればよいか分からない状態。</p>
+              </div>
+              <div class="case-ba__col">
+                <p class="case-ba__label case-ba__label--after">After</p>
+                <p class="case-ba__text case-ba__text--after">オブジェクト構造の解説からパイプライン設計までハンズオンで支援。レポート・ワークフローのベストプラクティスを習得し、社内運用力を強化。</p>
+              </div>
+            </div>
+            <div class="service-tags">
+              <span class="tag">オブジェクト設計</span>
+              <span class="tag">パイプライン設計</span>
+              <span class="tag">レポート・ワークフロー支援</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 class="cta-banner__title">あなたの会社でも同様の成果を</h2>
+          <p class="cta-banner__text">まずは現状のお悩みをお気軽にご相談ください。</p>
+        </div>
+        <a href="/contact" class="btn btn--blue btn--lg">無料相談を申し込む</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,190 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, category, ogImage } = post.data;
+
+const formattedDate = pubDate.toLocaleDateString('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={`${title} | Hareka ブログ`}
+  description={description}
+  ogTitle={title}
+  ogDescription={description}
+  ogImage={ogImage ?? 'https://hareka.io/ogp.png'}
+  ogType="article"
+>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero__label">Blog</span>
+      <div class="blog-post-meta" style="margin-bottom:16px;">
+        <span class="tag">{category}</span>
+        <time datetime={pubDate.toISOString()} style="font-size:13px;color:var(--text-muted);margin-left:12px;">{formattedDate}</time>
+      </div>
+      <h1 class="page-hero__title" style="font-size:clamp(24px,4vw,40px);">{title}</h1>
+      <p class="page-hero__lead">{description}</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE -->
+  <section class="section" style="padding:80px 0;">
+    <div class="container">
+      <div class="blog-post-layout">
+        <article class="blog-post-content prose">
+          <slot />
+        </article>
+        <aside class="blog-post-sidebar">
+          <div class="blog-sidebar-box">
+            <p class="blog-sidebar-box__title">この記事について</p>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">公開日: {formattedDate}</p>
+            <p style="font-size:13px;color:var(--text-muted);">カテゴリ: {category}</p>
+          </div>
+          <div class="blog-sidebar-box" style="margin-top:20px;">
+            <p class="blog-sidebar-box__title">無料相談はこちら</p>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">HubSpotやCRMについてお悩みの方は、お気軽にご相談ください。</p>
+            <a href="/contact" class="btn btn--primary" style="width:100%;justify-content:center;">無料相談を申し込む</a>
+          </div>
+          <div style="margin-top:20px;">
+            <a href="/blog" style="font-size:13px;color:var(--blue);display:flex;align-items:center;gap:6px;">
+              ← ブログ一覧に戻る
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 class="cta-banner__title">HubSpot・CRMについてお悩みですか？</h2>
+          <p class="cta-banner__text">まずは無料でお気軽にご相談ください。</p>
+        </div>
+        <a href="/contact" class="btn btn--blue btn--lg">無料相談を申し込む</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.blog-post-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  align-items: start;
+}
+
+.prose {
+  line-height: 1.9;
+  color: var(--text-body);
+}
+.prose h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 48px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+.prose h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 32px 0 12px;
+}
+.prose p {
+  margin-bottom: 20px;
+}
+.prose ul, .prose ol {
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.prose strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+.prose a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose blockquote {
+  border-left: 4px solid var(--blue);
+  padding: 16px 20px;
+  margin: 24px 0;
+  background: var(--blue-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-style: italic;
+  color: var(--navy);
+}
+.prose code {
+  background: var(--bg-alt);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Menlo', 'Monaco', monospace;
+}
+.prose pre {
+  background: var(--navy);
+  color: #e2e8f0;
+  padding: 24px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+.prose pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+.prose img {
+  border-radius: var(--radius);
+  margin: 24px 0;
+}
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+.blog-sidebar-box {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.blog-sidebar-box__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .blog-post-layout {
+    grid-template-columns: 1fr;
+  }
+  .blog-post-sidebar {
+    order: -1;
+  }
+}
+</style>

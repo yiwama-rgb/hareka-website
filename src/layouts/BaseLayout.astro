@@ -1,0 +1,204 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogUrl?: string;
+  ogType?: string;
+  currentPath?: string;
+}
+
+const {
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  ogImage = 'https://hareka.io/ogp.png',
+  ogUrl,
+  ogType = 'website',
+  currentPath,
+} = Astro.props;
+
+const canonicalUrl = ogUrl ?? new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedPath = currentPath ?? Astro.url.pathname;
+
+const navLinks = [
+  { href: '/',        label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/cases',   label: 'Cases' },
+  { href: '/about',   label: 'About' },
+  { href: '/blog',    label: 'Blog' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return resolvedPath === '/';
+  return resolvedPath.startsWith(href);
+}
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- OGP -->
+  <meta property="og:title" content={ogTitle ?? title} />
+  <meta property="og:description" content={ogDescription ?? description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content="Hareka" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- HubSpot -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245774122.js"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="top">
+  <div class="container">
+    <div class="header__inner">
+      <a href="/" class="logo" aria-label="Hareka ホーム">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="200" height="46">
+          <polyline points="8,52 32,12 56,52" fill="none" stroke="#1A2E44" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="52" x2="48" y2="52" stroke="#4D8DB5" stroke-width="2" stroke-linecap="round"/>
+          <text x="72" y="42" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" fill="#1A2E44" letter-spacing="6">HAREKA</text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <ul class="nav__list">
+          {navLinks.map(link => (
+            <li>
+              <a href={link.href} class={isActive(link.href) ? 'active' : ''}>
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li><a href="/contact" class="nav__cta">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" aria-hidden="true">
+  {navLinks.map(link => (
+    <a href={link.href} class={isActive(link.href) ? 'active' : ''}>
+      {link.label}
+    </a>
+  ))}
+  <a href="/contact" class="mobile-cta">お問い合わせ</a>
+</div>
+
+<slot />
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="180" height="41">
+          <polyline points="8,52 32,12 56,52" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="16" y1="52" x2="48" y2="52" stroke="#4D8DB5" stroke-width="2" stroke-linecap="round"/>
+          <text x="72" y="42" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" fill="#FFFFFF" letter-spacing="6">HAREKA</text>
+        </svg>
+        <p class="footer__tagline">経営の無駄を晴らす。<br />経営の不透明を晴らす。<br />最先端技術への不安を晴らす。</p>
+      </div>
+      <div class="footer__nav">
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">Navigation</p>
+          <ul class="footer__nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/cases">Cases</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__nav-col">
+          <p class="footer__nav-title">Services</p>
+          <ul class="footer__nav-list">
+            <li><a href="/services">HubSpot 導入支援</a></li>
+            <li><a href="/services">Salesforce → HubSpot 移管</a></li>
+            <li><a href="/services">HubSpot 活用支援</a></li>
+            <li><a href="/services">AI × HubSpot 効率化支援</a></li>
+            <li><a href="/services">営業組織 効率化支援</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Hareka合同会社. All rights reserved.</p>
+      <p>hareka.io</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" is:inline></script>
+<script>
+  // Scroll header
+  const header = document.querySelector('.header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  }
+  // Mobile nav
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.card, .service-card, .case-card, .why-card, .blog-card').forEach(el => {
+    const htmlEl = el as HTMLElement;
+    htmlEl.style.opacity = '0';
+    htmlEl.style.transform = 'translateY(20px)';
+    htmlEl.style.transition = 'opacity .5s ease, transform .5s ease, box-shadow .25s ease, border-color .25s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categories = ['すべて', ...Array.from(new Set(allPosts.map(p => p.data.category)))];
+---
+
+<BaseLayout
+  title="ブログ | Hareka"
+  description="HubSpotの活用Tips、CRM導入・移管のポイント、AIを活用した業務効率化など、営業・マーケティング・オペレーション担当者に役立つ情報を発信します。"
+  ogUrl="https://hareka.io/blog"
+>
+  <style>
+    .blog-categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .category-btn {
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      color: var(--text-gray);
+      background: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .category-btn:hover, .category-btn.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .blog-card:hover {
+      box-shadow: var(--shadow-hover);
+      border-color: var(--blue);
+      transform: translateY(-3px);
+    }
+    .blog-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .blog-card__date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .blog-card__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+    .blog-card__desc {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .blog-card__readmore {
+      font-size: 13px;
+      color: var(--blue);
+      font-weight: 600;
+    }
+    .blog-coming-soon {
+      background: var(--bg-light);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 72px 40px;
+      text-align: center;
+    }
+    .blog-coming-soon__icon {
+      width: 64px; height: 64px;
+      background: rgba(77,141,181,.10);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--blue);
+    }
+    .blog-coming-soon__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .blog-coming-soon__text {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .blog-topics {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .blog-topic-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: var(--transition);
+    }
+    .blog-topic-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+    .blog-topic-card__icon {
+      width: 36px; height: 36px;
+      background: rgba(77,141,181,.10);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .blog-topic-card__text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+    @media(max-width:900px){
+      .blog-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media(max-width:600px){
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-topics { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero__label">Blog</span>
+      <h1 class="page-hero__title">ブログ</h1>
+      <p class="page-hero__lead">HubSpotの活用Tips、CRM導入・移管のポイント、AIを活用した業務効率化など、営業・マーケティング・オペレーション担当者に役立つ情報を発信します。</p>
+    </div>
+  </section>
+
+  <!-- BLOG CONTENT -->
+  <section class="section">
+    <div class="container">
+
+      {allPosts.length > 0 ? (
+        <>
+          <!-- Categories -->
+          <div class="blog-categories" id="blog-categories">
+            {categories.map((cat, i) => (
+              <button class={`category-btn${i === 0 ? ' active' : ''}`} data-category={cat}>
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <!-- Article List -->
+          <div class="blog-grid" id="blog-grid">
+            {allPosts.map(post => (
+              <a
+                href={`/blog/${post.slug}`}
+                class="blog-card"
+                data-category={post.data.category}
+              >
+                <div class="blog-card__meta">
+                  <span class="tag">{post.data.category}</span>
+                  <time class="blog-card__date" datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('ja-JP')}
+                  </time>
+                </div>
+                <h2 class="blog-card__title">{post.data.title}</h2>
+                <p class="blog-card__desc">{post.data.description}</p>
+                <span class="blog-card__readmore">続きを読む →</span>
+              </a>
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <!-- Coming Soon -->
+          <div class="blog-coming-soon">
+            <div class="blog-coming-soon__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h2 class="blog-coming-soon__title">記事を準備中です</h2>
+            <p class="blog-coming-soon__text">HubSpotの活用Tips、CRM導入・移管のベストプラクティス、AIを活用した業務効率化など、現場で役立つ情報を順次公開予定です。</p>
+          </div>
+
+          <!-- Upcoming Topics -->
+          <div style="margin-top:56px;">
+            <div class="section__header">
+              <span class="section__label">Upcoming Topics</span>
+              <h2 class="section__title" style="font-size:22px;">近日公開予定のトピック</h2>
+            </div>
+            <div class="blog-topics">
+              <div class="blog-topic-card">
+                <div class="blog-topic-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <p class="blog-topic-card__text">HubSpotで営業活用率を高める5つのポイント</p>
+              </div>
+              <div class="blog-topic-card">
+                <div class="blog-topic-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <p class="blog-topic-card__text">SalesforceからHubSpotへの移行前に確認すべきこと</p>
+              </div>
+              <div class="blog-topic-card">
+                <div class="blog-topic-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <p class="blog-topic-card__text">AIとHubSpotの組み合わせで営業生産性を2倍にする方法</p>
+              </div>
+              <div class="blog-topic-card">
+                <div class="blog-topic-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <p class="blog-topic-card__text">HubSpotが形骸化する本当の理由と対策</p>
+              </div>
+              <div class="blog-topic-card">
+                <div class="blog-topic-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <p class="blog-topic-card__text">休眠リードを掘り起こすHubSpotワークフロー設計術</p>
+              </div>
+              <div class="blog-topic-card">
+                <div class="blog-topic-card__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <p class="blog-topic-card__text">データドリブン営業組織をゼロから構築する手順</p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 class="cta-banner__title">記事の更新をいち早く受け取る</h2>
+          <p class="cta-banner__text">お問い合わせ時にブログ更新通知をご希望いただけます。</p>
+        </div>
+        <a href="/contact" class="btn btn--blue btn--lg">お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Category filter
+  const categoryBtns = document.querySelectorAll<HTMLButtonElement>('.category-btn');
+  const blogCards = document.querySelectorAll<HTMLElement>('.blog-card');
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoryBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.category;
+      blogCards.forEach(card => {
+        if (cat === 'すべて' || card.dataset.category === cat) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

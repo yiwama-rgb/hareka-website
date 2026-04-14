@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="代表紹介 | Hareka"
+  description="HubSpot Japan CSMとして200社以上を支援した岩間悠一が代表を務めるHareka合同会社。代表プロフィールと会社概要をご紹介します。"
+  ogUrl="https://hareka.io/about"
+>
+  <style>
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(77,141,181,.1);
+      color: var(--blue);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(77,141,181,.2);
+    }
+    .hobby-list {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .hobby-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--text-gray);
+    }
+    .profile-section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+    .concept-cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .concept-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .concept-card__icon {
+      width: 52px; height: 52px;
+      background: rgba(77,141,181,.10);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--blue);
+    }
+    .concept-card__title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .concept-card__text {
+      font-size: 13px;
+      color: var(--text-gray);
+      line-height: 1.75;
+    }
+    @media(max-width:768px){
+      .concept-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero__label">About</span>
+      <h1 class="page-hero__title">Harekaについて</h1>
+      <p class="page-hero__lead">経営者と従業員が、晴れやかな気持ちで仕事に向き合える状態をつくる。その理念のもと、HubSpot専門コンサルタントとして中小企業・スタートアップ・大企業の新規事業部門を支援しています。</p>
+    </div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <span class="section__label">Our Concept</span>
+        <h2 class="section__title">Harekaのコンセプト</h2>
+        <p class="section__lead">「晴れる（Hareru）」＋「化（Ka）」。経営に立ち込めるモヤを晴らし、組織を変化させる。その思いを社名に込めています。</p>
+      </div>
+      <div class="concept-cards">
+        <div class="concept-card">
+          <div class="concept-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <h3 class="concept-card__title">経営の無駄を晴らす</h3>
+          <p class="concept-card__text">非効率な業務プロセスやツールの重複投資など、経営資源の無駄をデータと仕組みで解消します。</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3 class="concept-card__title">経営の不透明を晴らす</h3>
+          <p class="concept-card__text">「データがない」「現状が見えない」という不透明さをCRMで解消し、データに基づいた意思決定を実現します。</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3 class="concept-card__title">最先端技術への不安を晴らす</h3>
+          <p class="concept-card__text">AIやCRMへの漠然とした不安を、実践的な支援と丁寧なレクチャーで自信に変えます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Representative</span>
+        <h2 class="section__title">代表プロフィール</h2>
+      </div>
+      <div class="profile">
+        <div style="text-align:center;">
+          <img src="/profile_hareka.jpg" alt="代表 岩間悠一" style="width:400px;max-width:100%;border-radius:8px;display:block;margin:0 auto;" />
+        </div>
+        <div>
+          <h2 class="profile__name">岩間 悠一</h2>
+          <p class="profile__name-en">Yuichi Iwama — 代表</p>
+          <p class="profile__bio">
+            HubSpot JapanにてCSMとして約4年、200社以上の支援に従事。パナソニック・NTT等の大企業からスタートアップまで幅広く担当。キーエンス・WeWork・CloudKitchensでの営業現場経験、およびSalesforce Japanでのカスタマーサクセス経験も持ち、CRMの導入・活用を「ツール側」と「現場側」の両面から深く理解するコンサルタントとして独立。Salesforce認定資格5つを保有し、SalesforceからHubSpotへの移管支援にも対応。
+          </p>
+          <p class="profile-section-label">職歴</p>
+          <div class="career-list">
+            <div class="career-item">HubSpot Japan — カスタマーサクセスマネージャー（約4年 / 200社以上支援）</div>
+            <div class="career-item">Salesforce Japan — カスタマーサクセスマネージャー</div>
+            <div class="career-item">キーエンス — 営業</div>
+            <div class="career-item">WeWork Japan — 営業</div>
+            <div class="career-item">CloudKitchens — 営業</div>
+          </div>
+          <p class="profile-section-label">資格（計10資格）</p>
+          <div class="cert-list">
+            <span class="cert-badge">Salesforce認定資格 ×5</span>
+            <span class="cert-badge">HubSpot認定資格（複数）</span>
+          </div>
+          <p class="profile-section-label">趣味</p>
+          <div class="hobby-list">
+            <span class="hobby-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
+              サーフィン
+            </span>
+            <span class="hobby-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg>
+              ブラジリアン柔術（BJJ）
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Company</span>
+        <h2 class="section__title">会社概要</h2>
+      </div>
+      <table class="company-table">
+        <tbody>
+          <tr>
+            <th>会社名</th>
+            <td>Hareka合同会社</td>
+          </tr>
+          <tr>
+            <th>設立</th>
+            <td>2026年4月</td>
+          </tr>
+          <tr>
+            <th>代表</th>
+            <td>岩間 悠一（Yuichi Iwama）</td>
+          </tr>
+          <tr>
+            <th>事業内容</th>
+            <td>CRMの導入支援、活用支援、営業コンサルティング</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>〒150-0043 東京都渋谷区道玄坂1丁目10番8号<br />渋谷道玄坂東急ビル2F−C</td>
+          </tr>
+          <tr>
+            <th>ウェブサイト</th>
+            <td>hareka.io</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 class="cta-banner__title">まずはお気軽にご相談ください</h2>
+          <p class="cta-banner__text">CRMの課題感や、どのサービスが合うかわからない場合もお気軽にどうぞ。</p>
+        </div>
+        <a href="/contact" class="btn btn--blue btn--lg">無料相談を申し込む</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

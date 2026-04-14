@@ -1,8 +1,6 @@
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
+[build]
+  command = "npm run build"
+  publish = "dist"
 
 [[headers]]
   for = "/*"
@@ -12,5 +10,8 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-[build]
-  publish = "."
+# LPフォルダを直接ホスト（Astroのルーティング外）
+[[redirects]]
+  from = "/lp/*"
+  to = "/lp/:splat"
+  status = 200

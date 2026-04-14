@@ -1,0 +1,289 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="サービス | Hareka"
+  description="HubSpot導入支援、SalesforceからHubSpotへの移管支援、活用支援、AI×HubSpot業務効率化支援、営業組織効率化支援の5サービスを提供。"
+  ogUrl="https://hareka.io/services"
+>
+  <style>
+    .services-list { display: flex; flex-direction: column; gap: 24px; }
+    .service-detail {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .service-detail:hover { box-shadow: var(--shadow-hover); border-color: var(--blue); }
+    .service-detail__head {
+      background: var(--navy);
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .service-detail__num {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,.12);
+      color: var(--white);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .service-detail__head-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .service-detail__body { padding: 32px 36px; }
+    .service-detail__lead {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.85;
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+    .service-detail__subtitle {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: .06em;
+      margin-bottom: 10px;
+    }
+    .service-detail__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .service-detail__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .service-detail__list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px; height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+      margin-top: 8px;
+    }
+    .service-detail__who {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      font-size: 13px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .service-detail__who strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 4px;
+    }
+    @media (max-width: 768px) {
+      .service-detail__head { padding: 22px 24px; }
+      .service-detail__body { padding: 24px; }
+    }
+  </style>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero__label">Services</span>
+      <h1 class="page-hero__title">サービス一覧</h1>
+      <p class="page-hero__lead">HubSpotの導入から移管・活用・AI活用まで、お客様の状況に合わせた最適な支援を提供します。すべての案件を代表の岩間が一貫して担当します。</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div class="services-list">
+
+        <div class="service-detail">
+          <div class="service-detail__head">
+            <div class="service-detail__num">01</div>
+            <h2 class="service-detail__head-title">HubSpot 導入支援</h2>
+          </div>
+          <div class="service-detail__body">
+            <p class="service-detail__lead">
+              HubSpotをはじめて導入する企業に向け、要件定義・設計・初期設定・社内レクチャーまでを一貫してサポートします。「何から始めればいいかわからない」という状態から、チームが自走できる状態まで丁寧に伴走します。
+            </p>
+            <p class="service-detail__subtitle">支援内容</p>
+            <ul class="service-detail__list">
+              <li>ヒアリングによる要件定義・現状把握</li>
+              <li>オブジェクト・プロパティ設計</li>
+              <li>パイプライン・自動化（ワークフロー）設計</li>
+              <li>レポート・ダッシュボード構築</li>
+              <li>チームへのレクチャー・ハンズオン支援</li>
+              <li>導入後フォローアップ</li>
+            </ul>
+            <div class="service-tags">
+              <span class="tag">Sales Hub</span>
+              <span class="tag">Marketing Hub</span>
+              <span class="tag">Service Hub</span>
+              <span class="tag">オブジェクト設計</span>
+              <span class="tag">ワークフロー</span>
+              <span class="tag">レポート</span>
+            </div>
+            <div class="service-detail__who" style="margin-top:20px;">
+              <strong>こんな方に</strong>
+              HubSpotを新規導入する企業・部門。どう設計すべきか不安な方、現場への定着を重視したい方。
+            </div>
+          </div>
+        </div>
+
+        <div class="service-detail">
+          <div class="service-detail__head">
+            <div class="service-detail__num">02</div>
+            <h2 class="service-detail__head-title">SalesforceからHubSpotへの移管支援</h2>
+          </div>
+          <div class="service-detail__body">
+            <p class="service-detail__lead">
+              Salesforceのコスト・複雑さに課題を感じ、HubSpotへの乗り換えを検討している企業を支援します。データ移行のベストプラクティスを熟知したコンサルタントが、リスクを最小化しながらスムーズな移管を実現します。
+            </p>
+            <p class="service-detail__subtitle">支援内容</p>
+            <ul class="service-detail__list">
+              <li>Salesforce現状分析・データ棚卸し</li>
+              <li>HubSpot移行設計（オブジェクト・プロパティのマッピング）</li>
+              <li>データローダーを活用したデータ移行</li>
+              <li>関連付け（取引先-担当者-案件等）の再現</li>
+              <li>エラー解消・データクレンジング</li>
+              <li>移行後の動作確認・フォローアップ</li>
+            </ul>
+            <div class="service-tags">
+              <span class="tag">データローダー</span>
+              <span class="tag">データ移行</span>
+              <span class="tag">関連付け再現</span>
+              <span class="tag">コスト削減</span>
+              <span class="tag">Salesforce認定資格保持</span>
+            </div>
+            <div class="service-detail__who" style="margin-top:20px;">
+              <strong>こんな方に</strong>
+              Salesforceのコストや複雑さに課題を感じている企業。移行に踏み出せずにいる方、ベストプラクティスが不明な方。
+            </div>
+          </div>
+        </div>
+
+        <div class="service-detail">
+          <div class="service-detail__head">
+            <div class="service-detail__num">03</div>
+            <h2 class="service-detail__head-title">HubSpot 活用支援</h2>
+          </div>
+          <div class="service-detail__body">
+            <p class="service-detail__lead">
+              HubSpotを導入済みだが十分に活用できていない企業に向け、現状課題を診断し活用度を高めるための支援を行います。形骸化したHubSpotを「経営の武器」に変えるための再設計・再教育を実施します。
+            </p>
+            <p class="service-detail__subtitle">支援内容</p>
+            <ul class="service-detail__list">
+              <li>HubSpot活用度診断・課題整理</li>
+              <li>既存設定の見直し・リデザイン</li>
+              <li>未活用機能（ワークフロー・シーケンス・レポート等）の立ち上げ</li>
+              <li>社内への再レクチャー・活用定着支援</li>
+              <li>上層部を巻き込んだ全社CRMプロジェクト推進</li>
+            </ul>
+            <div class="service-tags">
+              <span class="tag">活用診断</span>
+              <span class="tag">リデザイン</span>
+              <span class="tag">定着支援</span>
+              <span class="tag">ワークフロー</span>
+              <span class="tag">レポート設計</span>
+            </div>
+            <div class="service-detail__who" style="margin-top:20px;">
+              <strong>こんな方に</strong>
+              HubSpotを導入したが現場で使われていない企業。期待した成果につながっていない、活用の方向性を見直したい方。
+            </div>
+          </div>
+        </div>
+
+        <div class="service-detail">
+          <div class="service-detail__head">
+            <div class="service-detail__num">04</div>
+            <h2 class="service-detail__head-title">AIとHubSpotを組み合わせた業務効率化支援</h2>
+          </div>
+          <div class="service-detail__body">
+            <p class="service-detail__lead">
+              HubSpotの活用にとどまらず、最新AIツールとの連携によって営業・マーケティング・オペレーション業務の効率を飛躍的に高めます。テクノロジーへの不安を取り除きながら、実務に根ざした形でAI活用を推進します。
+            </p>
+            <p class="service-detail__subtitle">支援内容</p>
+            <ul class="service-detail__list">
+              <li>AI活用の現状診断・導入戦略策定</li>
+              <li>HubSpot AI機能（Breeze AI等）の活用支援</li>
+              <li>外部AIツール（ChatGPT・Claudeほか）とHubSpotの連携設計</li>
+              <li>AIを活用したレポート・データ分析自動化</li>
+              <li>営業メール・提案書の生成AI活用ワークフロー構築</li>
+              <li>チームへのAIリテラシー向上レクチャー</li>
+            </ul>
+            <div class="service-tags">
+              <span class="tag">AI連携</span>
+              <span class="tag">Breeze AI</span>
+              <span class="tag">自動化</span>
+              <span class="tag">業務効率化</span>
+              <span class="tag">生成AI活用</span>
+            </div>
+            <div class="service-detail__who" style="margin-top:20px;">
+              <strong>こんな方に</strong>
+              AIに関心はあるが何から始めればよいかわからない企業。HubSpotとAIを組み合わせて業務効率・売上向上を目指したい方。
+            </div>
+          </div>
+        </div>
+
+        <div class="service-detail">
+          <div class="service-detail__head">
+            <div class="service-detail__num">05</div>
+            <h2 class="service-detail__head-title">HubSpotを活用した営業組織の効率化支援</h2>
+          </div>
+          <div class="service-detail__body">
+            <p class="service-detail__lead">
+              キーエンス・WeWork Japanでの現場営業経験と、HubSpot Japan CSMとしての200社以上の支援経験を組み合わせ、データドリブンな営業組織づくりを実践的にサポートします。ツールの設定だけでなく、「どう使えば売上につながるか」を一緒に考えます。
+            </p>
+            <p class="service-detail__subtitle">支援内容</p>
+            <ul class="service-detail__list">
+              <li>営業プロセス・パイプラインの設計・最適化</li>
+              <li>SFA（売上管理・商談管理）の構築と活用</li>
+              <li>インサイドセールス（IS）体制とHubSpot連携設計</li>
+              <li>休眠・失注リードの再活性化施策設計</li>
+              <li>ホットリスト作成・営業優先度付けの仕組み化</li>
+              <li>営業KPI・レポートの設計と分析支援</li>
+            </ul>
+            <div class="service-tags">
+              <span class="tag">SFA活用</span>
+              <span class="tag">パイプライン設計</span>
+              <span class="tag">インサイドセールス</span>
+              <span class="tag">KPI設計</span>
+              <span class="tag">データドリブン営業</span>
+            </div>
+            <div class="service-detail__who" style="margin-top:20px;">
+              <strong>こんな方に</strong>
+              属人的な営業から脱却したい企業。データを活用して営業効率と成約率を上げたい営業部・営業企画・インサイドセールス担当者。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 class="cta-banner__title">どのサービスが合うか迷ったら</h2>
+          <p class="cta-banner__text">まずは現状のお悩みをお聞かせください。最適なサービス・進め方をご提案します。</p>
+        </div>
+        <a href="/contact" class="btn btn--blue btn--lg">無料相談を申し込む</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
