@@ -6,6 +6,22 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const categories = ['すべて', ...Array.from(new Set(allPosts.map(p => p.data.category)))];
+
+// Reading time per post
+const postMeta = allPosts.map(post => ({
+  ...post,
+  readTime: Math.max(1, Math.ceil(post.body.length / 400)),
+}));
+
+// Category gradient map (same as BlogPostLayout)
+const categoryGradients: Record<string, { from: string; to: string; accent: string }> = {
+  'HubSpot活用':     { from: '#1B3558', to: '#2D6A9F', accent: '#4D8DB5' },
+  'CRM導入・移管':   { from: '#1B3558', to: '#1E5F74', accent: '#2E8B9A' },
+  'AI・自動化':      { from: '#1A2B4A', to: '#2D3A6B', accent: '#5B6EC7' },
+  'レポート・分析':  { from: '#1B3A2D', to: '#1E6B4A', accent: '#2EA87A' },
+  'HubSpot基礎':     { from: '#3A1B1B', to: '#6B2D2D', accent: '#C75B5B' },
+};
+const defaultGradient = { from: '#1B3558', to: '#2D6A9F', accent: '#4D8DB5' };
 ---
 
 <BaseLayout
@@ -14,82 +30,165 @@ const categories = ['すべて', ...Array.from(new Set(allPosts.map(p => p.data.
   ogUrl="https://hareka.io/blog"
 >
   <style>
-    .blog-categories {
+    /* ── Filter bar ── */
+    .filter-bar {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
-    .category-btn {
-      padding: 8px 20px;
+    .filter-btn {
+      padding: 7px 18px;
       border-radius: 20px;
       font-size: 13px;
       font-weight: 600;
-      border: 1.5px solid var(--border);
-      color: var(--text-gray);
-      background: var(--white);
+      border: 1.5px solid #D0D9E3;
+      color: #4A5568;
+      background: #fff;
       cursor: pointer;
-      transition: var(--transition);
+      transition: background .18s, color .18s, border-color .18s;
+      white-space: nowrap;
     }
-    .category-btn:hover, .category-btn.active {
-      background: var(--navy);
-      color: var(--white);
-      border-color: var(--navy);
+    .filter-btn:hover {
+      border-color: #4D8DB5;
+      color: #1B3558;
     }
+    .filter-btn.active {
+      background: #1B3558;
+      color: #fff;
+      border-color: #1B3558;
+    }
+
+    /* ── Post count ── */
+    .post-count {
+      font-size: 13px;
+      color: #718096;
+      margin-bottom: 24px;
+    }
+    .post-count strong {
+      color: #1B3558;
+      font-weight: 700;
+    }
+
+    /* ── Grid ── */
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
     }
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+
+    /* ── Card ── */
     .blog-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow-card);
-      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      background: #fff;
+      border: 1px solid #E2EBF3;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(27,53,88,.06);
+      transition: box-shadow .2s, transform .2s, border-color .2s;
       display: flex;
       flex-direction: column;
-      gap: 12px;
       text-decoration: none;
       color: inherit;
     }
     .blog-card:hover {
-      box-shadow: var(--shadow-hover);
-      border-color: var(--blue);
-      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(27,53,88,.14);
+      border-color: #4D8DB5;
+      transform: translateY(-4px);
     }
-    .blog-card__meta {
+
+    /* Thumbnail */
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .card-thumb__gradient {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding: 14px 16px;
+    }
+    .card-thumb__category {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,.85);
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 3px 10px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Body */
+    .card-body {
+      padding: 20px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+    }
+    .card-meta {
       display: flex;
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
     }
-    .blog-card__date {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-    .blog-card__title {
-      font-size: 16px;
+    .card-meta__cat {
+      font-size: 11px;
       font-weight: 700;
-      color: var(--navy);
-      line-height: 1.45;
+      color: #4D8DB5;
+      background: #EBF4FA;
+      padding: 3px 10px;
+      border-radius: 10px;
     }
-    .blog-card__desc {
-      font-size: 13px;
-      color: var(--text-body);
-      line-height: 1.75;
+    .card-meta__date {
+      font-size: 12px;
+      color: #9AA5B4;
+    }
+    .card-meta__read {
+      font-size: 12px;
+      color: #9AA5B4;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1B3558;
+      line-height: 1.55;
       flex: 1;
     }
-    .blog-card__readmore {
+    .card-desc {
       font-size: 13px;
-      color: var(--blue);
-      font-weight: 600;
+      color: #5A6B7E;
+      line-height: 1.75;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+    .card-readmore {
+      font-size: 13px;
+      color: #4D8DB5;
+      font-weight: 600;
+      margin-top: auto;
+    }
+
+    /* ── Coming soon ── */
     .blog-coming-soon {
-      background: var(--bg-light);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius-lg);
+      background: #F7FAFC;
+      border: 1px dashed #CBD5E0;
+      border-radius: 16px;
       padding: 72px 40px;
       text-align: center;
     }
@@ -99,58 +198,20 @@ const categories = ['すべて', ...Array.from(new Set(allPosts.map(p => p.data.
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 20px;
-      color: var(--blue);
+      color: #4D8DB5;
     }
     .blog-coming-soon__title {
       font-size: 20px;
       font-weight: 700;
-      color: var(--navy);
+      color: #1B3558;
       margin-bottom: 10px;
     }
     .blog-coming-soon__text {
       font-size: 14px;
-      color: var(--text-gray);
+      color: #718096;
       line-height: 1.8;
       max-width: 440px;
       margin: 0 auto;
-    }
-    .blog-topics {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 16px;
-      margin-top: 48px;
-    }
-    .blog-topic-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      transition: var(--transition);
-    }
-    .blog-topic-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
-    .blog-topic-card__icon {
-      width: 36px; height: 36px;
-      background: rgba(77,141,181,.10);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--blue);
-      flex-shrink: 0;
-    }
-    .blog-topic-card__text {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.5;
-    }
-    @media(max-width:900px){
-      .blog-grid { grid-template-columns: repeat(2,1fr); }
-    }
-    @media(max-width:600px){
-      .blog-grid { grid-template-columns: 1fr; }
-      .blog-topics { grid-template-columns: 1fr; }
     }
   </style>
 
@@ -169,93 +230,71 @@ const categories = ['すべて', ...Array.from(new Set(allPosts.map(p => p.data.
 
       {allPosts.length > 0 ? (
         <>
-          <!-- Categories -->
-          <div class="blog-categories" id="blog-categories">
+          <!-- Filter bar -->
+          <div class="filter-bar" id="filter-bar">
             {categories.map((cat, i) => (
-              <button class={`category-btn${i === 0 ? ' active' : ''}`} data-category={cat}>
+              <button class={`filter-btn${i === 0 ? ' active' : ''}`} data-category={cat}>
                 {cat}
               </button>
             ))}
           </div>
 
-          <!-- Article List -->
+          <!-- Post count -->
+          <p class="post-count" id="post-count">
+            <strong>{allPosts.length}</strong> 件の記事
+          </p>
+
+          <!-- Grid -->
           <div class="blog-grid" id="blog-grid">
-            {allPosts.map(post => (
-              <a
-                href={`/blog/${post.slug}`}
-                class="blog-card"
-                data-category={post.data.category}
-              >
-                <div class="blog-card__meta">
-                  <span class="tag">{post.data.category}</span>
-                  <time class="blog-card__date" datetime={post.data.pubDate.toISOString()}>
-                    {post.data.pubDate.toLocaleDateString('ja-JP')}
-                  </time>
-                </div>
-                <h2 class="blog-card__title">{post.data.title}</h2>
-                <p class="blog-card__desc">{post.data.description}</p>
-                <span class="blog-card__readmore">続きを読む →</span>
-              </a>
-            ))}
+            {postMeta.map(post => {
+              const grad = categoryGradients[post.data.category] ?? defaultGradient;
+              return (
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="blog-card"
+                  data-category={post.data.category}
+                  data-tags={(post.data.tags ?? []).join(',')}
+                >
+                  {/* Thumbnail */}
+                  <div class="card-thumb">
+                    {post.data.heroImage ? (
+                      <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+                    ) : (
+                      <div
+                        class="card-thumb__gradient"
+                        style={`background: linear-gradient(135deg, ${grad.from} 0%, ${grad.to} 100%);`}
+                      >
+                        <span class="card-thumb__category">{post.data.category}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Body */}
+                  <div class="card-body">
+                    <div class="card-meta">
+                      <span class="card-meta__cat">{post.data.category}</span>
+                      <time class="card-meta__date" datetime={post.data.pubDate.toISOString()}>
+                        {post.data.pubDate.toLocaleDateString('ja-JP')}
+                      </time>
+                      <span class="card-meta__read">📖 {post.readTime} 分</span>
+                    </div>
+                    <h2 class="card-title">{post.data.title}</h2>
+                    <p class="card-desc">{post.data.description}</p>
+                    <span class="card-readmore">続きを読む →</span>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </>
       ) : (
-        <>
-          <!-- Coming Soon -->
-          <div class="blog-coming-soon">
-            <div class="blog-coming-soon__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            </div>
-            <h2 class="blog-coming-soon__title">記事を準備中です</h2>
-            <p class="blog-coming-soon__text">HubSpotの活用Tips、CRM導入・移管のベストプラクティス、AIを活用した業務効率化など、現場で役立つ情報を順次公開予定です。</p>
+        <div class="blog-coming-soon">
+          <div class="blog-coming-soon__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
-
-          <!-- Upcoming Topics -->
-          <div style="margin-top:56px;">
-            <div class="section__header">
-              <span class="section__label">Upcoming Topics</span>
-              <h2 class="section__title" style="font-size:22px;">近日公開予定のトピック</h2>
-            </div>
-            <div class="blog-topics">
-              <div class="blog-topic-card">
-                <div class="blog-topic-card__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                </div>
-                <p class="blog-topic-card__text">HubSpotで営業活用率を高める5つのポイント</p>
-              </div>
-              <div class="blog-topic-card">
-                <div class="blog-topic-card__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                </div>
-                <p class="blog-topic-card__text">SalesforceからHubSpotへの移行前に確認すべきこと</p>
-              </div>
-              <div class="blog-topic-card">
-                <div class="blog-topic-card__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                </div>
-                <p class="blog-topic-card__text">AIとHubSpotの組み合わせで営業生産性を2倍にする方法</p>
-              </div>
-              <div class="blog-topic-card">
-                <div class="blog-topic-card__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                </div>
-                <p class="blog-topic-card__text">HubSpotが形骸化する本当の理由と対策</p>
-              </div>
-              <div class="blog-topic-card">
-                <div class="blog-topic-card__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                </div>
-                <p class="blog-topic-card__text">休眠リードを掘り起こすHubSpotワークフロー設計術</p>
-              </div>
-              <div class="blog-topic-card">
-                <div class="blog-topic-card__icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <p class="blog-topic-card__text">データドリブン営業組織をゼロから構築する手順</p>
-              </div>
-            </div>
-          </div>
-        </>
+          <h2 class="blog-coming-soon__title">記事を準備中です</h2>
+          <p class="blog-coming-soon__text">HubSpotの活用Tips、CRM導入・移管のベストプラクティス、AIを活用した業務効率化など、現場で役立つ情報を順次公開予定です。</p>
+        </div>
       )}
 
     </div>
@@ -276,22 +315,28 @@ const categories = ['すべて', ...Array.from(new Set(allPosts.map(p => p.data.
 </BaseLayout>
 
 <script>
-  // Category filter
-  const categoryBtns = document.querySelectorAll<HTMLButtonElement>('.category-btn');
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
   const blogCards = document.querySelectorAll<HTMLElement>('.blog-card');
+  const postCount = document.getElementById('post-count');
 
-  categoryBtns.forEach(btn => {
+  function updateCount(visible: number) {
+    if (postCount) {
+      postCount.innerHTML = `<strong>${visible}</strong> 件の記事`;
+    }
+  }
+
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      categoryBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const cat = btn.dataset.category;
+      let count = 0;
       blogCards.forEach(card => {
-        if (cat === 'すべて' || card.dataset.category === cat) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
+        const show = cat === 'すべて' || card.dataset.category === cat;
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
       });
+      updateCount(count);
     });
   });
 </script>

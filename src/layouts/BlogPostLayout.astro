@@ -1,19 +1,37 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
 
 export interface Props {
   post: CollectionEntry<'blog'>;
+  headings: MarkdownHeading[];
 }
 
-const { post } = Astro.props;
-const { title, description, pubDate, category, ogImage } = post.data;
+const { post, headings } = Astro.props;
+const { title, description, pubDate, category, tags, heroImage, ogImage } = post.data;
+
+// 読了時間（日本語：400字/分）
+const readingTime = Math.max(1, Math.ceil(post.body.length / 400));
 
 const formattedDate = pubDate.toLocaleDateString('ja-JP', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
+
+// カテゴリ別グラデーション
+const categoryGradients: Record<string, string> = {
+  'AI × 営業':    'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+  'HubSpot活用':  'linear-gradient(135deg, #1A2E44 0%, #2d4a6e 50%, #4D8DB5 100%)',
+  'CRM導入・移管': 'linear-gradient(135deg, #0d3b33 0%, #1a5f4a 50%, #2e8b6b 100%)',
+  '営業組織':      'linear-gradient(135deg, #2d1b00 0%, #5c3600 50%, #8b5e2e 100%)',
+  '事例・インサイト':'linear-gradient(135deg, #1a0a2e 0%, #3d1a5e 50%, #6e2e8b 100%)',
+};
+const heroGradient = categoryGradients[category] ?? 'linear-gradient(135deg, #1A2E44 0%, #243d57 50%, #4D8DB5 100%)';
+
+// 目次フィルタ（h2・h3のみ）
+const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 ---
 
 <BaseLayout
@@ -21,170 +39,960 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
   description={description}
   ogTitle={title}
   ogDescription={description}
-  ogImage={ogImage ?? 'https://hareka.io/ogp.png'}
+  ogImage={ogImage ?? heroImage ?? 'https://hareka.io/ogp.png'}
   ogType="article"
 >
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="container">
-      <span class="page-hero__label">Blog</span>
-      <div class="blog-post-meta" style="margin-bottom:16px;">
-        <span class="tag">{category}</span>
-        <time datetime={pubDate.toISOString()} style="font-size:13px;color:var(--text-muted);margin-left:12px;">{formattedDate}</time>
-      </div>
-      <h1 class="page-hero__title" style="font-size:clamp(24px,4vw,40px);">{title}</h1>
-      <p class="page-hero__lead">{description}</p>
-    </div>
-  </section>
 
-  <!-- ARTICLE -->
-  <section class="section" style="padding:80px 0;">
-    <div class="container">
-      <div class="blog-post-layout">
-        <article class="blog-post-content prose">
-          <slot />
-        </article>
-        <aside class="blog-post-sidebar">
-          <div class="blog-sidebar-box">
-            <p class="blog-sidebar-box__title">この記事について</p>
-            <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">公開日: {formattedDate}</p>
-            <p style="font-size:13px;color:var(--text-muted);">カテゴリ: {category}</p>
-          </div>
-          <div class="blog-sidebar-box" style="margin-top:20px;">
-            <p class="blog-sidebar-box__title">無料相談はこちら</p>
-            <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">HubSpotやCRMについてお悩みの方は、お気軽にご相談ください。</p>
-            <a href="/contact" class="btn btn--primary" style="width:100%;justify-content:center;">無料相談を申し込む</a>
-          </div>
-          <div style="margin-top:20px;">
-            <a href="/blog" style="font-size:13px;color:var(--blue);display:flex;align-items:center;gap:6px;">
-              ← ブログ一覧に戻る
-            </a>
-          </div>
-        </aside>
+<!-- ヒーロー画像 / グラデーション背景 -->
+<div class="post-hero" style={heroImage ? '' : `background:${heroGradient}`}>
+  {heroImage
+    ? <img src={heroImage} alt={title} class="post-hero__img" />
+    : <div class="post-hero__gradient-content">
+        <span class="post-hero__category-label">{category}</span>
+        <h1 class="post-hero__title-overlay">{title}</h1>
       </div>
-    </div>
-  </section>
+  }
+</div>
 
-  <!-- CTA -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-banner__inner">
-        <div>
-          <h2 class="cta-banner__title">HubSpot・CRMについてお悩みですか？</h2>
-          <p class="cta-banner__text">まずは無料でお気軽にご相談ください。</p>
+<!-- 記事ラッパー -->
+<div class="post-outer">
+  <div class="post-container">
+
+    <!-- メインコンテンツ -->
+    <main class="post-main" id="post-main">
+
+      <!-- メタ情報 -->
+      <div class="post-meta-bar">
+        <span class="post-meta-cat">{category}</span>
+        <span class="post-meta-divider">|</span>
+        <span class="post-meta-date">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span class="post-meta-reading">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          約{readingTime}分で読めます
+        </span>
+      </div>
+
+      <!-- タイトル（heroImageがある場合のみここに表示） -->
+      {heroImage && <h1 class="post-title">{title}</h1>}
+      {!heroImage && <h1 class="post-title post-title--nogap">{title}</h1>}
+
+      <!-- 著者プロフィールボックス -->
+      <div class="author-box">
+        <img src="/images/profile_hareka.jpg" alt="岩間悠一" class="author-box__photo" />
+        <div class="author-box__body">
+          <div class="author-box__header">
+            <p class="author-box__name">岩間 悠一</p>
+            <p class="author-box__title">元HubSpot Japan カスタマーサクセスマネージャー／Hareka合同会社 代表</p>
+          </div>
+          <p class="author-box__bio">200社以上のHubSpot導入を支援。現在はHubSpotコンサルタントとして独立。CRM導入から活用定着・AI連携まで一気通貫で支援しています。</p>
         </div>
-        <a href="/contact" class="btn btn--blue btn--lg">無料相談を申し込む</a>
       </div>
+
+      <!-- 目次（モバイル表示用インライン） -->
+      {tocHeadings.length > 0 && (
+        <nav class="toc toc--inline" aria-label="目次">
+          <p class="toc__title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            目次
+          </p>
+          <ol class="toc__list">
+            {tocHeadings.map(h => (
+              <li class={`toc__item toc__item--depth${h.depth}`}>
+                <a href={`#${h.slug}`} class="toc__link">{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
+      <!-- 記事本文 -->
+      <div class="prose" id="article-body">
+        <slot />
+      </div>
+
+      <!-- 記事末尾 CTA -->
+      <div class="post-cta post-cta--end">
+        <div class="post-cta__inner">
+          <div class="post-cta__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="post-cta__body">
+            <p class="post-cta__label">無料相談受付中</p>
+            <p class="post-cta__title">HubSpotの導入・活用でお困りですか？</p>
+            <p class="post-cta__text">200社以上の支援経験を持つ専門コンサルタントが、貴社の状況に合った最適な方法をご提案します。まずはお気軽にご相談ください。</p>
+          </div>
+          <a href="https://hareka.io/contact" class="post-cta__btn">無料相談はこちら →</a>
+        </div>
+      </div>
+
+      <!-- タグ -->
+      {(tags && tags.length > 0) && (
+        <div class="post-tags">
+          <span class="post-tags__label">タグ：</span>
+          {tags.map(tag => (
+            <span class="post-tag">{tag}</span>
+          ))}
+        </div>
+      )}
+
+      <!-- 記事下部ナビ -->
+      <div class="post-footer-nav">
+        <a href="/blog" class="post-back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          ブログ一覧に戻る
+        </a>
+      </div>
+
+    </main>
+
+    <!-- サイドバー -->
+    <aside class="post-sidebar" aria-label="サイドバー">
+
+      {/* 目次（デスクトップ sticky） */}
+      {tocHeadings.length > 0 && (
+        <div class="sidebar-toc sidebar-box" id="sidebar-toc">
+          <p class="sidebar-box__title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            目次
+          </p>
+          <ol class="sidebar-toc__list">
+            {tocHeadings.map(h => (
+              <li class={`sidebar-toc__item sidebar-toc__item--depth${h.depth}`}>
+                <a href={`#${h.slug}`} class="sidebar-toc__link">{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      <!-- サイドバー CTA -->
+      <div class="sidebar-box sidebar-cta">
+        <p class="sidebar-box__title">無料相談</p>
+        <p class="sidebar-cta__text">HubSpotやCRMについてお悩みの方は、お気軽にご相談ください。</p>
+        <a href="/contact" class="sidebar-cta__btn">無料相談を申し込む</a>
+      </div>
+
+      <!-- 記事情報 -->
+      <div class="sidebar-box sidebar-info">
+        <p class="sidebar-box__title">この記事について</p>
+        <dl class="sidebar-info__list">
+          <dt>公開日</dt>
+          <dd>{formattedDate}</dd>
+          <dt>カテゴリ</dt>
+          <dd>{category}</dd>
+          <dt>読了時間</dt>
+          <dd>約{readingTime}分</dd>
+        </dl>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- 下部 CTA バナー -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner__inner">
+      <div>
+        <h2 class="cta-banner__title">HubSpotの導入・活用でお困りですか？</h2>
+        <p class="cta-banner__text">まずは無料でお気軽にご相談ください。</p>
+      </div>
+      <a href="/contact" class="btn btn--blue btn--lg">無料相談を申し込む</a>
     </div>
-  </section>
+  </div>
+</section>
+
 </BaseLayout>
 
-<style>
-.blog-post-layout {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 48px;
-  align-items: start;
-}
+<style is:global>
+/* =============================================
+   BLOG POST — Global Prose Styles
+   ============================================= */
 
 .prose {
-  line-height: 1.9;
-  color: var(--text-body);
+  font-size: 17px;
+  line-height: 1.95;
+  color: #374151;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
-.prose h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--navy);
-  margin: 48px 0 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--border);
-}
-.prose h3 {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--navy);
-  margin: 32px 0 12px;
-}
+
 .prose p {
-  margin-bottom: 20px;
+  margin-bottom: 1.6em;
 }
-.prose ul, .prose ol {
-  padding-left: 24px;
-  margin-bottom: 20px;
+
+/* h2: 左ボーダー＋背景 */
+.prose h2 {
+  font-size: 1.45em;
+  font-weight: 800;
+  color: #1A2E44;
+  margin: 2.4em 0 0.8em;
+  padding: 0.6em 1em 0.6em 1.1em;
+  border-left: 4px solid #4D8DB5;
+  background: linear-gradient(90deg, #EBF4FA 0%, rgba(235,244,250,0) 100%);
+  border-radius: 0 6px 6px 0;
+  line-height: 1.4;
 }
-.prose ul { list-style: disc; }
-.prose ol { list-style: decimal; }
-.prose li {
-  margin-bottom: 8px;
+
+/* h3: 左ボーダー細め */
+.prose h3 {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #1A2E44;
+  margin: 2em 0 0.7em;
+  padding: 0.3em 0 0.3em 0.9em;
+  border-left: 3px solid #4D8DB5;
+  line-height: 1.5;
+}
+
+.prose h4 {
+  font-size: 1em;
+  font-weight: 700;
+  color: #1A2E44;
+  margin: 1.8em 0 0.5em;
+}
+
+.prose ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.6em;
+}
+
+.prose ul li {
+  padding-left: 1.4em;
+  position: relative;
+  margin-bottom: 0.5em;
   line-height: 1.8;
 }
-.prose strong {
-  color: var(--navy);
-  font-weight: 700;
+
+.prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 6px;
+  height: 6px;
+  background: #4D8DB5;
+  border-radius: 50%;
 }
+
+.prose ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.6em;
+  counter-reset: list-counter;
+  list-style: none;
+}
+
+.prose ol li {
+  counter-increment: list-counter;
+  padding-left: 0.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.8;
+  position: relative;
+}
+
+.prose ol li::before {
+  content: counter(list-counter) '.';
+  color: #4D8DB5;
+  font-weight: 700;
+  margin-right: 0.4em;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+.prose strong {
+  color: #1A2E44;
+  font-weight: 700;
+  background: linear-gradient(transparent 60%, rgba(77,141,181,0.15) 60%);
+}
+
+.prose em {
+  font-style: italic;
+  color: #4D8DB5;
+}
+
 .prose a {
-  color: var(--blue);
+  color: #4D8DB5;
   text-decoration: underline;
   text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s;
 }
+
+.prose a:hover {
+  color: #1A2E44;
+}
+
 .prose blockquote {
-  border-left: 4px solid var(--blue);
-  padding: 16px 20px;
-  margin: 24px 0;
-  background: var(--blue-light);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  font-style: italic;
-  color: var(--navy);
+  border-left: 4px solid #4D8DB5;
+  padding: 1.2em 1.4em;
+  margin: 1.8em 0;
+  background: #EBF4FA;
+  border-radius: 0 8px 8px 0;
+  font-style: normal;
+  color: #2d4a6e;
 }
+
+.prose blockquote p {
+  margin-bottom: 0;
+}
+
 .prose code {
-  background: var(--bg-alt);
-  padding: 2px 7px;
+  background: #f1f5f9;
+  padding: 0.2em 0.5em;
   border-radius: 4px;
-  font-size: 14px;
-  font-family: 'Menlo', 'Monaco', monospace;
+  font-size: 0.88em;
+  font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
+  color: #1e3a5f;
+  border: 1px solid #e2e8f0;
 }
+
 .prose pre {
-  background: var(--navy);
+  background: #1e293b;
   color: #e2e8f0;
-  padding: 24px;
-  border-radius: var(--radius);
+  padding: 1.4em 1.6em;
+  border-radius: 8px;
   overflow-x: auto;
-  margin-bottom: 24px;
+  margin: 1.8em 0;
+  font-size: 0.9em;
+  line-height: 1.7;
 }
+
 .prose pre code {
   background: none;
   padding: 0;
-  color: inherit;
-}
-.prose img {
-  border-radius: var(--radius);
-  margin: 24px 0;
-}
-.prose hr {
   border: none;
-  border-top: 1px solid var(--border);
-  margin: 40px 0;
+  color: inherit;
+  font-size: inherit;
 }
 
-.blog-sidebar-box {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.8em 0;
+  font-size: 0.93em;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
 }
-.blog-sidebar-box__title {
-  font-size: 13px;
+
+.prose th {
+  background: #1A2E44;
+  color: #fff;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.prose td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #374151;
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+.prose img {
+  border-radius: 8px;
+  margin: 1.8em 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  max-width: 100%;
+}
+
+.prose hr {
+  border: none;
+  border-top: 2px solid #e2e8f0;
+  margin: 2.4em 0;
+}
+
+/* 本文中途 CTA（JS で挿入） */
+.prose-mid-cta {
+  background: linear-gradient(135deg, #EBF4FA 0%, #dbeeff 100%);
+  border: 2px solid #4D8DB5;
+  border-radius: 10px;
+  padding: 1.4em 1.6em;
+  margin: 2em 0;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.prose-mid-cta__text {
+  flex: 1;
+  min-width: 200px;
+  font-size: 0.95em;
+  color: #1A2E44;
+  font-weight: 600;
+  margin: 0;
+}
+
+.prose-mid-cta__btn {
+  background: #1A2E44;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.88em;
   font-weight: 700;
-  color: var(--navy);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.prose-mid-cta__btn:hover {
+  background: #4D8DB5;
+  transform: translateY(-1px);
+  color: #fff;
+}
+</style>
+
+<style>
+/* =============================================
+   BLOG POST — Layout Styles (scoped)
+   ============================================= */
+
+/* ヒーロー */
+.post-hero {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 76px; /* header height */
+}
+
+.post-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.post-hero__gradient-content {
+  text-align: center;
+  padding: 0 32px;
+}
+
+.post-hero__category-label {
+  display: inline-block;
+  padding: 5px 14px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
   margin-bottom: 12px;
 }
 
-@media (max-width: 900px) {
-  .blog-post-layout {
+.post-hero__title-overlay {
+  color: #fff;
+  font-size: clamp(18px, 3.5vw, 32px);
+  font-weight: 800;
+  line-height: 1.4;
+  max-width: 820px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+/* アウターラッパー */
+.post-outer {
+  background: #f8fafc;
+  padding: 40px 0 80px;
+}
+
+/* コンテナ（本文 + サイドバー） */
+.post-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 36px;
+  align-items: start;
+}
+
+/* メインコンテンツ */
+.post-main {
+  background: #fff;
+  border-radius: 12px;
+  padding: 44px 52px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  min-width: 0;
+}
+
+/* メタバー */
+.post-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.post-meta-cat {
+  background: #EBF4FA;
+  color: #4D8DB5;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.post-meta-divider {
+  color: #cbd5e1;
+}
+
+.post-meta-date,
+.post-meta-reading {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* タイトル */
+.post-title {
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 800;
+  color: #1A2E44;
+  line-height: 1.4;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+.post-title--nogap {
+  margin-top: 0;
+}
+
+/* 著者ボックス */
+.author-box {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 36px;
+}
+
+.author-box__photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #e2e8f0;
+}
+
+.author-box__header {
+  margin-bottom: 6px;
+}
+
+.author-box__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A2E44;
+  margin: 0 0 3px;
+}
+
+.author-box__title {
+  font-size: 12px;
+  color: #4D8DB5;
+  font-weight: 600;
+  margin: 0;
+}
+
+.author-box__bio {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 目次（インライン：タブレット以下で表示） */
+.toc--inline {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 36px;
+  display: none; /* デスクトップでは非表示（サイドバーに表示） */
+}
+
+.toc__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A2E44;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.toc__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toc__item--depth2 { padding-left: 0; }
+.toc__item--depth3 { padding-left: 14px; }
+
+.toc__link {
+  font-size: 13px;
+  color: #4a5568;
+  text-decoration: none;
+  line-height: 1.6;
+  display: block;
+  padding: 3px 0;
+  transition: color 0.15s;
+  border-bottom: none;
+}
+
+.toc__link:hover { color: #4D8DB5; }
+
+/* 末尾 CTA */
+.post-cta--end {
+  margin: 3em 0 2em;
+}
+
+.post-cta__inner {
+  background: linear-gradient(135deg, #1A2E44 0%, #243d57 100%);
+  border-radius: 12px;
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.post-cta__icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.post-cta__body {
+  flex: 1;
+  min-width: 200px;
+}
+
+.post-cta__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4D8DB5;
+  margin: 0 0 6px;
+}
+
+.post-cta__title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.post-cta__text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.post-cta__btn {
+  background: #4D8DB5;
+  color: #fff;
+  padding: 13px 26px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.post-cta__btn:hover {
+  background: #3d7da5;
+  transform: translateY(-1px);
+}
+
+/* タグ */
+.post-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 24px;
+  font-size: 13px;
+}
+
+.post-tags__label {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.post-tag {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 記事下部ナビ */
+.post-footer-nav {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.post-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #4D8DB5;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.post-back-link:hover { color: #1A2E44; }
+
+/* =============================================
+   SIDEBAR
+   ============================================= */
+.post-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-box {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+
+.sidebar-box__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A2E44;
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #EBF4FA;
+}
+
+/* TOC サイドバー（sticky） */
+.sidebar-toc {
+  position: sticky;
+  top: 96px;
+}
+
+.sidebar-toc__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.sidebar-toc__item--depth2 { padding-left: 0; }
+.sidebar-toc__item--depth3 { padding-left: 12px; }
+
+.sidebar-toc__link {
+  font-size: 12.5px;
+  color: #64748b;
+  text-decoration: none;
+  display: block;
+  padding: 4px 6px;
+  border-radius: 4px;
+  line-height: 1.5;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-toc__link:hover,
+.sidebar-toc__link.active {
+  background: #EBF4FA;
+  color: #1A2E44;
+}
+
+/* サイドバー CTA */
+.sidebar-cta__text {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+
+.sidebar-cta__btn {
+  display: block;
+  background: #1A2E44;
+  color: #fff;
+  text-align: center;
+  padding: 11px 16px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.sidebar-cta__btn:hover {
+  background: #4D8DB5;
+}
+
+/* サイドバー 記事情報 */
+.sidebar-info__list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  font-size: 12.5px;
+}
+
+.sidebar-info__list dt {
+  color: #94a3b8;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sidebar-info__list dd {
+  color: #374151;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .post-container {
     grid-template-columns: 1fr;
   }
-  .blog-post-sidebar {
-    order: -1;
+  .post-sidebar {
+    display: none; /* タブレット以下はサイドバー非表示 */
+  }
+  .toc--inline {
+    display: block; /* インライン目次を表示 */
+  }
+}
+
+@media (max-width: 768px) {
+  .post-hero {
+    height: 220px;
+    margin-top: 76px;
+  }
+  .post-hero__title-overlay {
+    font-size: 18px;
+  }
+  .post-outer {
+    padding: 20px 0 60px;
+  }
+  .post-main {
+    padding: 28px 22px;
+  }
+  .post-cta__inner {
+    padding: 24px 22px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .author-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .author-box__photo {
+    width: 80px;
+    height: 80px;
   }
 }
 </style>
+
+<script>
+// 本文中途 CTA を自動挿入（本文の約50%地点）
+(function() {
+  const body = document.getElementById('article-body');
+  if (!body) return;
+
+  const paragraphs = Array.from(body.querySelectorAll('p, h2, h3, ul, ol, pre, table, blockquote'));
+  if (paragraphs.length < 4) return;
+
+  const midIndex = Math.floor(paragraphs.length * 0.5);
+  const midEl = paragraphs[midIndex];
+  if (!midEl) return;
+
+  const cta = document.createElement('div');
+  cta.className = 'prose-mid-cta';
+  cta.innerHTML = `
+    <p class="prose-mid-cta__text">
+      💡 HubSpotの導入・活用でお困りですか？
+    </p>
+    <a href="https://hareka.io/contact" class="prose-mid-cta__btn">無料相談はこちら →</a>
+  `;
+  midEl.parentNode?.insertBefore(cta, midEl.nextSibling);
+})();
+
+// サイドバー TOC：スクロール連動でアクティブ表示
+(function() {
+  const links = document.querySelectorAll<HTMLAnchorElement>('.sidebar-toc__link');
+  if (!links.length) return;
+
+  const headings = Array.from(document.querySelectorAll<HTMLElement>('.prose h2, .prose h3'));
+  if (!headings.length) return;
+
+  const activate = () => {
+    const scrollY = window.scrollY + 120;
+    let current = '';
+    for (const h of headings) {
+      if (h.offsetTop <= scrollY) current = h.id;
+    }
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === `#${current}`);
+    });
+  };
+
+  window.addEventListener('scroll', activate, { passive: true });
+  activate();
+})();
+</script>
