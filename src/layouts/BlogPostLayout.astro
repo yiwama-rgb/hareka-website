@@ -951,26 +951,22 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 </style>
 
 <script>
-// 本文中途 CTA を自動挿入（p要素の中央あたりの後に挿入）
+// 本文中途 CTA を自動挿入
 (function() {
-  const body = document.getElementById('article-body');
-  if (!body) return;
+  const article = document.getElementById('article-body');
+  if (!article) return;
 
-  const paragraphs = Array.from(body.querySelectorAll('p'));
-  if (paragraphs.length < 4) return;
-
-  const midIndex = Math.floor(paragraphs.length * 0.5);
-  const insertAfterEl = paragraphs[midIndex];
-
-  const cta = document.createElement('div');
-  cta.className = 'prose-mid-cta';
-  cta.innerHTML = `
-    <p class="prose-mid-cta__text">
-      💡 HubSpotの導入・活用でお困りですか？
-    </p>
+  const ctaHTML = `<div class="prose-mid-cta">
+    <p class="prose-mid-cta__text">💡 HubSpotの導入・活用でお困りですか？</p>
     <a href="https://hareka.io/contact" class="prose-mid-cta__btn">無料相談はこちら →</a>
-  `;
-  insertAfterEl.parentNode?.insertBefore(cta, insertAfterEl.nextSibling);
+  </div>`;
+
+  const paragraphs = article.querySelectorAll('p');
+  const mid = Math.floor(paragraphs.length / 2);
+  const target = paragraphs[mid];
+  if (target) {
+    target.insertAdjacentHTML('afterend', ctaHTML);
+  }
 })();
 
 // サイドバー TOC：スクロール連動でアクティブ表示
