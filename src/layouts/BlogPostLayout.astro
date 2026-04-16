@@ -951,9 +951,9 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 </style>
 
 <script>
-// 本文中途 CTA を自動挿入
+// 本文中途 CTA を自動挿入（h2セクション間に挿入）
 (function() {
-  const article = document.getElementById('article-body');
+  const article = document.querySelector('.prose');
   if (!article) return;
 
   const ctaHTML = `<div class="prose-mid-cta">
@@ -961,11 +961,10 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
     <a href="https://hareka.io/contact" class="prose-mid-cta__btn">無料相談はこちら →</a>
   </div>`;
 
-  const paragraphs = article.querySelectorAll('p');
-  const mid = Math.floor(paragraphs.length / 2);
-  const target = paragraphs[mid];
-  if (target) {
-    target.insertAdjacentHTML('afterend', ctaHTML);
+  const h2s = article.querySelectorAll('h2');
+  if (h2s.length >= 2) {
+    const targetH2 = h2s[Math.floor(h2s.length / 2)];
+    targetH2.insertAdjacentHTML('beforebegin', ctaHTML);
   }
 })();
 
