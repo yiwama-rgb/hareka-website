@@ -951,26 +951,16 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 </style>
 
 <script>
-// 本文中途 CTA を自動挿入（本文の約50%地点、見出し直後は避ける）
+// 本文中途 CTA を自動挿入（p要素の中央あたりの後に挿入）
 (function() {
   const body = document.getElementById('article-body');
   if (!body) return;
 
-  const elements = Array.from(body.querySelectorAll('p, h2, h3, ul, ol, pre, table, blockquote'));
-  if (elements.length < 4) return;
+  const paragraphs = Array.from(body.querySelectorAll('p'));
+  if (paragraphs.length < 4) return;
 
-  let insertIndex = Math.floor(elements.length * 0.5);
-
-  // 挿入対象が見出しの場合、次の非見出し要素までずらす
-  while (insertIndex < elements.length) {
-    const tag = elements[insertIndex].tagName.toLowerCase();
-    if (tag !== 'h2' && tag !== 'h3') break;
-    insertIndex++;
-  }
-
-  if (insertIndex >= elements.length) return;
-
-  const insertAfterEl = elements[insertIndex];
+  const midIndex = Math.floor(paragraphs.length * 0.5);
+  const insertAfterEl = paragraphs[midIndex];
 
   const cta = document.createElement('div');
   cta.className = 'prose-mid-cta';
