@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hareka.io/sitemap-index.xml
