@@ -36,6 +36,22 @@ function isActive(href: string): boolean {
   if (href === '/') return resolvedPath === '/';
   return resolvedPath.startsWith(href);
 }
+
+// 構造化データ（Organization）
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Hareka合同会社',
+  url: 'https://hareka.io',
+  logo: 'https://hareka.io/ogp.png',
+  founder: {
+    '@type': 'Person',
+    name: '岩間 悠一',
+    jobTitle: 'Hareka合同会社 代表',
+    description: '元HubSpot Japan カスタマーサクセスマネージャー。200社以上のHubSpot導入を支援。',
+  },
+  sameAs: [],
+};
 ---
 <!DOCTYPE html>
 <html lang="ja">
@@ -58,6 +74,9 @@ function isActive(href: string): boolean {
   <meta property="og:site_name" content="Hareka" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content={ogImage} />
+
+  <!-- 構造化データ (Organization) -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

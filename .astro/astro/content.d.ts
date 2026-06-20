@@ -146,154 +146,161 @@ declare module 'astro:content' {
   slug: "01-hubspot-claude-code-integration";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "02-hubspot-api-claude-code.md": {
 	id: "02-hubspot-api-claude-code.md";
   slug: "02-hubspot-api-claude-code";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "03-hubspot-mcp-setup.md": {
 	id: "03-hubspot-mcp-setup.md";
   slug: "03-hubspot-mcp-setup";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "04-hubspot-report-automation.md": {
 	id: "04-hubspot-report-automation.md";
   slug: "04-hubspot-report-automation";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "05-hubspot-api-natural-language.md": {
 	id: "05-hubspot-api-natural-language.md";
   slug: "05-hubspot-api-natural-language";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "06-claude-code-hubspot-conversion-rate.md": {
 	id: "06-claude-code-hubspot-conversion-rate.md";
   slug: "06-claude-code-hubspot-conversion-rate";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "07-hubspot-mcp-capabilities.md": {
 	id: "07-hubspot-mcp-capabilities.md";
   slug: "07-hubspot-mcp-capabilities";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "08-claude-code-hubspot-automation-examples.md": {
 	id: "08-claude-code-hubspot-automation-examples.md";
   slug: "08-claude-code-hubspot-automation-examples";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "09-hubspot-claude-code-roles.md": {
 	id: "09-hubspot-claude-code-roles.md";
   slug: "09-hubspot-claude-code-roles";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "10-hubspot-report-usability.md": {
 	id: "10-hubspot-report-usability.md";
   slug: "10-hubspot-report-usability";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "11-hubspot-custom-report-limits.md": {
 	id: "11-hubspot-custom-report-limits.md";
   slug: "11-hubspot-custom-report-limits";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "12-hubspot-google-sheets-integration.md": {
 	id: "12-hubspot-google-sheets-integration.md";
   slug: "12-hubspot-google-sheets-integration";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "13-hubspot-starter-vs-professional.md": {
 	id: "13-hubspot-starter-vs-professional.md";
   slug: "13-hubspot-starter-vs-professional";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "14-hubspot-downgrade-decision.md": {
 	id: "14-hubspot-downgrade-decision.md";
   slug: "14-hubspot-downgrade-decision";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "15-hubspot-cant-use-reasons.md": {
 	id: "15-hubspot-cant-use-reasons.md";
   slug: "15-hubspot-cant-use-reasons";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "16-hubspot-crm-data-input-adoption.md": {
 	id: "16-hubspot-crm-data-input-adoption.md";
   slug: "16-hubspot-crm-data-input-adoption";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "17-hubspot-implementation-failure-patterns.md": {
 	id: "17-hubspot-implementation-failure-patterns.md";
   slug: "17-hubspot-implementation-failure-patterns";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "18-hubspot-breeze-ai-honest-review.md": {
 	id: "18-hubspot-breeze-ai-honest-review.md";
   slug: "18-hubspot-breeze-ai-honest-review";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "19-hubspot-vs-salesforce-ai-era.md": {
 	id: "19-hubspot-vs-salesforce-ai-era.md";
   slug: "19-hubspot-vs-salesforce-ai-era";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "hubspot-claude-mcp-personalized-mail.md": {
 	id: "hubspot-claude-mcp-personalized-mail.md";
   slug: "hubspot-claude-mcp-personalized-mail";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"hubspot-claude-what-you-can-do.md": {
+	id: "hubspot-claude-what-you-can-do.md";
+  slug: "hubspot-claude-what-you-can-do";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "hubspot-utilization-5-points.md": {
 	id: "hubspot-utilization-5-points.md";
   slug: "hubspot-utilization-5-points";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "salesforce-to-hubspot-migration-checklist.md": {
 	id: "salesforce-to-hubspot-migration-checklist.md";
   slug: "salesforce-to-hubspot-migration-checklist";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
 
@@ -305,5 +312,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../../src/content/config.js");
 }

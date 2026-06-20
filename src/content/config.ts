@@ -6,6 +6,7 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
     category: z.string().default('HubSpot活用'),
     tags: z.array(z.string()).default([]),
     heroImage: z.string().optional(),
