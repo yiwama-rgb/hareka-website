@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allCases = (await getCollection('cases', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="支援実績 | Hareka"
+  description="IT企業・人材企業・IoT製造業・金融企業など、様々な業種のCRM活用・HubSpot導入・移管支援の実績事例を掲載しています。"
+  ogUrl="https://hareka.io/cases"
+>
+  <style>
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    @media (max-width: 768px) { .cases-grid { grid-template-columns: 1fr; } }
+
+    .case-card {
+      background: #fff;
+      border: 1px solid #E2EBF3;
+      border-radius: 12px;
+      padding: 28px 30px 30px;
+      box-shadow: 0 2px 8px rgba(27,53,88,.06);
+      transition: box-shadow .2s, transform .2s, border-color .2s;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .case-card:hover {
+      box-shadow: 0 8px 28px rgba(27,53,88,.14);
+      border-color: #4D8DB5;
+      transform: translateY(-4px);
+    }
+    .case-card__company {
+      font-size: 12px;
+      font-weight: 700;
+      color: #4D8DB5;
+      background: #EBF4FA;
+      padding: 4px 12px;
+      border-radius: 10px;
+      align-self: flex-start;
+    }
+    .case-card__title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1B3558;
+      line-height: 1.6;
+    }
+    .case-card__highlight {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 6px 14px;
+      background: rgba(77,141,181,.12);
+      border-radius: 20px;
+      font-size: 13px;
+      color: #1B3558;
+      font-weight: 700;
+    }
+    .case-card__desc {
+      font-size: 13px;
+      color: #5A6B7E;
+      line-height: 1.75;
+    }
+    .case-card__readmore {
+      font-size: 13px;
+      color: #4D8DB5;
+      font-weight: 600;
+      margin-top: auto;
+    }
+
+    .cases-coming-soon {
+      background: #F7FAFC;
+      border: 1px dashed #CBD5E0;
+      border-radius: 16px;
+      padding: 72px 40px;
+      text-align: center;
+    }
+    .cases-coming-soon__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1B3558;
+      margin-bottom: 10px;
+    }
+    .cases-coming-soon__text {
+      font-size: 14px;
+      color: #718096;
+      line-height: 1.8;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+  </style>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero__label">Cases</span>
+      <h1 class="page-hero__title">支援実績</h1>
+      <p class="page-hero__lead">法人・個人を問わず、様々な規模・業種の企業のCRM課題解決を支援してきました。Before / After 形式で、具体的な変化をご確認いただけます。</p>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="section">
+    <div class="container">
+
+      {allCases.length > 0 ? (
+        <div class="cases-grid">
+          {allCases.map(item => (
+            <a href={`/cases/${item.slug}`} class="case-card">
+              <span class="case-card__company">{item.data.company}</span>
+              <h2 class="case-card__title">{item.data.title}</h2>
+              <span class="case-card__highlight">🎯 {item.data.highlight}</span>
+              <p class="case-card__desc">{item.data.description}</p>
+              <span class="case-card__readmore">事例を読む →</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="cases-coming-soon">
+          <h2 class="cases-coming-soon__title">事例を準備中です</h2>
+          <p class="cases-coming-soon__text">CRM導入・移管支援の具体的な事例を順次公開予定です。</p>
+        </div>
+      )}
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 class="cta-banner__title">自社の課題を相談したい</h2>
+          <p class="cta-banner__text">CRM導入・移管・活用のご相談を承っています。</p>
+        </div>
+        <a href="/contact" class="btn btn--blue btn--lg">お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

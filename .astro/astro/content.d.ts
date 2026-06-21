@@ -303,6 +303,15 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
+"cases": {
+"01-salesforce-hubspot-manufacturing.md": {
+	id: "01-salesforce-hubspot-manufacturing.md";
+  slug: "01-salesforce-hubspot-manufacturing";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
+};
 
 	};
 
