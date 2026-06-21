@@ -311,6 +311,13 @@ declare module 'astro:content' {
   collection: "cases";
   data: InferEntrySchema<"cases">
 } & { render(): Render[".md"] };
+"02-saas-salesforce-hubspot-datamigration.md": {
+	id: "02-saas-salesforce-hubspot-datamigration.md";
+  slug: "02-saas-salesforce-hubspot-datamigration";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
 };
 
 	};
