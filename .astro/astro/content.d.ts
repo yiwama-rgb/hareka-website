@@ -318,6 +318,13 @@ declare module 'astro:content' {
   collection: "cases";
   data: InferEntrySchema<"cases">
 } & { render(): Render[".md"] };
+"03-consulting-hubspot-reactivation.md": {
+	id: "03-consulting-hubspot-reactivation.md";
+  slug: "03-consulting-hubspot-reactivation";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
 };
 
 	};
