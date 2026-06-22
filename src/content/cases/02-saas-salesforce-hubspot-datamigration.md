@@ -10,6 +10,7 @@ highlight: "月額コスト削減＋マーケ・営業のサイロ解消を約1�
 pubDate: 2026-05-01
 draft: false
 description: "SalesforceとBlastMailという2つのツールに分断されていた営業・マーケティングのデータをHubSpotに一本化。複雑なデータ設計をそのまま再現し、月額コストの削減と部署間サイロの解消を同時に実現。"
+heroImage: "/images/cases/case-02.jpg"
 ---
 
 # Salesforce＋BlastMailからHubSpotへ――複雑なデータ設計を約1ヶ月で再現し、月額コスト削減と部署間連携を同時に実現

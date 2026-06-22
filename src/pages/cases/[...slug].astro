@@ -14,7 +14,7 @@ const { item } = Astro.props;
 const { Content } = await item.render();
 const {
   title, company, industry, employees,
-  tool_before, tool_after, period, highlight, pubDate, description,
+  tool_before, tool_after, period, highlight, pubDate, description, heroImage,
 } = item.data;
 
 const formattedDate = pubDate.toLocaleDateString('ja-JP', {
@@ -35,6 +35,10 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
   <div class="case-outer">
     <div class="case-container">
       <main class="case-main">
+
+        {heroImage && (
+          <img class="case-hero" src={heroImage} alt={title} width="820" height="400" />
+        )}
 
         <!-- メタ -->
         <div class="case-meta-bar">
@@ -104,6 +108,14 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
     border-radius: 12px;
     padding: 44px 52px;
     box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  }
+  .case-hero {
+    display: block;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 28px;
   }
   .case-meta-bar {
     display: flex;
@@ -186,6 +198,7 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
   @media (max-width: 768px) {
     .case-outer { padding: 20px 0 60px; }
     .case-main { padding: 28px 22px; }
+    .case-hero { height: 220px; margin-bottom: 22px; }
     .case-facts__row { grid-template-columns: 100px 1fr; gap: 8px; }
   }
 </style>

@@ -10,6 +10,7 @@ highlight: "HubSpot利用スコアを10→70へ。営業・マーケがデータ
 pubDate: 2026-05-15
 draft: false
 description: "契約していたHubSpotが担当者退職で放置され、営業はExcel・マーケはGmailのBCCという状態だった大手SaaSコンサル企業。月1回・約1年半の伴走で活用度を70%まで引き上げ、営業活動がデータとして蓄積されPDCAが回る組織に。"
+heroImage: "/images/cases/case-03.jpg"
 ---
 
 # 放置されていたHubSpotを再生――利用スコア10→70へ、営業がデータで回る組織に

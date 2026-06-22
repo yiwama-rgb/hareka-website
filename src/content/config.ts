@@ -29,6 +29,7 @@ const cases = defineCollection({
     pubDate: z.coerce.date(),
     draft: z.boolean().default(false),
     description: z.string(),
+    heroImage: z.string().optional(),
   }),
 });
 
