@@ -1,5 +1,5 @@
 ---
-title: "Salesforce Service CloudからHubSpot Service Hubへ【製造業CAD企業】"
+title: "年間ライセンス費用50%削減――SalesforceからHubSpotへ、60日で移行完了"
 company: "製造業向けソフトウェアのコンサルティング会社"
 industry: "製造業向けソフトウェア"
 employees: "200名以上"

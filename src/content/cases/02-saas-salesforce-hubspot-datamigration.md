@@ -1,5 +1,5 @@
 ---
-title: "Salesforce＋BlastMailからHubSpotへ――複雑なデータ設計をHubSpot再現し、月額コスト削減と部署間連携を同時に実現"
+title: "2つのツールに分断されていた営業・マーケデータをHubSpotに一本化――コスト削減とサイロ解消を同時に実現"
 company: "BtoB SaaS企業"
 industry: "SaaS・システム開発"
 employees: "約100名"
