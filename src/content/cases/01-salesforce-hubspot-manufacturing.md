@@ -9,7 +9,7 @@ period: "60日間（全6回）"
 highlight: "年間ライセンス費用 約50%削減"
 pubDate: 2026-04-01
 draft: false
-description: "Salesforce Service CloudからHubSpot Service Hubへの移行を60日間でサポート。データ移管・関連付けの再現から各機能の活用まで、レクチャー型で伴走支援。年間ライセンス費用の約50%削減を実現。"
+description: "Salesforce契約満了をきっかけに、製造業向けソフトウェア企業のサポート基盤をHubSpotへ移行。60日間の伴走支援でデータ移管から各機能の活用までを完了し、年間ライセンス費用の約50%削減を実現。"
 ---
 
 # 【導入事例】Salesforce Service Cloud から HubSpot Service Hub へ
