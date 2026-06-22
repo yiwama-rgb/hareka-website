@@ -31,6 +31,14 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
       gap: 14px;
       text-decoration: none;
       color: inherit;
+      overflow: hidden;
+    }
+    .case-card__thumb {
+      display: block;
+      width: calc(100% + 60px);
+      height: 180px;
+      object-fit: cover;
+      margin: -28px -30px 4px;
     }
     .case-card:hover {
       box-shadow: 0 8px 28px rgba(27,53,88,.14);
@@ -113,6 +121,9 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
         <div class="cases-grid">
           {allCases.map(item => (
             <a href={`/cases/${item.slug}`} class="case-card">
+              {item.data.heroImage && (
+                <img class="case-card__thumb" src={item.data.heroImage} alt={item.data.title} width="400" height="200" loading="lazy" />
+              )}
               <span class="case-card__company">{item.data.company}</span>
               <h2 class="case-card__title">{item.data.title}</h2>
               <span class="case-card__highlight">🎯 {item.data.highlight}</span>
