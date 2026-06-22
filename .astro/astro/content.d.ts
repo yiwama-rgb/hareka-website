@@ -325,6 +325,13 @@ declare module 'astro:content' {
   collection: "cases";
   data: InferEntrySchema<"cases">
 } & { render(): Render[".md"] };
+"04-staffing-marketinghub-launch.md": {
+	id: "04-staffing-marketinghub-launch.md";
+  slug: "04-staffing-marketinghub-launch";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
 };
 
 	};
