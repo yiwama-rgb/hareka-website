@@ -1,5 +1,5 @@
 ---
-title: "マーケゼロの組織がROI 300%を達成――Marketing Hub導入で月次受注が定着【人材派遣会社】"
+title: "マーケゼロの組織がROI 300%を達成――Marketing Hub再活用で月次受注が定着【人材派遣会社】"
 company: "人材派遣会社"
 industry: "人材派遣（製造・工場系）"
 employees: "営業・セールスマネージャー中心の組織"
@@ -11,6 +11,9 @@ pubDate: 2026-06-01
 draft: false
 description: "マーケティングもインサイドセールスも存在しなかった人材派遣会社。放置されていたMarketing Hubを立ち上げ、約2万件のハウスリスト活用とフォローアップ体制の構築で、ROI 300%・月次受注の定着を実現。担当者は社内表彰を受けるまでに。"
 heroImage: "/images/cases/case-04.jpg"
+products: ["Marketing Hub"]
+supportType: ["活用支援"]
+implementation: "構築代行なし"
 ---
 
 # ROI 300%を達成――Marketing Hub導入で月次受注が定着

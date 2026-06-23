@@ -15,6 +15,7 @@ const { Content } = await item.render();
 const {
   title, company, industry, employees,
   tool_before, tool_after, period, highlight, pubDate, description, heroImage,
+  products, supportType, implementation,
 } = item.data;
 
 const formattedDate = pubDate.toLocaleDateString('ja-JP', {
@@ -46,6 +47,20 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
           <span class="case-meta-divider">|</span>
           <time class="case-meta-date" datetime={pubDate.toISOString()}>{formattedDate}</time>
         </div>
+
+        {(products || supportType || implementation) && (
+          <div class="case-tags">
+            {products?.map(p => (
+              <span class="case-tag case-tag--product">{p}</span>
+            ))}
+            {supportType?.map(s => (
+              <span class="case-tag case-tag--support">{s}</span>
+            ))}
+            {implementation && (
+              <span class="case-tag case-tag--impl">{implementation}</span>
+            )}
+          </div>
+        )}
 
         <h1 class="case-title">{title}</h1>
 
@@ -135,6 +150,23 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
     font-size: 12px;
   }
   .case-meta-divider { color: #cbd5e1; }
+  .case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .case-tag {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .case-tag--product { background: #1D9E75; }
+  .case-tag--support { background: #F59E0B; }
+  .case-tag--impl { background: #6B7280; }
   .case-title {
     font-size: clamp(22px, 3.5vw, 30px);
     font-weight: 800;

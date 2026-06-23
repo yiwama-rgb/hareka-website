@@ -75,6 +75,23 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
       color: #5A6B7E;
       line-height: 1.75;
     }
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .case-tag {
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .case-tag--product { background: #1D9E75; }
+    .case-tag--support { background: #F59E0B; }
+    .case-tag--impl { background: #6B7280; }
+
     .case-card__readmore {
       font-size: 13px;
       color: #4D8DB5;
@@ -128,6 +145,19 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
               <h2 class="case-card__title">{item.data.title}</h2>
               <span class="case-card__highlight">🎯 {item.data.highlight}</span>
               <p class="case-card__desc">{item.data.description}</p>
+              {(item.data.products || item.data.supportType || item.data.implementation) && (
+                <div class="case-tags">
+                  {item.data.products?.map(p => (
+                    <span class="case-tag case-tag--product">{p}</span>
+                  ))}
+                  {item.data.supportType?.map(s => (
+                    <span class="case-tag case-tag--support">{s}</span>
+                  ))}
+                  {item.data.implementation && (
+                    <span class="case-tag case-tag--impl">{item.data.implementation}</span>
+                  )}
+                </div>
+              )}
               <span class="case-card__readmore">事例を読む →</span>
             </a>
           ))}

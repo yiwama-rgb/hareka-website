@@ -11,6 +11,9 @@ pubDate: 2026-06-20
 draft: false
 description: "Excelで顧客・営業情報を管理していた投資ファンド。情報の関連性が見えない・レポートが手動・メンテが手間という課題を抱えていた。60日間のレクチャー型支援でSales Hub Professionalをフル活用できる状態に。さらにAI（Claude）との連携まで実現し、入力・レポート工数を大幅に削減。"
 heroImage: "/images/cases/case-06.jpg"
+products: ["Sales Hub"]
+supportType: ["導入支援"]
+implementation: "構築代行なし"
 ---
 
 # Excel管理からの脱却――60日でHubSpot×AI連携まで実現し、入力・レポート工数を大幅削減

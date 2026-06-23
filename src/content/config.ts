@@ -30,6 +30,9 @@ const cases = defineCollection({
     draft: z.boolean().default(false),
     description: z.string(),
     heroImage: z.string().optional(),
+    products: z.array(z.enum(["Sales Hub", "Marketing Hub", "Service Hub"])).optional(),
+    supportType: z.array(z.enum(["導入支援", "活用支援"])).optional(),
+    implementation: z.enum(["構築代行あり", "構築代行なし"]).optional(),
   }),
 });
 

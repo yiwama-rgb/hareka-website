@@ -11,6 +11,9 @@ pubDate: 2026-06-20
 draft: false
 description: "Marketing HubとSales Hubを導入済みながらメール配信のみの活用にとどまっていた科学機器商社。社内の知見をコンテンツ化しダウンロード資料とフォームを設置したことで、問い合わせ前のリード獲得がゼロから月40件以上に。取り組みが全社に波及し、担当者は全社賞を受賞。"
 heroImage: "/images/cases/case-05.jpg"
+products: ["Sales Hub", "Marketing Hub"]
+supportType: ["活用支援"]
+implementation: "構築代行なし"
 ---
 
 # 問い合わせ前のリードがゼロから月40件以上へ――眠っていた社内知見をコンテンツ化し、デジタルマーケが全社に広がった
