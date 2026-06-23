@@ -339,6 +339,13 @@ declare module 'astro:content' {
   collection: "cases";
   data: InferEntrySchema<"cases">
 } & { render(): Render[".md"] };
+"06-investment-fund-hubspot-launch.md": {
+	id: "06-investment-fund-hubspot-launch.md";
+  slug: "06-investment-fund-hubspot-launch";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
 };
 
 	};
