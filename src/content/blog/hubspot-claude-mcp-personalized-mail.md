@@ -3,7 +3,7 @@ title: "HubSpotとClaude連携で、複数コンタクトに対してパーソ�
 description: "HubSpot MCP連携を使って、SQLコンタクト10件に対するパーソナライズメールをClaude上で一括生成し、HubSpotのアクティビティメモに自動保存する方法を実際の画面付きで解説します。"
 pubDate: 2026-04-16
 category: "AI × 営業"
-heroImage: "/images/blog/hubspot-claude-overview.png"
+heroImage: "/images/blog/hubspot-claude-mcp-hero.png"
 ---
 
 2026年4月、今世間ではAIの嵐が巻き起こっています。
