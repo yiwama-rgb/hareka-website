@@ -4,6 +4,7 @@ description: "HubSpot導入支援の費用は「支援のスコープ」と「�
 pubDate: 2026-06-24
 category: "CRM導入・移管"
 tags: ["HubSpot", "導入支援", "費用", "CRM"]
+heroImage: "/images/blog/hubspot-consulting-cost-hero.jpg"
 draft: false
 ---
 
