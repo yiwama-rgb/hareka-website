@@ -143,6 +143,76 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       color: var(--text-body);
       line-height: 1.75;
     }
+    .profile-home {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+    .profile-home__photo {
+      flex-shrink: 0;
+      width: 240px;
+    }
+    .profile-home__photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+    .profile-home__body {
+      flex: 1;
+    }
+    .profile-home__label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+    .profile-home__name {
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 800;
+      color: var(--navy);
+      margin: 8px 0 4px;
+    }
+    .profile-home__role {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin: 0 0 16px;
+    }
+    .profile-home__divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 16px;
+    }
+    .profile-home__bio {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin: 0 0 20px;
+    }
+    .profile-home__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .profile-home__badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--navy);
+      color: var(--white);
+    }
+    @media (max-width: 768px) {
+      .profile-home {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .profile-home__photo {
+        width: 160px;
+        margin: 0 auto;
+      }
+    }
   </style>
 
   <!-- HERO -->
