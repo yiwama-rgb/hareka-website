@@ -4,6 +4,7 @@ description: "HubSpot導入支援会社はどう選べばいいのか。元HubSp
 pubDate: 2026-06-27
 category: "CRM導入・移管"
 tags: ["HubSpot", "導入支援", "選び方", "CRM"]
+heroImage: "/images/blog/hubspot-vendor-selection.png"
 draft: false
 ---
 
