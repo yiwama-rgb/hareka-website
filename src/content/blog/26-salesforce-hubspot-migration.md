@@ -4,6 +4,7 @@ description: "SalesforceからHubSpotへの移行を検討している方へ。�
 pubDate: 2026-06-27
 category: "CRM導入・移管"
 tags: ["HubSpot", "Salesforce", "移行", "費用", "CRM"]
+heroImage: "/images/blog/salesforce-hubspot-migration.png"
 draft: false
 ---
 
