@@ -4,6 +4,7 @@ description: "HubSpotを導入したのに誰も使わない、現場が入力�
 pubDate: 2026-06-27
 category: "HubSpot活用"
 tags: ["HubSpot", "CRM", "定着", "活用支援"]
+heroImage: "/images/blog/hubspot-adoption-failure.png"
 draft: false
 ---
 
