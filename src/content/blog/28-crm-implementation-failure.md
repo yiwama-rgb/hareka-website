@@ -4,6 +4,7 @@ description: "CRM導入はなぜ失敗するのか。元HubSpot Japan CSMとし�
 pubDate: 2026-06-27
 category: "CRM導入・移管"
 tags: ["CRM", "導入", "失敗", "HubSpot"]
+heroImage: "/images/blog/crm-implementation-failure.png"
 draft: false
 ---
 
