@@ -10,21 +10,29 @@
 }
 
 :root {
-  --navy:        #1A2E44;
-  --navy-hover:  #243d57;
-  --blue:        #4D8DB5;
-  --blue-hover:  #3d7da5;
-  --blue-light:  #EBF4FA;
+  --navy:        #1B3B47;
+  --navy-hover:  #14303a;
+  --blue:        #1B3B47;
+  --blue-hover:  #14303a;
+  --blue-light:  #E8F0F2;
+  --orange:      #EA5425;
+  --orange-hover:#CE4519;
+  --dark:        #0F2830;
+  --footer-bg:   #0B1E24;
   --white:       #FFFFFF;
-  --bg-alt:      #F7F9FC;
-  --text-body:   #4A5568;
-  --text-head:   #1A2E44;
-  --text-muted:  #94A3B8;
-  --border:      #E2E8F0;
-  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.10);
-  --radius:      8px;
-  --radius-lg:   8px;
+  --bg-hero:     #FAFBFB;
+  --bg-soft:     #F5F8F8;
+  --bg-alt:      #F5F8F8;
+  --text-body:   #3D5560;
+  --text-head:   #1B3B47;
+  --text-sub:    #5A6E76;
+  --text-muted:  #6B7F87;
+  --border:      #E5E9EA;
+  --border-strong: #DDE4E6;
+  --shadow-card: none;
+  --shadow-hover: none;
+  --radius:      6px;
+  --radius-lg:   10px;
   --transition:  0.22s ease;
 }
 
@@ -68,7 +76,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .section__label {
   display: block;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--blue);
@@ -77,7 +85,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .section__title {
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-head);
   line-height: 1.3;
   margin-bottom: 18px;
@@ -116,7 +124,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 14px 32px;
   border-radius: var(--radius);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   transition: background var(--transition), color var(--transition),
               border-color var(--transition), box-shadow var(--transition),
@@ -125,14 +133,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .btn--primary {
-  background: var(--navy);
+  background: var(--orange);
   color: var(--white);
-  box-shadow: 0 2px 8px rgba(26, 46, 68, 0.18);
 }
 .btn--primary:hover {
-  background: var(--blue);
-  box-shadow: 0 4px 16px rgba(77, 141, 181, 0.30);
-  transform: translateY(-1px);
+  background: var(--orange-hover);
 }
 
 .btn--outline {
@@ -146,14 +151,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .btn--blue {
-  background: var(--blue);
+  background: var(--orange);
   color: var(--white);
-  box-shadow: 0 2px 8px rgba(77, 141, 181, 0.22);
 }
 .btn--blue:hover {
-  background: var(--blue-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(77, 141, 181, 0.32);
+  background: var(--orange-hover);
 }
 
 .btn--outline-white {
@@ -226,18 +228,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .nav__list a.active {
   color: var(--navy);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .nav__cta {
-  background: var(--navy) !important;
+  background: var(--orange) !important;
   color: var(--white) !important;
   padding: 10px 22px !important;
   border-radius: var(--radius) !important;
   margin-left: 8px;
 }
 .nav__cta:hover {
-  background: var(--blue) !important;
+  background: var(--orange-hover) !important;
 }
 
 /* Hamburger */
@@ -284,11 +286,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .mobile-nav .mobile-cta {
   display: inline-flex;
   margin-top: 18px;
-  background: var(--navy);
+  background: var(--orange);
   color: var(--white);
   padding: 13px 28px;
   border-radius: var(--radius);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* --- Page Hero ---------------------------------- */
@@ -301,7 +303,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .page-hero__label {
   display: block;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--blue);
@@ -310,7 +312,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .page-hero__title {
   font-size: clamp(32px, 5vw, 48px);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-head);
   line-height: 1.25;
   margin-bottom: 22px;
@@ -336,7 +338,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   top: -80px; right: -60px;
   width: 640px; height: 640px;
-  background: radial-gradient(circle, rgba(77, 141, 181, 0.10) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(27, 59, 71, 0.08) 0%, transparent 68%);
   pointer-events: none;
 }
 
@@ -345,7 +347,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: absolute;
   bottom: -120px; right: 10%;
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(26, 46, 68, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(27, 59, 71, 0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -360,7 +362,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--blue);
@@ -383,8 +385,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-title {
   font-size: 2.6rem;
   line-height: 1.4;
-  font-weight: 700;
-  color: #1A2E44;
+  font-weight: 500;
+  color: #1B3B47;
   margin-bottom: 14px;
 }
 
@@ -406,7 +408,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .hero__subtitle {
   font-size: clamp(18px, 2.5vw, 22px);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-head);
   margin-bottom: 22px;
   letter-spacing: 0.01em;
@@ -441,7 +443,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-badge__num {
   display: block;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--navy);
   letter-spacing: -0.02em;
   margin-bottom: 6px;
@@ -493,7 +495,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .card__number {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--blue);
@@ -502,7 +504,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .card__title {
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-head);
   margin-bottom: 10px;
   line-height: 1.4;
@@ -539,7 +541,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: var(--radius);
   display: flex; align-items: center; justify-content: center;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.03em;
 }
 
@@ -547,7 +549,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .service-card__title {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-head);
   margin-bottom: 10px;
   line-height: 1.4;
@@ -573,7 +575,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--blue);
   border-radius: 40px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.01em;
 }
 
@@ -603,7 +605,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .case-card__category {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.55);
@@ -612,17 +614,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .case-card__client {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.35;
 }
 
 .case-card__result {
   font-size: 12px;
-  background: rgba(77, 141, 181, 0.30);
+  background: rgba(255, 255, 255, 0.16);
   padding: 6px 14px;
   border-radius: 40px;
   white-space: nowrap;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .case-card__body { padding: 28px; }
@@ -638,7 +640,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .case-ba__label {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -686,7 +688,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .why-card__title {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-head);
   margin-bottom: 8px;
   line-height: 1.4;
@@ -700,7 +702,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* --- CTA Banner --------------------------------- */
 .cta-banner {
-  background: var(--navy);
+  background: var(--dark);
   padding: 88px 0;
 }
 
@@ -713,7 +715,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .cta-banner__title {
   font-size: clamp(22px, 3vw, 30px);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--white);
   line-height: 1.3;
   margin-bottom: 10px;
@@ -788,7 +790,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .profile__name {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-head);
   margin-bottom: 4px;
   letter-spacing: -0.01em;
@@ -859,7 +861,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .company-table th {
   width: 180px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-head);
   background: var(--bg-alt);
   white-space: nowrap;
@@ -904,7 +906,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .blog-card__category {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--blue);
@@ -913,7 +915,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .blog-card__title {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-head);
   line-height: 1.5;
   margin-bottom: 10px;
@@ -948,7 +950,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .form-group label {
   display: block;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-head);
   margin-bottom: 8px;
 }
@@ -977,8 +979,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(77, 141, 181, 0.14);
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(27, 59, 71, 0.14);
 }
 
 .form-group textarea { resize: vertical; min-height: 148px; }
@@ -993,7 +995,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .contact-info__title {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-head);
   margin-bottom: 20px;
   padding-bottom: 16px;
@@ -1037,7 +1039,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .stat__num {
   font-size: 40px;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--text-head);
   line-height: 1;
   margin-bottom: 8px;
@@ -1073,7 +1075,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .profile-home__label {
   display: block;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--blue);
@@ -1082,7 +1084,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .profile-home__name {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--navy);
   margin-bottom: 6px;
   line-height: 1.3;
@@ -1120,12 +1122,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--navy);
   border-radius: 40px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* --- Footer ------------------------------------- */
 .footer {
-  background: var(--navy);
+  background: var(--footer-bg);
   color: rgba(255, 255, 255, 0.75);
   padding: 64px 0 36px;
 }
@@ -1155,7 +1157,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .footer__nav-title {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.38);
@@ -1198,7 +1200,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 5px 12px;
   border-radius: 40px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .badge--navy { background: var(--navy); color: var(--white); }
 .badge--blue { background: var(--blue-light); color: var(--blue); }

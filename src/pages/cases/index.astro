@@ -24,7 +24,7 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
       border: 1px solid #E2EBF3;
       border-radius: 12px;
       padding: 28px 30px 30px;
-      box-shadow: 0 2px 8px rgba(27,53,88,.06);
+      box-shadow: 0 2px 8px rgba(27,59,71,.06);
       transition: box-shadow .2s, transform .2s, border-color .2s;
       display: flex;
       flex-direction: column;
@@ -41,15 +41,15 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
       margin: -28px -30px 4px;
     }
     .case-card:hover {
-      box-shadow: 0 8px 28px rgba(27,53,88,.14);
-      border-color: #4D8DB5;
+      box-shadow: 0 8px 28px rgba(27,59,71,.14);
+      border-color: #1B3B47;
       transform: translateY(-4px);
     }
     .case-card__company {
       font-size: 12px;
       font-weight: 700;
-      color: #4D8DB5;
-      background: #EBF4FA;
+      color: #1B3B47;
+      background: #E8F0F2;
       padding: 4px 12px;
       border-radius: 10px;
       align-self: flex-start;
@@ -57,17 +57,17 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
     .case-card__title {
       font-size: 17px;
       font-weight: 700;
-      color: #1B3558;
+      color: #1B3B47;
       line-height: 1.6;
     }
     .case-card__highlight {
       display: inline-block;
       align-self: flex-start;
       padding: 6px 14px;
-      background: rgba(77,141,181,.12);
+      background: rgba(27, 59, 71,.12);
       border-radius: 20px;
       font-size: 13px;
-      color: #1B3558;
+      color: #1B3B47;
       font-weight: 700;
     }
     .case-card__desc {
@@ -94,7 +94,7 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
 
     .case-card__readmore {
       font-size: 13px;
-      color: #4D8DB5;
+      color: #1B3B47;
       font-weight: 600;
       margin-top: auto;
     }
@@ -109,7 +109,7 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
     .cases-coming-soon__title {
       font-size: 20px;
       font-weight: 700;
-      color: #1B3558;
+      color: #1B3B47;
       margin-bottom: 10px;
     }
     .cases-coming-soon__text {

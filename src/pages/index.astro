@@ -1,496 +1,673 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import profilePhoto from '../assets/profile_hareka.jpg';
 
-const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+// 数値インパクトの強い3件を表示
+const featuredSlugs = [
+  '04-staffing-marketinghub-launch',      // ROI 300%
+  '01-salesforce-hubspot-manufacturing',  // 年間ライセンス費用50%削減
+  '05-trading-marketinghub-content',      // リード月40件以上
+];
+const allCases = await getCollection('cases', ({ data }) => !data.draft);
+const featuredCases = featuredSlugs
+  .map(slug => allCases.find(c => c.slug === slug))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+// 保有資格
+const hubspotCerts = [
+  'インバウンド認定コース',
+  'インバウンドマーケティング認定コース',
+  'インバウンドセールス認定コース',
+  'HubSpotマーケティングソフトウェア認定コース',
+  'HubSpotセールスソフトウェア認定コース',
+];
+const salesforceCerts = [
+  'Salesforce 認定 Platform アドミニストレーター',
+  'Salesforce 認定 Platform アドミニストレーター 上級',
+  'Salesforce 認定 Platform アプリケーションビルダー',
+  'Salesforce 認定 Sales Cloud コンサルタント',
+  'Salesforce 認定 Service Cloud コンサルタント',
+];
 ---
 
 <BaseLayout
   title="Hareka | HubSpot・CRM専門コンサルティング"
-  description="HubSpotの導入・活用支援、SalesforceからHubSpotへの移管、AIと組み合わせた業務効率化まで。中小企業・スタートアップの営業組織を支援するHareka合同会社。"
-  ogTitle="経営を、晴らす。| Hareka"
-  ogDescription="経営の無駄を晴らす。経営の不透明を晴らす。CRM・HubSpot専門コンサルティング。"
+  description="HubSpot Japan出身・200社以上の支援経験を持つ代表が、HubSpotの導入から自走まで一貫して伴走。Salesforceからの移管、活用・定着支援まで対応します。"
+  ogTitle="HubSpotの成果に、プロフェッショナルの伴走を。| Hareka"
+  ogDescription="HubSpot Japan出身・200社以上の支援経験。導入から自走まで、代表が一貫してご支援します。"
 >
+
   <style>
-    .hero-caret-bg {
-      position: absolute;
-      top: 40px; right: 5%;
-      opacity: .04;
-      pointer-events: none;
-      user-select: none;
+    /* ===== 共通 ===== */
+    .top-section {
+      padding: 80px 0;
     }
-    .challenge-number {
+    .eyebrow {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .eyebrow--ja {
+      letter-spacing: 0.05em;
+      text-transform: none;
+    }
+    .top-heading {
+      font-size: clamp(26px, 4vw, 34px);
+      font-weight: 500;
+      color: var(--text-head);
+      line-height: 1.4;
+      margin-bottom: 48px;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== ヒーロー ===== */
+    .top-hero {
+      background: var(--bg-hero);
+      padding: 160px 0 96px;
+      border-bottom: 1px solid var(--border);
+    }
+    .top-hero__inner {
+      max-width: 720px;
+    }
+    .top-hero__title {
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 500;
+      color: var(--text-head);
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+    .top-hero__lead {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-sub);
+      line-height: 2;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+    .top-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .top-hero__partner-badge {
+      display: block;
+      height: 64px;
+      width: auto;
+      margin-top: 40px;
+    }
+    .top-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 28px; height: 28px;
-      background: var(--blue);
+      padding: 15px 34px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .top-btn--primary {
+      background: var(--orange);
       color: var(--white);
-      border-radius: 50%;
-      font-size: 13px;
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
     }
-    .challenge-item {
-      display: flex;
-      gap: 14px;
-      padding: 20px 24px;
+    .top-btn--primary:hover {
+      background: var(--orange-hover);
+    }
+    .top-btn--ghost {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      align-items: flex-start;
+      color: var(--text-head);
+      border: 1px solid var(--border-strong);
     }
-    .challenge-text {
-      font-size: 14px;
-      color: var(--text-gray);
-      line-height: 1.75;
+    .top-btn--ghost:hover {
+      border-color: var(--navy);
     }
-    .services-overview-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+
+    /* ===== 実績数値バー ===== */
+    .stats-bar {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .services-overview-item {
+    .stats-bar__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stats-bar__item {
+      text-align: center;
+      padding: 8px 24px;
+      border-left: 1px solid var(--border-strong);
+    }
+    .stats-bar__item:first-child {
+      border-left: none;
+    }
+    .stats-bar__icon {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 20px 24px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: var(--transition);
+      justify-content: center;
+      height: 46px;
+      color: var(--text-head);
+      margin-bottom: 6px;
     }
-    .services-overview-item:hover {
-      border-color: var(--blue);
-      box-shadow: var(--shadow);
+    .stats-bar__num {
+      display: block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--text-head);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
     }
-    .services-overview-item__num {
-      flex-shrink: 0;
-      width: 36px; height: 36px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
+    .stats-bar__label {
+      display: block;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
-    .services-overview-item__title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--navy);
-      flex: 1;
+
+    /* ===== サービス ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
-    .services-overview-item__arrow {
-      color: var(--blue);
-      font-size: 18px;
-    }
-    .concept-box {
-      background: linear-gradient(135deg, var(--navy) 0%, #243d57 100%);
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      color: var(--white);
-      text-align: center;
-    }
-    .concept-box__title {
-      font-size: clamp(22px, 3.5vw, 32px);
-      font-weight: 800;
-      margin-bottom: 16px;
-      line-height: 1.4;
-    }
-    .concept-box__text {
-      font-size: 15px;
-      line-height: 1.9;
-      color: rgba(255,255,255,.8);
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    @media (max-width: 768px) {
-      .concept-box { padding: 32px 24px; }
-    }
-    .blog-card {
+    .service-item {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow-card);
-      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      border-radius: 10px;
+      padding: 32px 30px;
+    }
+    .service-item__num {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .service-item__title {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-head);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .service-item__text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    /* ===== 導入事例 ===== */
+    .cases-section {
+      background: var(--bg-soft);
+    }
+    .top-cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .top-case-card {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      color: inherit;
+      transition: border-color var(--transition);
     }
-    .blog-card:hover {
-      box-shadow: var(--shadow-hover);
-      border-color: var(--blue);
-      transform: translateY(-3px);
+    .top-case-card:hover {
+      border-color: var(--navy);
     }
-    .blog-card__date {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-    .blog-card__title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.45;
-    }
-    .blog-card__desc {
-      font-size: 13px;
-      color: var(--text-body);
-      line-height: 1.75;
-    }
-    .profile-home {
+    .top-case-card__tags {
       display: flex;
-      gap: 48px;
-      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 6px;
     }
-    .profile-home__photo {
-      flex-shrink: 0;
-      width: 240px;
+    .top-case-card__tag {
+      display: inline-block;
+      padding: 3px 12px;
+      background: var(--blue-light);
+      color: var(--text-head);
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 500;
     }
-    .profile-home__photo img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      display: block;
-    }
-    .profile-home__body {
+    .top-case-card__title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-head);
+      line-height: 1.7;
       flex: 1;
     }
-    .profile-home__label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      color: var(--blue);
-      text-transform: uppercase;
+    .top-case-card__industry {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
     }
-    .profile-home__name {
-      font-size: clamp(20px, 2.5vw, 26px);
-      font-weight: 800;
-      color: var(--navy);
-      margin: 8px 0 4px;
+    .cases-more {
+      text-align: center;
     }
-    .profile-home__role {
+    .cases-more__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 14px;
-      color: var(--text-gray);
-      margin: 0 0 16px;
+      font-weight: 500;
+      color: var(--text-head);
+      border-bottom: 1px solid var(--border-strong);
+      padding-bottom: 3px;
+      transition: color var(--transition), border-color var(--transition);
     }
-    .profile-home__divider {
-      border: none;
+    .cases-more__link:hover {
+      color: var(--orange);
+      border-color: var(--orange);
+    }
+
+    /* ===== 選ばれる理由 ===== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .why-item {
+      border-top: 2px solid var(--navy);
+      padding-top: 20px;
+    }
+    .why-item__icon {
+      display: block;
+      color: var(--text-head);
+      margin-bottom: 14px;
+    }
+    .why-item__title {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-head);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .why-item__text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    /* ===== 代表プロフィール ===== */
+    .founder-section {
       border-top: 1px solid var(--border);
-      margin: 0 0 16px;
     }
-    .profile-home__bio {
-      font-size: 14px;
-      line-height: 1.85;
-      color: var(--text-body);
-      margin: 0 0 20px;
+    .founder-main {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 48px;
     }
-    .profile-home__badges {
+    .founder-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+    }
+    .founder-name {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-head);
+      margin-bottom: 4px;
+    }
+    .founder-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .founder-bio {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-sub);
+      line-height: 2;
+      margin-bottom: 22px;
+      max-width: 680px;
+    }
+    .founder-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-    .profile-home__badge {
+    .founder-pill {
+      display: inline-block;
+      padding: 5px 14px;
+      background: var(--blue-light);
+      color: var(--text-head);
+      border-radius: 9999px;
       font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: var(--navy);
+      font-weight: 500;
+    }
+    .certs {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px;
+    }
+    .certs__heading {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-head);
+      margin-bottom: 20px;
+    }
+    .certs__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .certs__group-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .certs__list li {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-sub);
+      line-height: 1.7;
+      padding: 5px 0 5px 16px;
+      position: relative;
+    }
+    .certs__list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.95em;
+      width: 5px;
+      height: 5px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+    /* ===== ダークCTA ===== */
+    .dark-cta {
+      background: var(--dark);
+      padding: 96px 0;
+      text-align: center;
+    }
+    .dark-cta__mark {
+      margin: 0 auto 28px;
+      display: block;
+      width: 72px;
+      height: 62px;
+    }
+    .dark-cta__title {
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 500;
       color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .dark-cta__lead {
+      font-size: 15px;
+      font-weight: 500;
+      color: #9DB4BC;
+      line-height: 1.9;
+      margin-bottom: 40px;
+    }
+
+    /* ===== レスポンシブ ===== */
+    @media (max-width: 960px) {
+      .services-grid,
+      .top-cases-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+      .why-grid {
+        gap: 28px;
+      }
+      .certs__grid {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 768px) {
-      .profile-home {
-        flex-direction: column;
-        gap: 24px;
+      .top-section {
+        padding: 64px 0;
       }
-      .profile-home__photo {
-        width: 160px;
-        margin: 0 auto;
+      .top-hero {
+        padding: 130px 0 64px;
+      }
+      .stats-bar__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 0;
+      }
+      .stats-bar__item {
+        border-left: none;
+        padding: 8px 12px;
+      }
+      .stats-bar__item:nth-child(even) {
+        border-left: 1px solid var(--border-strong);
+      }
+      .founder-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .founder-pills {
+        justify-content: center;
+      }
+      .founder-bio {
+        text-align: left;
+      }
+      .certs {
+        padding: 24px 20px;
       }
     }
   </style>
 
-  <!-- HERO -->
-  <section class="hero">
-    <svg class="hero-caret-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" width="480" height="480" aria-hidden="true">
-      <polyline points="20,240 140,40 260,240" fill="none" stroke="#1A2E44" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+  <!-- ヒーロー -->
+  <section class="top-hero">
     <div class="container">
-      <div class="hero__content">
-        <div class="hero__tag">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
-          CRM・HubSpot専門支援
+      <div class="top-hero__inner">
+        <span class="eyebrow eyebrow--ja">HubSpot認定パートナー</span>
+        <h1 class="top-hero__title">HubSpotの成果に、<br />プロフェッショナルの伴走を。</h1>
+        <p class="top-hero__lead">HubSpot Japan出身・200社以上の支援経験を持つ代表が、導入から自走まで一貫してご支援します。担当変更も、引き継ぎもありません。</p>
+        <div class="top-hero__actions">
+          <a href="/contact" class="top-btn top-btn--primary">無料相談を予約する</a>
+          <a href="/cases" class="top-btn top-btn--ghost">導入事例を見る</a>
         </div>
-        <h1 class="hero-title">
-          <span class="hero-line1">HubSpot出身のコンサルタントが、</span>
-          <span class="hero-line2">CRMを組織の武器に変える。</span>
-        </h1>
-        <p class="hero__lead">
-          HubSpot Japan CSMとして200社以上を支援。キーエンス・WeWork出身の営業現場経験を持つ専門コンサルタントが、導入から自走まで一貫支援。
-        </p>
-        <div class="btn-group">
-          <a href="/contact" class="btn btn--primary btn--lg">無料相談を申し込む</a>
-          <a href="/services" class="btn btn--outline btn--lg">サービスを見る</a>
+        <!-- 公式パートナーバッジ（画像は後日追加。未配置の間はonerrorで非表示） -->
+        <img
+          src="/images/hubspot-partner-badge.png"
+          alt="HubSpot認定パートナー バッジ"
+          class="top-hero__partner-badge"
+          height="64"
+          onerror="this.style.display='none'"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 実績数値バー -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-bar__grid">
+        <div class="stats-bar__item">
+          <span class="stats-bar__icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"/>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+            </svg>
+          </span>
+          <span class="stats-bar__label">HubSpot認定パートナー</span>
+        </div>
+        <div class="stats-bar__item">
+          <span class="stats-bar__num">200社+</span>
+          <span class="stats-bar__label">HubSpot CSMとして支援</span>
+        </div>
+        <div class="stats-bar__item">
+          <span class="stats-bar__num">8年+</span>
+          <span class="stats-bar__label">CRM/SFA/MAの経験</span>
+        </div>
+        <div class="stats-bar__item">
+          <span class="stats-bar__num">10資格</span>
+          <span class="stats-bar__label">HubSpot・Salesforce認定</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HERO BADGES -->
-  <section class="section section--alt" style="padding: 48px 0;">
+  <!-- サービス -->
+  <section class="top-section">
     <div class="container">
-      <div class="hero-badges">
-        <div class="hero-badge">
-          <span class="hero-badge__num"><em>8</em>年以上</span>
-          <span class="hero-badge__label">営業・CRM / SFA / MA支援の専門経験</span>
+      <span class="eyebrow">Services</span>
+      <h2 class="top-heading">支援メニュー</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <span class="service-item__num">01</span>
+          <h3 class="service-item__title">HubSpot導入支援</h3>
+          <p class="service-item__text">初期設計から運用立ち上げまで。事業に合わせた設計で「使われるCRM」を作ります。</p>
         </div>
-        <div class="hero-badge">
-          <span class="hero-badge__num"><em>200</em>社以上</span>
-          <span class="hero-badge__label">HubSpot Japan CSM時代の支援実績</span>
+        <div class="service-item">
+          <span class="service-item__num">02</span>
+          <h3 class="service-item__title">Salesforce移管支援</h3>
+          <p class="service-item__text">両ツールに精通。データと関連付けを正確に再現し、SaaSコストを削減します。</p>
+        </div>
+        <div class="service-item">
+          <span class="service-item__num">03</span>
+          <h3 class="service-item__title">活用・定着支援</h3>
+          <p class="service-item__text">「導入したのに使われない」を解消。レポート整備と運用改善で成果につなげます。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CHALLENGES -->
-  <section class="section">
+  <!-- 導入事例 -->
+  <section class="top-section cases-section">
     <div class="container">
-      <div class="section__header">
-        <span class="section__label">課題</span>
-        <h2 class="section__title">こんなお悩み、ありませんか？</h2>
-        <p class="section__lead">CRMは経営の要。しかし多くの企業が、期待した成果を得られないまま運用しています。</p>
+      <span class="eyebrow">Case Studies</span>
+      <h2 class="top-heading">導入事例</h2>
+      <div class="top-cases-grid">
+        {featuredCases.map(c => (
+          <a href={`/cases/${c.slug}/`} class="top-case-card">
+            <div class="top-case-card__tags">
+              {c.data.products.map((p: string) => (
+                <span class="top-case-card__tag">{p}</span>
+              ))}
+            </div>
+            <h3 class="top-case-card__title">{c.data.title}</h3>
+            <p class="top-case-card__industry">{c.data.industry}</p>
+          </a>
+        ))}
       </div>
-      <div class="pain-grid">
-        <div class="challenge-item">
-          <span class="challenge-number">1</span>
-          <div class="challenge-text"><strong>「導入したのに、誰も使っていない」</strong><br />CRMを入れたはいいが、現場に定着せず形骸化している。</div>
+      <div class="cases-more">
+        <a href="/cases" class="cases-more__link">すべての事例を見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 選ばれる理由 -->
+  <section class="top-section">
+    <div class="container">
+      <span class="eyebrow">Why Hareka</span>
+      <h2 class="top-heading">Harekaが選ばれる理由</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="why-item__icon" aria-hidden="true">
+            <!-- user-check -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M3 21v-2a4 4 0 0 1 4-4h4"/>
+              <path d="M15 19l2 2l4-4"/>
+            </svg>
+          </span>
+          <h3 class="why-item__title">代表が一貫して担当</h3>
+          <p class="why-item__text">全案件を代表・岩間が最初から最後まで直接担当。担当者による当たり外れや引き継ぎロスの心配なく、安心してお任せいただけます。</p>
         </div>
-        <div class="challenge-item">
-          <span class="challenge-number">2</span>
-          <div class="challenge-text"><strong>「設定してもらったけど、複雑すぎて触れない」</strong><br />外部に任せた結果、自社では運用も変更もできない状態に。</div>
+        <div class="why-item">
+          <span class="why-item__icon" aria-hidden="true">
+            <!-- award -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"/>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+            </svg>
+          </span>
+          <h3 class="why-item__title">200社以上の支援実績</h3>
+          <p class="why-item__text">HubSpot Japan CSMとして約4年間で200社以上を支援。Marketing Hub、Sales Hub、Service Hub、Data Hubまで全製品に対応し、活用に苦しむ企業の利用状況を大きく改善してきました。独立後も多数の案件を一人で完遂し、高い評価をいただいています。</p>
         </div>
-        <div class="challenge-item">
-          <span class="challenge-number">3</span>
-          <div class="challenge-text"><strong>「成果につながっている感覚がない」</strong><br />データは溜まるが、営業活動の改善にうまく活かせていない。</div>
-        </div>
-        <div class="challenge-item">
-          <span class="challenge-number">4</span>
-          <div class="challenge-text"><strong>「コストだけ高くて、もっと合うツールがあるはず」</strong><br />Salesforceの維持費に疑問を感じ、乗り換えを検討している。</div>
+        <div class="why-item">
+          <span class="why-item__icon" aria-hidden="true">
+            <!-- transfer -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 10h13l-4-4"/>
+              <path d="M17 14H4l4 4"/>
+            </svg>
+          </span>
+          <h3 class="why-item__title">Salesforce移管に強い</h3>
+          <p class="why-item__text">Salesforce認定資格を5つ保持し、ユーザーとしても3年以上利用。管理者と現場、両方の視点でSalesforceを深く理解しているからこそ、HubSpotへの最適な移管設計ができます。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES OVERVIEW -->
-  <section class="section section--alt">
+  <!-- 代表プロフィール -->
+  <section class="top-section founder-section">
     <div class="container">
-      <div class="section__header">
-        <span class="section__label">Services</span>
-        <h2 class="section__title">Harekaのサービス</h2>
-        <p class="section__lead">HubSpotの導入から移管・活用・AI活用まで、営業組織強化に必要な支援をワンストップで提供します。</p>
-      </div>
-      <div class="services-overview-list">
-        <a href="/services" class="services-overview-item">
-          <span class="services-overview-item__num">01</span>
-          <span class="services-overview-item__title">HubSpot 導入支援</span>
-          <span class="services-overview-item__arrow">→</span>
-        </a>
-        <a href="/services" class="services-overview-item">
-          <span class="services-overview-item__num">02</span>
-          <span class="services-overview-item__title">SalesforceからHubSpotへの移管支援</span>
-          <span class="services-overview-item__arrow">→</span>
-        </a>
-        <a href="/services" class="services-overview-item">
-          <span class="services-overview-item__num">03</span>
-          <span class="services-overview-item__title">HubSpot 活用支援</span>
-          <span class="services-overview-item__arrow">→</span>
-        </a>
-        <a href="/services" class="services-overview-item">
-          <span class="services-overview-item__num">04</span>
-          <span class="services-overview-item__title">AIとHubSpotを組み合わせた業務効率化支援</span>
-          <span class="services-overview-item__arrow">→</span>
-        </a>
-        <a href="/services" class="services-overview-item">
-          <span class="services-overview-item__num">05</span>
-          <span class="services-overview-item__title">HubSpotを活用した営業組織の効率化支援</span>
-          <span class="services-overview-item__arrow">→</span>
-        </a>
-      </div>
-      <div style="margin-top:32px; text-align:center;">
-        <a href="/services" class="btn btn--primary">サービス詳細を見る</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY HAREKA -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section__header section__header--center">
-        <span class="section__label">Why Hareka</span>
-        <h2 class="section__title">Harekaを選ぶ理由</h2>
-      </div>
-      <div class="cards cards--2" style="gap:16px;">
-        <div class="why-card">
-          <div class="why-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="why-card__body">
-            <h3 class="why-card__title">信頼第一</h3>
-            <p class="why-card__text">顧客情報を扱う仕事だからこそ、リスク管理と安心・安全を最優先にします。</p>
-          </div>
-        </div>
-        <div class="why-card">
-          <div class="why-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-          </div>
-          <div class="why-card__body">
-            <h3 class="why-card__title">一貫したクオリティ</h3>
-            <p class="why-card__text">全案件を代表が一貫して担当。担当者の当たり外れや引き継ぎは生じません。</p>
-          </div>
-        </div>
-        <div class="why-card">
-          <div class="why-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <div class="why-card__body">
-            <h3 class="why-card__title">リーズナブルな価格</h3>
-            <p class="why-card__text">一人運営だからこそ、大手にはできないコストパフォーマンスを実現します。</p>
-          </div>
-        </div>
-        <div class="why-card">
-          <div class="why-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div class="why-card__body">
-            <h3 class="why-card__title">強い営業支援</h3>
-            <p class="why-card__text">キーエンス・WeWork出身。データドリブンな営業組織の構築を現場目線で支援します。</p>
-          </div>
-        </div>
-        <div class="why-card" style="grid-column: 1 / -1;">
-          <div class="why-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          </div>
-          <div class="why-card__body">
-            <h3 class="why-card__title">お客様の自走をゴールとした支援</h3>
-            <p class="why-card__text">外注依存にさせない。お客様自身が運用・設定変更まで自走できる状態を目指します。</p>
+      <span class="eyebrow">Founder</span>
+      <h2 class="top-heading">代表プロフィール</h2>
+      <div class="founder-main">
+        <img src="/images/founder.jpg" alt="岩間 悠一" class="founder-photo" width="120" height="120" />
+        <div class="founder-body">
+          <p class="founder-name">岩間 悠一</p>
+          <p class="founder-role">Hareka合同会社 代表 Yuichi Iwama</p>
+          <p class="founder-bio">HubSpot JapanのカスタマーサクセスマネージャーとしてパナソニックやNTTなどの大企業からスタートアップまで200社以上を支援。前職のキーエンス・WeWorkでは営業の最前線を経験。ツールの設計と営業現場、両方を知るコンサルタントとして、CRMを「成果が出る仕組み」に変えることを専門としています。</p>
+          <div class="founder-pills">
+            <span class="founder-pill">HubSpot認定パートナー</span>
+            <span class="founder-pill">HubSpot Japan出身</span>
+            <span class="founder-pill">キーエンス</span>
+            <span class="founder-pill">WeWork</span>
+            <span class="founder-pill">英語対応可</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- REPRESENTATIVE -->
-  <section class="section" style="background:#F7F9FC;">
-    <div class="container">
-      <div class="profile-home">
-        <div class="profile-home__photo">
-          <Image src={profilePhoto} alt="代表 岩間悠一" width={800} format="webp" />
-        </div>
-        <div class="profile-home__body">
-          <span class="profile-home__label">Representative</span>
-          <h2 class="profile-home__name">岩間 悠一 / Yuichi Iwama</h2>
-          <p class="profile-home__role">Hareka合同会社 代表</p>
-          <hr class="profile-home__divider" />
-          <p class="profile-home__bio">
-            HubSpot JapanにてCSMとして約4年、200社以上の支援に従事。パナソニック・NTT等の大企業からスタートアップまで幅広く担当。キーエンス・WeWork・CloudKitchensでの営業現場経験を持ち、CRMの導入・活用を「ツール側」と「現場側」の両面から深く理解するコンサルタントとして独立。Salesforceを3年間現場で使い続けた経験に加え、認定資格を5つ保有。SalesforceからHubSpotへの移管支援を得意とする。
-          </p>
-          <div class="profile-home__badges">
-            <span class="profile-home__badge">HubSpot Japan CSM</span>
-            <span class="profile-home__badge">Keyence</span>
-            <span class="profile-home__badge">WeWork</span>
-            <span class="profile-home__badge">Salesforce認定5資格</span>
-            <span class="profile-home__badge">英語対応可</span>
+      <div class="certs">
+        <p class="certs__heading">保有資格</p>
+        <div class="certs__grid">
+          <div>
+            <p class="certs__group-title">HubSpot認定（5つ）</p>
+            <ul class="certs__list">
+              {hubspotCerts.map(cert => <li>{cert}</li>)}
+            </ul>
+          </div>
+          <div>
+            <p class="certs__group-title">Salesforce認定（5つ）</p>
+            <ul class="certs__list">
+              {salesforceCerts.map(cert => <li>{cert}</li>)}
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CASES TEASER -->
-  <section class="section">
+  <!-- ダークCTA -->
+  <section class="dark-cta">
     <div class="container">
-      <div class="section__header">
-        <span class="section__label">Cases</span>
-        <h2 class="section__title">支援実績</h2>
-        <p class="section__lead">法人・個人問わず、様々な規模・業種の企業のCRM課題解決を支援してきました。</p>
-      </div>
-      <div class="cards cards--3">
-        <div class="card">
-          <h3 class="card__title">IT企業 — Sales Hub活用率を60%以上改善</h3>
-          <p class="card__text">バラバラだったエクセルデータをHubSpotに一元化。自動レポートで現状把握と打ち手の分析が容易に。</p>
-          <div class="service-tags" style="margin-top:14px;">
-            <span class="tag">データ移管</span>
-            <span class="tag">パイプライン設計</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3 class="card__title">人材企業 — 休眠リードからの案件創出に貢献</h3>
-          <p class="card__text">属人的な営業から脱却。IS部隊が休眠・失注リードをフォローする仕組みで新たな案件創出チャネルを確立。</p>
-          <div class="service-tags" style="margin-top:14px;">
-            <span class="tag">マーケメール設計</span>
-            <span class="tag">ホットリスト作成</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3 class="card__title">IT企業 — SalesforceからHubSpotへのCRM移管</h3>
-          <p class="card__text">適切な設計により2ヶ月以内に利用開始。関連付けも正確に再現され、SaaSコスト削減にも貢献。</p>
-          <div class="service-tags" style="margin-top:14px;">
-            <span class="tag">CRM移管</span>
-            <span class="tag">コスト削減</span>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:36px; text-align:center;">
-        <a href="/cases" class="btn btn--outline">全ての事例を見る</a>
-      </div>
+      <!-- 仮ロゴ（モックアップ再現版・反転）：確定ロゴの正式SVGパス入手後に差し替え -->
+      <svg class="dark-cta__mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 52" aria-hidden="true">
+        <circle cx="46" cy="12" r="7" fill="#EA5425"/>
+        <path d="M4 48 L22 10 L28 24 L31 18 L34 26 L40 16 L48 40 Q52 46 58 42"
+              fill="none" stroke="#E8F0F2" stroke-width="4.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2 class="dark-cta__title">経営の視界を、クリアに。</h2>
+      <p class="dark-cta__lead">CRMの課題、まずは30分の無料相談でお聞かせください。</p>
+      <a href="/contact" class="top-btn top-btn--primary">無料相談を予約する</a>
     </div>
   </section>
 
-  {recentPosts.length > 0 && (
-    <section class="section section--alt">
-      <div class="container">
-        <div class="section__header">
-          <span class="section__label">Blog</span>
-          <h2 class="section__title">最新記事</h2>
-          <p class="section__lead">HubSpotの活用Tips、CRM導入のポイントなど現場で役立つ情報を発信しています。</p>
-        </div>
-        <div class="cards cards--3">
-          {recentPosts.map(post => (
-            <a href={`/blog/${post.slug}`} class="blog-card">
-              <div>
-                <span class="tag">{post.data.category}</span>
-                <span class="blog-card__date" style="margin-left:8px;">{post.data.pubDate.toLocaleDateString('ja-JP')}</span>
-              </div>
-              <h3 class="blog-card__title">{post.data.title}</h3>
-              <p class="blog-card__desc">{post.data.description}</p>
-            </a>
-          ))}
-        </div>
-        <div style="margin-top:36px; text-align:center;">
-          <a href="/blog" class="btn btn--outline">ブログ一覧を見る</a>
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- CTA BANNER -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-banner__inner">
-        <div>
-          <h2 class="cta-banner__title">まずは無料でご相談ください</h2>
-          <p class="cta-banner__text">CRMの課題感やお悩みを、お気軽にお話しください。状況をお伺いしたうえで、最適なアドバイスをご提案します。</p>
-        </div>
-        <div class="btn-group">
-          <a href="/contact" class="btn btn--blue btn--lg">無料相談を申し込む</a>
-          <a href="/about" class="btn btn--outline-white">Harekaについて</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </BaseLayout>

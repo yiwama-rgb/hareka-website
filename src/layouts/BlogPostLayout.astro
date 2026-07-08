@@ -56,13 +56,13 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
 
 // カテゴリ別グラデーション
 const categoryGradients: Record<string, string> = {
-  'AI × 営業':    'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-  'HubSpot活用':  'linear-gradient(135deg, #1A2E44 0%, #2d4a6e 50%, #4D8DB5 100%)',
+  'AI × 営業':    '#0F2830',
+  'HubSpot活用':  '#0F2830',
   'CRM導入・移管': 'linear-gradient(135deg, #0d3b33 0%, #1a5f4a 50%, #2e8b6b 100%)',
   '営業組織':      'linear-gradient(135deg, #2d1b00 0%, #5c3600 50%, #8b5e2e 100%)',
   '事例・インサイト':'linear-gradient(135deg, #1a0a2e 0%, #3d1a5e 50%, #6e2e8b 100%)',
 };
-const heroGradient = categoryGradients[category] ?? 'linear-gradient(135deg, #1A2E44 0%, #243d57 50%, #4D8DB5 100%)';
+const heroGradient = categoryGradients[category] ?? '#0F2830';
 
 // 目次フィルタ（h2・h3のみ）
 const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
@@ -262,11 +262,11 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 .prose h2 {
   font-size: 1.45em;
   font-weight: 800;
-  color: #1A2E44;
+  color: #1B3B47;
   margin: 2.4em 0 0.8em;
   padding: 0.6em 1em 0.6em 1.1em;
-  border-left: 4px solid #4D8DB5;
-  background: linear-gradient(90deg, #EBF4FA 0%, rgba(235,244,250,0) 100%);
+  border-left: 4px solid #1B3B47;
+  background: linear-gradient(90deg, #E8F0F2 0%, rgba(232,240,242,0) 100%);
   border-radius: 0 6px 6px 0;
   line-height: 1.4;
 }
@@ -275,17 +275,17 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 .prose h3 {
   font-size: 1.15em;
   font-weight: 700;
-  color: #1A2E44;
+  color: #1B3B47;
   margin: 2em 0 0.7em;
   padding: 0.3em 0 0.3em 0.9em;
-  border-left: 3px solid #4D8DB5;
+  border-left: 3px solid #1B3B47;
   line-height: 1.5;
 }
 
 .prose h4 {
   font-size: 1em;
   font-weight: 700;
-  color: #1A2E44;
+  color: #1B3B47;
   margin: 1.8em 0 0.5em;
 }
 
@@ -309,7 +309,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   top: 0.75em;
   width: 6px;
   height: 6px;
-  background: #4D8DB5;
+  background: #1B3B47;
   border-radius: 50%;
 }
 
@@ -330,7 +330,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 
 .prose ol li::before {
   content: counter(list-counter) '.';
-  color: #4D8DB5;
+  color: #1B3B47;
   font-weight: 700;
   margin-right: 0.4em;
 }
@@ -342,18 +342,18 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .prose strong {
-  color: #1A2E44;
+  color: #1B3B47;
   font-weight: 700;
-  background: linear-gradient(transparent 60%, rgba(77,141,181,0.15) 60%);
+  background: linear-gradient(transparent 60%, rgba(27, 59, 71,0.15) 60%);
 }
 
 .prose em {
   font-style: italic;
-  color: #4D8DB5;
+  color: #1B3B47;
 }
 
 .prose a {
-  color: #4D8DB5;
+  color: #1B3B47;
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 500;
@@ -361,17 +361,17 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .prose a:hover {
-  color: #1A2E44;
+  color: #1B3B47;
 }
 
 .prose blockquote {
-  border-left: 4px solid #4D8DB5;
+  border-left: 4px solid #1B3B47;
   padding: 1.2em 1.4em;
   margin: 1.8em 0;
-  background: #EBF4FA;
+  background: #E8F0F2;
   border-radius: 0 8px 8px 0;
   font-style: normal;
-  color: #2d4a6e;
+  color: #1B3B47;
 }
 
 .prose blockquote p {
@@ -384,7 +384,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   border-radius: 4px;
   font-size: 0.88em;
   font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
-  color: #1e3a5f;
+  color: #1B3B47;
   border: 1px solid #e2e8f0;
 }
 
@@ -418,7 +418,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .prose th {
-  background: #1A2E44;
+  background: #1B3B47;
   color: #fff;
   padding: 10px 14px;
   text-align: left;
@@ -587,8 +587,8 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .post-meta-cat {
-  background: #EBF4FA;
-  color: #4D8DB5;
+  background: #E8F0F2;
+  color: #1B3B47;
   font-weight: 700;
   padding: 3px 12px;
   border-radius: 20px;
@@ -611,7 +611,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 .post-title {
   font-size: clamp(22px, 3.5vw, 32px);
   font-weight: 800;
-  color: #1A2E44;
+  color: #1B3B47;
   line-height: 1.4;
   margin-bottom: 32px;
   letter-spacing: -0.02em;
@@ -650,13 +650,13 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 .author-box__name {
   font-size: 15px;
   font-weight: 700;
-  color: #1A2E44;
+  color: #1B3B47;
   margin: 0 0 3px;
 }
 
 .author-box__title {
   font-size: 12px;
-  color: #4D8DB5;
+  color: #1B3B47;
   font-weight: 600;
   margin: 0;
 }
@@ -681,7 +681,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 .toc__title {
   font-size: 14px;
   font-weight: 700;
-  color: #1A2E44;
+  color: #1B3B47;
   margin: 0 0 12px;
   display: flex;
   align-items: center;
@@ -711,7 +711,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   border-bottom: none;
 }
 
-.toc__link:hover { color: #4D8DB5; }
+.toc__link:hover { color: #1B3B47; }
 
 /* 末尾 CTA */
 .post-cta--end {
@@ -719,7 +719,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .post-cta__inner {
-  background: linear-gradient(135deg, #1A2E44 0%, #243d57 100%);
+  background: linear-gradient(135deg, #1B3B47 0%, #14303a 100%);
   border-radius: 12px;
   padding: 32px 36px;
   display: flex;
@@ -750,7 +750,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #4D8DB5;
+  color: #1B3B47;
   margin: 0 0 6px;
 }
 
@@ -770,7 +770,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .post-cta__btn {
-  background: #4D8DB5;
+  background: #1B3B47;
   color: #fff;
   padding: 13px 26px;
   border-radius: 8px;
@@ -783,7 +783,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .post-cta__btn:hover {
-  background: #3d7da5;
+  background: #14303a;
   transform: translateY(-1px);
 }
 
@@ -824,13 +824,13 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: #4D8DB5;
+  color: #1B3B47;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.15s;
 }
 
-.post-back-link:hover { color: #1A2E44; }
+.post-back-link:hover { color: #1B3B47; }
 
 /* =============================================
    SIDEBAR
@@ -852,13 +852,13 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 .sidebar-box__title {
   font-size: 13px;
   font-weight: 700;
-  color: #1A2E44;
+  color: #1B3B47;
   margin: 0 0 14px;
   display: flex;
   align-items: center;
   gap: 6px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #EBF4FA;
+  border-bottom: 2px solid #E8F0F2;
 }
 
 /* TOC サイドバー（sticky） */
@@ -894,8 +894,8 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 
 .sidebar-toc__link:hover,
 .sidebar-toc__link.active {
-  background: #EBF4FA;
-  color: #1A2E44;
+  background: #E8F0F2;
+  color: #1B3B47;
 }
 
 /* サイドバー CTA */
@@ -908,7 +908,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 
 .sidebar-cta__btn {
   display: block;
-  background: #1A2E44;
+  background: #1B3B47;
   color: #fff;
   text-align: center;
   padding: 11px 16px;
@@ -920,7 +920,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 }
 
 .sidebar-cta__btn:hover {
-  background: #4D8DB5;
+  background: #1B3B47;
 }
 
 /* サイドバー 記事情報 */
