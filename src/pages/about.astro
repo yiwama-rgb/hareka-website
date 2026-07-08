@@ -10,23 +10,35 @@ import profilePhoto from '../assets/profile_hareka.jpg';
   ogUrl="https://hareka.io/about"
 >
   <style>
-    .cert-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .certs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
       margin-top: 14px;
     }
-    .cert-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: rgba(27, 59, 71,.1);
-      color: var(--blue);
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      border: 1px solid rgba(27, 59, 71,.2);
+    .certs-group-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .certs-list li {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-sub);
+      line-height: 1.7;
+      padding: 4px 0 4px 16px;
+      position: relative;
+    }
+    .certs-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.95em;
+      width: 5px;
+      height: 5px;
+      background: var(--orange);
+      border-radius: 50%;
     }
     .hobby-list {
       display: flex;
@@ -88,6 +100,7 @@ import profilePhoto from '../assets/profile_hareka.jpg';
     }
     @media(max-width:768px){
       .concept-cards { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
     }
   </style>
 
@@ -106,28 +119,28 @@ import profilePhoto from '../assets/profile_hareka.jpg';
       <div class="section__header section__header--center">
         <span class="section__label">Our Concept</span>
         <h2 class="section__title">Harekaのコンセプト</h2>
-        <p class="section__lead">「晴れる（Hareru）」＋「化（Ka）」。経営に立ち込めるモヤを晴らし、組織を変化させる。その思いを社名に込めています。</p>
+        <p class="section__lead">「晴れる（Hareru）」＋「化（Ka）」。経営の視界を、クリアに。その思いを社名に込めています。</p>
       </div>
       <div class="concept-cards">
         <div class="concept-card">
           <div class="concept-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
           </div>
-          <h3 class="concept-card__title">経営の無駄を晴らす</h3>
+          <h3 class="concept-card__title">経営の無駄をなくす</h3>
           <p class="concept-card__text">非効率な業務プロセスやツールの重複投資など、経営資源の無駄をデータと仕組みで解消します。</p>
         </div>
         <div class="concept-card">
           <div class="concept-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
-          <h3 class="concept-card__title">経営の不透明を晴らす</h3>
+          <h3 class="concept-card__title">経営の不透明をクリアに</h3>
           <p class="concept-card__text">「データがない」「現状が見えない」という不透明さをCRMで解消し、データに基づいた意思決定を実現します。</p>
         </div>
         <div class="concept-card">
           <div class="concept-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3 class="concept-card__title">最先端技術への不安を晴らす</h3>
+          <h3 class="concept-card__title">最先端技術への不安を減らす</h3>
           <p class="concept-card__text">AIやCRMへの漠然とした不安を、実践的な支援と丁寧なレクチャーで自信に変えます。</p>
         </div>
       </div>
@@ -158,10 +171,28 @@ import profilePhoto from '../assets/profile_hareka.jpg';
             <div class="career-item">WeWork Japan — 営業</div>
             <div class="career-item">CloudKitchens — 営業</div>
           </div>
-          <p class="profile-section-label">資格（計10資格）</p>
-          <div class="cert-list">
-            <span class="cert-badge">Salesforce認定資格 ×5</span>
-            <span class="cert-badge">HubSpot認定資格（複数）</span>
+          <p class="profile-section-label">保有資格（計10資格）</p>
+          <div class="certs-grid">
+            <div>
+              <p class="certs-group-title">HubSpot認定（5つ）</p>
+              <ul class="certs-list">
+                <li>インバウンド認定コース</li>
+                <li>インバウンドマーケティング認定コース</li>
+                <li>インバウンドセールス認定コース</li>
+                <li>HubSpotマーケティングソフトウェア認定コース</li>
+                <li>HubSpotセールスソフトウェア認定コース</li>
+              </ul>
+            </div>
+            <div>
+              <p class="certs-group-title">Salesforce認定（5つ）</p>
+              <ul class="certs-list">
+                <li>Salesforce 認定 Platform アドミニストレーター</li>
+                <li>Salesforce 認定 Platform アドミニストレーター 上級</li>
+                <li>Salesforce 認定 Platform アプリケーションビルダー</li>
+                <li>Salesforce 認定 Sales Cloud コンサルタント</li>
+                <li>Salesforce 認定 Service Cloud コンサルタント</li>
+              </ul>
+            </div>
           </div>
           <p class="profile-section-label">趣味</p>
           <div class="hobby-list">

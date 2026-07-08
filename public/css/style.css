@@ -202,7 +202,33 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   height: 76px;
 }
 
-.logo svg { display: block; }
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo__mark { display: block; width: 32px; height: 32px; }
+.logo__text {
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer__logo img { display: block; width: 30px; height: 30px; }
+.footer__logo-text {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  line-height: 1;
+}
 
 .nav__list {
   display: flex;

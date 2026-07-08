@@ -35,10 +35,10 @@ const articleSchema = {
     name: 'Hareka合同会社',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://hareka.io/ogp.png',
+      url: 'https://hareka.io/images/logo-mark-512.png',
     },
   },
-  image: ogImage ?? heroImage ?? 'https://hareka.io/ogp.png',
+  image: ogImage ?? heroImage ?? 'https://hareka.io/images/og-image.png',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': postUrl,
@@ -73,7 +73,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   description={description}
   ogTitle={title}
   ogDescription={description}
-  ogImage={ogImage ?? heroImage ?? 'https://hareka.io/ogp.png'}
+  ogImage={ogImage ?? heroImage ?? 'https://hareka.io/images/og-image.png'}
   ogType="article"
 >
 

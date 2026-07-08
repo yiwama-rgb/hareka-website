@@ -15,7 +15,7 @@ const {
   description,
   ogTitle,
   ogDescription,
-  ogImage = 'https://hareka.io/ogp.png',
+  ogImage = 'https://hareka.io/images/og-image.png',
   ogUrl,
   ogType = 'website',
   currentPath,
@@ -42,7 +42,7 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'Hareka合同会社',
   url: 'https://hareka.io',
-  logo: 'https://hareka.io/ogp.png',
+  logo: 'https://hareka.io/images/logo-mark-512.png',
   founder: {
     '@type': 'Person',
     name: '岩間 悠一',
@@ -58,7 +58,10 @@ const organizationSchema = {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalUrl} />
 
@@ -102,16 +105,8 @@ const organizationSchema = {
   <div class="container">
     <div class="header__inner">
       <a href="/" class="logo" aria-label="Hareka ホーム">
-        <!-- 仮ロゴ（モックアップ再現版）：確定ロゴの正式SVGパス入手後に差し替え -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="200" height="46">
-          <g transform="translate(2,6)">
-            <circle cx="46" cy="12" r="7" fill="#EA5425"/>
-            <path d="M4 48 L22 10 L28 24 L31 18 L34 26 L40 16 L48 40 Q52 46 58 42"
-                  fill="none" stroke="#1B3B47" stroke-width="4.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </g>
-          <text x="76" y="44" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="27" font-weight="500" fill="#1B3B47" letter-spacing="2">Hareka</text>
-        </svg>
+        <img src="/images/logo-mark-512.png" alt="Hareka" class="logo__mark" width="32" height="32" />
+        <span class="logo__text">Hareka</span>
       </a>
       <nav class="nav" aria-label="メインナビゲーション">
         <ul class="nav__list">
@@ -149,17 +144,11 @@ const organizationSchema = {
   <div class="container">
     <div class="footer__inner">
       <div class="footer__brand">
-        <!-- 仮ロゴ（モックアップ再現版・反転）：確定ロゴの正式SVGパス入手後に差し替え -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="180" height="41">
-          <g transform="translate(2,6)">
-            <circle cx="46" cy="12" r="7" fill="#EA5425"/>
-            <path d="M4 48 L22 10 L28 24 L31 18 L34 26 L40 16 L48 40 Q52 46 58 42"
-                  fill="none" stroke="#E8F0F2" stroke-width="4.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </g>
-          <text x="76" y="44" font-family="Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="27" font-weight="500" fill="#FFFFFF" letter-spacing="2">Hareka</text>
-        </svg>
-        <p class="footer__tagline">経営の無駄を晴らす。<br />経営の不透明を晴らす。<br />最先端技術への不安を晴らす。</p>
+        <div class="footer__logo">
+          <img src="/images/logo-mark-512.png" alt="Hareka" width="30" height="30" />
+          <span class="footer__logo-text">Hareka</span>
+        </div>
+        <p class="footer__tagline">経営の視界を、クリアに。</p>
       </div>
       <div class="footer__nav">
         <div class="footer__nav-col">
