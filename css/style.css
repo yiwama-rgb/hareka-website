@@ -206,7 +206,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: inline-flex;
   align-items: center;
 }
-.logo__img { display: block; height: 44px; width: auto; }
+.logo__img { display: block; height: 35px; width: auto; }
 
 .footer__logo { display: block; height: 40px; width: auto; }
 
@@ -1231,7 +1231,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .container     { padding: 0 20px; }
   .nav           { display: none; }
   .hamburger     { display: flex; }
-  .logo__img     { height: 36px; }
+  .logo__img     { height: 29px; }
 
   .cards--2      { grid-template-columns: 1fr; }
   .cards--3      { grid-template-columns: 1fr; }
