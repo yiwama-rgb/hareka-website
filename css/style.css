@@ -205,30 +205,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
 }
-.logo__mark { display: block; width: 62px; height: 40px; }
-.logo__text {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--navy);
-  line-height: 1;
-}
+.logo__img { display: block; height: 44px; width: auto; }
 
-.footer__logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-.footer__logo img { display: block; width: 68px; height: 44px; }
-.footer__logo-text {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--white);
-  line-height: 1;
-}
+.footer__logo { display: block; height: 40px; width: auto; }
 
 .nav__list {
   display: flex;
@@ -1251,6 +1231,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .container     { padding: 0 20px; }
   .nav           { display: none; }
   .hamburger     { display: flex; }
+  .logo__img     { height: 36px; }
 
   .cards--2      { grid-template-columns: 1fr; }
   .cards--3      { grid-template-columns: 1fr; }
