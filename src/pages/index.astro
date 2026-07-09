@@ -393,33 +393,6 @@ const salesforceCerts = [
       background: var(--orange);
       border-radius: 50%;
     }
-    /* ===== ダークCTA ===== */
-    .dark-cta {
-      background: var(--dark);
-      padding: 96px 0;
-      text-align: center;
-    }
-    .dark-cta__mark {
-      margin: 0 auto 28px;
-      display: block;
-      height: 56px;
-      width: auto;
-    }
-    .dark-cta__title {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.4;
-      margin-bottom: 16px;
-    }
-    .dark-cta__lead {
-      font-size: 16px;
-      font-weight: 400;
-      color: #9DB4BC;
-      line-height: 1.9;
-      margin-bottom: 36px;
-    }
-
     /* ===== レスポンシブ ===== */
     @media (max-width: 960px) {
       .services-grid,
@@ -654,13 +627,15 @@ const salesforceCerts = [
     </div>
   </section>
 
-  <!-- ダークCTA -->
-  <section class="dark-cta">
+  <!-- CTA -->
+  <section class="cta-banner">
     <div class="container">
-      <img src="/images/logo-horizontal-white.png" alt="Hareka" class="dark-cta__mark" width="274" height="56" />
-      <h2 class="dark-cta__title">経営の視界を、クリアに。</h2>
-      <p class="dark-cta__lead">CRMの課題、まずは30分の無料相談でお聞かせください。</p>
-      <a href="/contact" class="top-btn top-btn--primary">無料相談を予約する</a>
+      <div class="cta-banner__inner">
+        <div>
+          <h2 class="cta-banner__title">CRMの課題、まずは30分の無料相談でお聞かせください。</h2>
+        </div>
+        <a href="/contact" class="btn btn--blue btn--lg">無料相談を予約する</a>
+      </div>
     </div>
   </section>
 
