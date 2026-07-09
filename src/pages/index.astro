@@ -2,11 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// 数値インパクトの強い3件を表示
+// トップページに表示する3件（この順番で固定）
 const featuredSlugs = [
-  '04-staffing-marketinghub-launch',      // ROI 300%
-  '01-salesforce-hubspot-manufacturing',  // 年間ライセンス費用50%削減
-  '05-trading-marketinghub-content',      // リード月40件以上
+  '01-salesforce-hubspot-manufacturing',       // 年間ライセンス費用50%削減（製造業向けソフトウェア）
+  '02-saas-salesforce-hubspot-datamigration',  // 営業・マーケデータをHubSpotに一本化（BtoB SaaS）
+  '06-investment-fund-hubspot-launch',         // Excel管理から脱却、60日でAI連携（投資ファンド）
 ];
 const allCases = await getCollection('cases', ({ data }) => !data.draft);
 const featuredCases = featuredSlugs
