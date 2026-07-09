@@ -176,49 +176,5 @@ const organizationSchema = {
 </footer>
 
 <script src="/js/main.js" is:inline></script>
-<script>
-  // Scroll header
-  const header = document.querySelector('.header');
-  if (header) {
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
-  }
-  // Mobile nav
-  const hamburger = document.querySelector('.hamburger');
-  const mobileNav = document.querySelector('.mobile-nav');
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileNav.classList.toggle('open');
-      document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-    });
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.card, .service-card, .case-card, .why-card, .blog-card').forEach(el => {
-    const htmlEl = el as HTMLElement;
-    htmlEl.style.opacity = '0';
-    htmlEl.style.transform = 'translateY(20px)';
-    htmlEl.style.transition = 'opacity .5s ease, transform .5s ease, box-shadow .25s ease, border-color .25s ease';
-    observer.observe(el);
-  });
-</script>
 </body>
 </html>
