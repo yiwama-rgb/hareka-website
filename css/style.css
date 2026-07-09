@@ -722,6 +722,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 40px;
 }
 
+.cta-banner__inner .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 .cta-banner__title {
   font-size: clamp(26px, 3.5vw, 32px);
   font-weight: 700;
