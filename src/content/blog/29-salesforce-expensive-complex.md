@@ -4,6 +4,7 @@ description: "Salesforceのコストや複雑さに悩んでいませんか。Hu
 pubDate: 2026-06-27
 category: "CRM導入・移管"
 tags: ["Salesforce", "HubSpot", "乗り換え", "CRM", "コスト"]
+heroImage: "/images/blog/salesforce-expensive-complex.png"
 draft: false
 ---
 
