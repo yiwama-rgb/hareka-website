@@ -197,6 +197,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"32-salesforce-hubspot-migration-checklist.md": {
+	id: "32-salesforce-hubspot-migration-checklist.md";
+  slug: "32-salesforce-hubspot-migration-checklist";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hubspot-claude-mcp-personalized-mail.md": {
 	id: "hubspot-claude-mcp-personalized-mail.md";
   slug: "hubspot-claude-mcp-personalized-mail";
