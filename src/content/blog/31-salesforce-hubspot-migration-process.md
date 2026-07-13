@@ -4,6 +4,7 @@ description: "SalesforceからHubSpotへの移行はどう進めればいいの�
 pubDate: 2026-07-13
 category: "CRM導入・移管"
 tags: ["Salesforce", "HubSpot", "移行", "手順", "CRM"]
+heroImage: "/images/blog/salesforce-hubspot-migration-process.png"
 draft: false
 ---
 
