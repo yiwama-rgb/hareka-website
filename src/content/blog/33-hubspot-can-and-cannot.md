@@ -4,6 +4,7 @@ description: "HubSpotで何ができて、何ができないのか。Marketing�
 pubDate: 2026-07-13
 category: "HubSpot活用"
 tags: ["HubSpot", "CRM", "機能", "導入検討"]
+heroImage: "/images/blog/hubspot-can-and-cannot.png"
 draft: false
 ---
 
