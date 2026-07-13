@@ -4,6 +4,7 @@ description: "Salesforce移行を始める前に、発注側が確認・準備�
 pubDate: 2026-07-13
 category: "CRM導入・移管"
 tags: ["Salesforce", "HubSpot", "移行", "チェックリスト", "CRM"]
+heroImage: "/images/blog/salesforce-hubspot-migration-checklist.png"
 draft: false
 ---
 
