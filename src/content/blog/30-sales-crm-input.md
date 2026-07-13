@@ -4,6 +4,7 @@ description: "営業がCRMに入力してくれない――その原因は「面
 pubDate: 2026-06-27
 category: "HubSpot活用"
 tags: ["CRM", "営業", "入力", "定着", "HubSpot"]
+heroImage: "/images/blog/sales-crm-input.png"
 draft: false
 ---
 
