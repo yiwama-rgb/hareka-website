@@ -4,6 +4,7 @@ description: "2026年6月にベータリリースされたHubSpot Agent CLI。Cl
 pubDate: 2026-07-13
 category: "HubSpot×AI"
 tags: ["HubSpot", "AI", "Agent CLI", "Claude Code", "MCP"]
+heroImage: "/images/blog/hubspot-agent-cli.png"
 draft: false
 ---
 
