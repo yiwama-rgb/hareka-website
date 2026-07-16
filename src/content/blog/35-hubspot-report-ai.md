@@ -4,6 +4,7 @@ description: "HubSpotのレポート作成は元CSMでも難しい。しかしAI
 pubDate: 2026-07-14
 category: "HubSpot×AI"
 tags: ["HubSpot", "AI", "レポート", "MCP", "自動化"]
+heroImage: "/images/blog/hubspot-report-ai.png"
 draft: false
 ---
 
