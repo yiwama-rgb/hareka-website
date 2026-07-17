@@ -4,6 +4,7 @@ description: "HubSpotのワークフローを、管理画面を開かずAIへの
 pubDate: 2026-07-14
 category: "HubSpot×AI"
 tags: ["HubSpot", "AI", "ワークフロー", "自動化", "API"]
+heroImage: "/images/blog/hubspot-workflow-ai.png"
 draft: false
 ---
 
