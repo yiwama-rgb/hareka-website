@@ -297,6 +297,13 @@ declare module 'astro:content' {
   collection: "cases";
   data: InferEntrySchema<"cases">
 } & { render(): Render[".md"] };
+"08-startup-airtable-hubspot-migration.md": {
+	id: "08-startup-airtable-hubspot-migration.md";
+  slug: "08-startup-airtable-hubspot-migration";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
 };
 
 	};
