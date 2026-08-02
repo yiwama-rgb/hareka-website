@@ -4,6 +4,7 @@ description: "SalesforceからHubSpotへの移行プロジェクトで、AIを�
 pubDate: 2026-08-02
 category: "HubSpot×AI"
 tags: ["CRM", "移行", "AI", "Salesforce", "HubSpot", "Claude Code"]
+heroImage: "/images/blog/crm-migration-with-ai.png"
 draft: false
 ---
 
