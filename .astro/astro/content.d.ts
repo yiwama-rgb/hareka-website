@@ -290,6 +290,13 @@ declare module 'astro:content' {
   collection: "cases";
   data: InferEntrySchema<"cases">
 } & { render(): Render[".md"] };
+"07-benefits-zendesk-hubspot-consolidation.md": {
+	id: "07-benefits-zendesk-hubspot-consolidation.md";
+  slug: "07-benefits-zendesk-hubspot-consolidation";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
 };
 
 	};
