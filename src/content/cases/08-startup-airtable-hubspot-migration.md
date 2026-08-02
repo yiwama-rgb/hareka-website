@@ -1,21 +1,21 @@
 ---
-title: "AirtableとHubSpotの分断を解消――60日でSales Hub導入、AI活用でデータ移行工数を大幅削減"
+title: "AirtableとHubSpotの分断を解消――60日でSales Hub・Service Hubを同時導入、AI活用でデータ移行工数を大幅削減"
 company: "ヘルスケア領域のスタートアップ"
 industry: "ヘルスケア・デジタルソリューション"
 employees: "従業員20名以下"
 tool_before: "Airtable（営業）＋ HubSpot Marketing Hub Starter"
-tool_after: "HubSpot Sales Hub Professional ＋ Marketing Hub ＋ Service Hub"
+tool_after: "HubSpot Sales Hub Professional ＋ Service Hub Professional ＋ Marketing Hub"
 period: "60日間（10日に1回のミーティング）"
 highlight: "60日でデータ移行から自動化・AI連携まで完了"
 pubDate: 2026-07-14
 draft: false
-description: "営業はAirtable、マーケティングはHubSpotと分断されていたデータを統合。AIを活用したデータ加工とAPI経由の移行により工数を大幅削減し、60日間でSales Hub導入から自動化・AI連携までを完了。"
+description: "営業はAirtable、マーケティングはHubSpotと分断されていたデータを統合。AIを活用したデータ加工とAPI経由の移行により工数を大幅削減し、60日間でSales Hub・Service Hubの同時導入から自動化・AI連携までを完了。"
 products: ["Sales Hub", "Marketing Hub", "Service Hub"]
 supportType: ["導入支援"]
 implementation: "構築代行なし"
 ---
 
-# 【導入事例】AirtableからHubSpot Sales Hubへ
+# 【導入事例】AirtableからHubSpot Sales Hub・Service Hubへ
 
 **60日間のレクチャー型支援で、分断されていた営業・マーケティングデータを統合。AI活用による移行手法で、お客様の作業工数を大幅に削減**
 
@@ -36,7 +36,7 @@ implementation: "構築代行なし"
 | 業種 | ヘルスケア領域のデジタルソリューション |
 | 規模 | 従業員20名以下（スタートアップ） |
 | 移行前ツール | Airtable（営業）＋ HubSpot Marketing Hub Starter |
-| 移行後ツール | HubSpot Sales Hub Professional ほか |
+| 移行後ツール | HubSpot Sales Hub Professional ＋ Service Hub Professional ほか |
 
 ## 課題（Before）
 
