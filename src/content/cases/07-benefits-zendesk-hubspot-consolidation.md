@@ -10,6 +10,7 @@ highlight: "コスト約30%削減＋サポートと営業のデータ統合"
 pubDate: 2026-07-14
 draft: false
 description: "サポートはZendesk、営業はSalesforceと分断されていた顧客情報をHubSpotに統一。要件定義から移行設計、プロジェクト管理までをHarekaが担当し、コスト約30%削減と部門間連携によるアップセル創出を実現。"
+heroImage: "/images/cases/case-07.jpg"
 products: ["Service Hub", "Sales Hub"]
 supportType: ["導入支援"]
 implementation: "構築代行あり"

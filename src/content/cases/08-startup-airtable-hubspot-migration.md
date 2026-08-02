@@ -10,6 +10,7 @@ highlight: "60日でデータ移行から自動化・AI連携まで完了"
 pubDate: 2026-07-14
 draft: false
 description: "営業はAirtable、マーケティングはHubSpotと分断されていたデータを統合。AIを活用したデータ加工とAPI経由の移行により工数を大幅削減し、60日間でSales Hub・Service Hubの同時導入から自動化・AI連携までを完了。"
+heroImage: "/images/cases/case-08.jpg"
 products: ["Sales Hub", "Marketing Hub", "Service Hub"]
 supportType: ["導入支援"]
 implementation: "構築代行なし"
