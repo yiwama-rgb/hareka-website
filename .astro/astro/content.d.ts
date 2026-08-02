@@ -232,6 +232,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"37-crm-migration-with-ai.md": {
+	id: "37-crm-migration-with-ai.md";
+  slug: "37-crm-migration-with-ai";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hubspot-claude-mcp-personalized-mail.md": {
 	id: "hubspot-claude-mcp-personalized-mail.md";
   slug: "hubspot-claude-mcp-personalized-mail";
