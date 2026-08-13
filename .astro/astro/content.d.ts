@@ -239,6 +239,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"38-salesforce-hubspot-zoho-comparison.md": {
+	id: "38-salesforce-hubspot-zoho-comparison.md";
+  slug: "38-salesforce-hubspot-zoho-comparison";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hubspot-claude-mcp-personalized-mail.md": {
 	id: "hubspot-claude-mcp-personalized-mail.md";
   slug: "hubspot-claude-mcp-personalized-mail";
