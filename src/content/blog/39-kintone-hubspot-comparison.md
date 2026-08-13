@@ -1,5 +1,5 @@
 ---
-title: "kintone（キントーン）とHubSpot比較――そもそも別物の2つを「脱Excel」と「CRM」の違いから正しく使い分ける"
+title: "kintoneとHubSpot比較――「脱Excel」と「CRM」の違いと使い分け"
 description: "kintoneとHubSpotはどう違うのか。実は2つはカテゴリが異なるツール。kintoneの本当の強み「脱Excel」を正当に評価しながら、顧客管理を自作した場合に当たる壁、そしてAI時代のツール選定の考え方まで、元HubSpot Japan CSMが解説します。"
 pubDate: 2026-08-13
 category: "CRM導入・移管"
