@@ -4,6 +4,7 @@ description: "kintoneとHubSpotはどう違うのか。実は2つはカテゴリ
 pubDate: 2026-08-13
 category: "CRM導入・移管"
 tags: ["kintone", "HubSpot", "CRM", "比較", "脱Excel"]
+heroImage: "/images/blog/kintone-hubspot-comparison.png"
 draft: false
 ---
 
