@@ -4,6 +4,7 @@ description: "Salesforce・HubSpot・Zohoはどう違うのか。出自の思想
 pubDate: 2026-08-13
 category: "CRM導入・移管"
 tags: ["Salesforce", "HubSpot", "Zoho", "CRM", "比較"]
+heroImage: "/images/blog/salesforce-hubspot-zoho-comparison.png"
 draft: false
 ---
 
