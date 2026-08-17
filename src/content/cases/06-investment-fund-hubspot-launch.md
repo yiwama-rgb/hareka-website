@@ -16,7 +16,7 @@ supportType: ["導入支援"]
 implementation: "構築代行なし"
 ---
 
-# Excel管理からの脱却――60日でHubSpot×AI連携まで実現し、入力・レポート工数を大幅削減
+## Excel管理からの脱却――60日でHubSpot×AI連携まで実現し、入力・レポート工数を大幅削減
 
 Excelで顧客・営業情報を管理していた投資ファンド。情報がバラバラで関連性が見えない、レポートは毎回手作業、Excelのメンテナンスに追われるという状態から、60日間でHubSpot Sales Hub Professionalのフル活用とAI連携まで実現しました。
 

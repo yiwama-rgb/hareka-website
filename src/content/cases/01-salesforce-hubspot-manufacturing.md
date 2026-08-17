@@ -16,7 +16,7 @@ supportType: ["導入支援"]
 implementation: "構築代行なし"
 ---
 
-# 【導入事例】Salesforce Service Cloud から HubSpot Service Hub へ
+## 【導入事例】Salesforce Service Cloud から HubSpot Service Hub へ
 
 **60日間・レクチャー型の伴走支援で、データ移管の再現から営業・サービスのデータ統合、年間ライセンス費用 約50%削減までを実現**
 

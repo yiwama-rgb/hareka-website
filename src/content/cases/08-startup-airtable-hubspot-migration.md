@@ -1,5 +1,5 @@
 ---
-title: "AirtableとHubSpotの分断を解消――60日でSales Hub・Service Hubを同時導入、AI活用でデータ移行工数を大幅削減"
+title: "AirtableからHubSpotへ――60日でSales Hub・Service Hubを同時導入"
 company: "ヘルスケア領域のスタートアップ"
 industry: "ヘルスケア・デジタルソリューション"
 employees: "従業員20名以下"
@@ -16,7 +16,7 @@ supportType: ["導入支援"]
 implementation: "構築代行なし"
 ---
 
-# 【導入事例】AirtableからHubSpot Sales Hub・Service Hubへ
+## 【導入事例】AirtableからHubSpot Sales Hub・Service Hubへ
 
 **60日間のレクチャー型支援で、分断されていた営業・マーケティングデータを統合。AI活用による移行手法で、お客様の作業工数を大幅に削減**
 

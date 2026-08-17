@@ -16,7 +16,7 @@ supportType: ["導入支援"]
 implementation: "構築代行あり"
 ---
 
-# 【導入事例】Zendesk から HubSpot Service Hub へ
+## 【導入事例】Zendesk から HubSpot Service Hub へ
 
 **サポートと営業で分断されていた2つのツールをHubSpotに統一。要件定義から移行設計、プロジェクト管理までを担い、コスト約30%削減と部門をまたいだ情報活用を実現**
 
