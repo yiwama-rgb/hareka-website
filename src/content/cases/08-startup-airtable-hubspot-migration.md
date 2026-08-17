@@ -6,7 +6,7 @@ employees: "従業員20名以下"
 tool_before: "Airtable（営業・CS・請求管理）＋ HubSpot Marketing Hub Starter"
 tool_after: "HubSpot Sales Hub Professional ＋ Service Hub Professional ＋ Marketing Hub"
 period: "60日間"
-highlight: "リード獲得から契約後のオンボーディングまで、顧客ライフサイクル全体をHubSpotに一元化"
+highlight: "リード獲得から契約後サポートまで一気通貫で可視化"
 pubDate: 2026-07-14
 draft: false
 description: "営業・CS・請求管理までAirtableで運用していたスタートアップ。移すもの・残すものを見極めるスコープ設計から、AIを活用したデータ移行、サブスク型ビジネスの顧客ライフサイクル設計、オンボーディング自動化まで。60日間でSales Hub・Service Hubの同時導入を完了。"

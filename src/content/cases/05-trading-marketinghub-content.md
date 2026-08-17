@@ -6,7 +6,7 @@ employees: "従業員300名超"
 tool_before: "Marketing Hub・Sales Hub（メール配信のみ活用・営業はExcel管理）"
 tool_after: "Marketing Hub・Sales Hub（フル活用）"
 period: "約半年（月1回のレクチャー型支援）"
-highlight: "問い合わせ前コンバージョンがゼロ→月40件以上に。担当者が全社賞を受賞"
+highlight: "デジタルマーケが全社に広がり、担当者が全社賞を受賞"
 pubDate: 2026-06-20
 draft: false
 description: "Marketing HubとSales Hubを導入済みながらメール配信のみの活用にとどまっていた科学機器商社。社内の知見をコンテンツ化しダウンロード資料とフォームを設置したことで、問い合わせ前のリード獲得がゼロから月40件以上に。取り組みが全社に波及し、担当者は全社賞を受賞。"

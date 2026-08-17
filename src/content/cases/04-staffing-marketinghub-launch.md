@@ -6,7 +6,7 @@ employees: "営業・セールスマネージャー中心の組織"
 tool_before: "Marketing Hub Professional（導入済み・未活用）"
 tool_after: "Marketing Hub Professional（マーケ・インサイドセールスが稼働）"
 period: "HubSpot Japan CSMとして支援"
-highlight: "ROI 300%。マーケから月次受注が継続的に発生"
+highlight: "マーケ経由の受注が毎月発生する状態に"
 pubDate: 2026-06-01
 draft: false
 description: "マーケティングもインサイドセールスも存在しなかった人材派遣会社。放置されていたMarketing Hubを立ち上げ、約2万件のハウスリスト活用とフォローアップ体制の構築で、ROI 300%・月次受注の定着を実現。担当者は社内表彰を受けるまでに。"

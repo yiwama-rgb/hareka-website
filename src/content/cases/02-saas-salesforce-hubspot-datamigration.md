@@ -6,7 +6,7 @@ employees: "従業員約100名"
 tool_before: "Salesforce Sales Cloud Enterprise"
 tool_after: "HubSpot Sales Hub Enterprise ほか"
 period: "約4ヶ月（要件定義〜カットオーバー）"
-highlight: "入力工数を約70%削減＋ライセンスコスト削減"
+highlight: "数十万件のデータを欠損ゼロで移行"
 pubDate: 2026-05-01
 draft: false
 description: "Salesforce契約満了に伴う移行プロジェクト。AIを開発パートナーとすることで、通常なら移行だけで終わる期間内に売上管理の構造再設計まで実現。構築時につくり込まれた非効率な入力の仕組みを見積1件で完結する構造へ作り替え、工数約70%削減を達成した。"

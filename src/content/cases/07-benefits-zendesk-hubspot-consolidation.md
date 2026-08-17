@@ -6,7 +6,7 @@ employees: "従業員約200名"
 tool_before: "Zendesk（サポート）＋ Salesforce Sales Cloud（営業）"
 tool_after: "HubSpot Service Hub Professional ＋ Sales Hub"
 period: "移行プロジェクト全体を支援"
-highlight: "コスト約30%削減＋サポートと営業のデータ統合"
+highlight: "サポートと営業の顧客データを統合"
 pubDate: 2026-07-14
 draft: false
 description: "サポートはZendesk、営業はSalesforceと分断されていた顧客情報をHubSpotに統一。要件定義から移行設計、プロジェクト管理までをHarekaが担当し、コスト約30%削減と部門間連携によるアップセル創出を実現。"

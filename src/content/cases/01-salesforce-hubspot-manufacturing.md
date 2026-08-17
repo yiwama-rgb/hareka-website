@@ -6,7 +6,7 @@ employees: "200名以上"
 tool_before: "Salesforce Service Cloud"
 tool_after: "HubSpot Service Hub"
 period: "60日間（全6回）"
-highlight: "年間ライセンス費用 約50%削減"
+highlight: "営業とサービスのデータベースも一本化"
 pubDate: 2026-04-01
 draft: false
 description: "Salesforce契約満了をきっかけに、製造業向けソフトウェア企業のサポート基盤をHubSpotへ移行。60日間の伴走支援でデータ移管から各機能の活用までを完了し、年間ライセンス費用の約50%削減を実現。"

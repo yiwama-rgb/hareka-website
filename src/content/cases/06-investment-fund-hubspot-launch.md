@@ -6,7 +6,7 @@ employees: "従業員約30名"
 tool_before: "Excel（顧客管理・営業情報管理）"
 tool_after: "HubSpot Sales Hub Professional"
 period: "60日間（レクチャー型導入支援）"
-highlight: "Excel管理を脱却し、60日でHubSpot×AI連携まで実現"
+highlight: "入力・レポート工数を大幅削減"
 pubDate: 2026-06-20
 draft: false
 description: "Excelで顧客・営業情報を管理していた投資ファンド。情報の関連性が見えない・レポートが手動・メンテが手間という課題を抱えていた。60日間のレクチャー型支援でSales Hub Professionalをフル活用できる状態に。さらにAI（Claude）との連携まで実現し、入力・レポート工数を大幅に削減。"

@@ -6,7 +6,7 @@ employees: "少数精鋭"
 tool_before: "Gmail＋WordPressフォーム（顧客データベースなし）"
 tool_after: "HubSpot Starter プラットフォーム"
 period: "2ヶ月"
-highlight: "顧客DBゼロの状態から、問い合わせ前の行動履歴まで見えるCRMを2ヶ月で稼働"
+highlight: "問い合わせ前の行動履歴まで見える化"
 pubDate: 2026-08-13
 draft: false
 description: "設定の複雑さで止まっていたHubSpot Starter導入を2ヶ月で稼働まで伴走。Gmailに散在した顧客情報を一元化し、問い合わせ前のページ閲覧履歴まで可視化した実名事例。"

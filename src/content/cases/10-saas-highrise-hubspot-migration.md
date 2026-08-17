@@ -6,7 +6,7 @@ employees: "10名前後（うちサポートチーム6名）"
 tool_before: "Highrise（営業管理のみ）＋ Gmail共有アドレス（問い合わせ対応）"
 tool_after: "HubSpot Sales Hub ＋ Service Hub Professional"
 period: "約2.5ヶ月（全6回）"
-highlight: "月1,000件の問い合わせを初めてデータベース化。営業とサポートが同じ顧客データを見る体制へ"
+highlight: "月1,000件の問い合わせを初めてデータベース化"
 pubDate: 2026-08-17
 draft: false
 description: "営業管理はHighrise、問い合わせはGmail共有アドレス。APIのない旧CRMからのHubSpot移行を約2.5ヶ月・全6回で完了。ヘルプデスクを立ち上げ、月1,000件の問い合わせを初めてデータベース化。"
