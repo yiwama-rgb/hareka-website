@@ -332,6 +332,13 @@ declare module 'astro:content' {
   collection: "cases";
   data: InferEntrySchema<"cases">
 } & { render(): Render[".md"] };
+"10-saas-highrise-hubspot-migration.md": {
+	id: "10-saas-highrise-hubspot-migration.md";
+  slug: "10-saas-highrise-hubspot-migration";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
 };
 
 	};
