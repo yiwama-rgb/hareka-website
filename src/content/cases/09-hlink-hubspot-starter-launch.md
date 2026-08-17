@@ -1,5 +1,5 @@
 ---
-title: "Gmail頼みの顧客管理から、行動履歴まで見えるCRMへ――HubSpot Starterを2ヶ月で稼働【エイチリンク株式会社様】"
+title: "Gmailの顧客管理をHubSpot Starterへ――2ヶ月でCRM稼働【エイチリンク様】"
 company: "エイチリンク株式会社"
 industry: "SEO対策・LLMO対策・Webマーケティング"
 employees: "少数精鋭"
