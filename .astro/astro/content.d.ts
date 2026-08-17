@@ -325,6 +325,13 @@ declare module 'astro:content' {
   collection: "cases";
   data: InferEntrySchema<"cases">
 } & { render(): Render[".md"] };
+"09-hlink-hubspot-starter-launch.md": {
+	id: "09-hlink-hubspot-starter-launch.md";
+  slug: "09-hlink-hubspot-starter-launch";
+  body: string;
+  collection: "cases";
+  data: InferEntrySchema<"cases">
+} & { render(): Render[".md"] };
 };
 
 	};
