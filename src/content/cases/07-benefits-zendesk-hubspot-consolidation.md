@@ -1,5 +1,5 @@
 ---
-title: "サポートと営業の分断を解消――2つのツールをHubSpotに統一し、コスト30%削減とアップセル創出を実現"
+title: "ZendeskとSalesforceをHubSpotに統一――コスト30%削減"
 company: "オフィス向け福利厚生サービス提供企業"
 industry: "福利厚生サービス"
 employees: "従業員約200名"

@@ -1,5 +1,5 @@
 ---
-title: "放置されていたHubSpotを再生――活用度70%アップ、営業がデータで回る組織に【大手SaaSコンサル企業】"
+title: "放置されたHubSpotを再生――利用スコアを10→70へ"
 company: "大手SaaSコンサルティング会社"
 industry: "SaaS導入・活用支援コンサルティング"
 employees: "約800名"

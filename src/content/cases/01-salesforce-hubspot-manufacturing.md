@@ -1,5 +1,5 @@
 ---
-title: "年間ライセンス費用50%削減――SalesforceからHubSpotへ、60日で移行完了"
+title: "SalesforceからHubSpotへ――60日でライセンス費用50%削減"
 company: "製造業向けソフトウェアのコンサルティング会社"
 industry: "製造業向けソフトウェア"
 employees: "200名以上"

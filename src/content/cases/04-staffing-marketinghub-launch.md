@@ -1,5 +1,5 @@
 ---
-title: "マーケゼロの組織がROI 300%を達成――Marketing Hub再活用で月次受注が定着【人材派遣会社】"
+title: "Marketing Hub再活用でROI 300%を達成【人材派遣会社】"
 company: "人材派遣会社"
 industry: "人材派遣（製造・工場系）"
 employees: "営業・セールスマネージャー中心の組織"

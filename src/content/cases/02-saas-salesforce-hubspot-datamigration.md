@@ -1,5 +1,5 @@
 ---
-title: "入力工数を70%削減――移行と構造再設計を同時に実現した、AI活用のCRM移行"
+title: "Salesforce移行で入力工数を70%削減――AI活用のCRM再設計"
 company: "アプリ開発企業"
 industry: "ソフトウェア開発・SaaS"
 employees: "従業員約100名"

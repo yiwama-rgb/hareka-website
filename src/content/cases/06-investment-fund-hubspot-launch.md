@@ -1,5 +1,5 @@
 ---
-title: "Excel管理からの脱却――60日でHubSpot×AI連携まで実現し、入力・レポート工数を大幅削減【投資ファンド】"
+title: "Excel管理からHubSpotへ――60日でAI連携まで【投資ファンド】"
 company: "投資ファンド"
 industry: "金融・投資"
 employees: "従業員約30名"
