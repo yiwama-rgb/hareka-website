@@ -86,10 +86,10 @@ const resultHighlights = [
     href: '/cases/05-trading-marketinghub-content/',
   },
   {
-    num: 'BCC送信 → Marketing Hubに統合',
-    small: true,
-    text: '個別ツールやBCCでの一斉送信をMarketing Hubに統合。配信工数を削減し、開封データにもとづくフォローが初めて可能になりました。',
-    href: '/cases/03-consulting-hubspot-reactivation/',
+    kicker: '眠っていたリストから',
+    num: '0 → 契約獲得',
+    text: '活用されていなかったハウスリストに、一斉配信とフォローアップの運用を定着させ、四半期に1件ペースで契約が生まれる状態を実現しました。',
+    href: '/cases/04-staffing-marketinghub-launch/',
   },
 ];
 
@@ -292,6 +292,13 @@ const steps = [
     .hsr-result__num--sm {
       font-size: clamp(20px, 2.2vw, 25px);
       line-height: 1.45;
+    }
+    .hsr-result__kicker {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: -6px;
     }
     .hsr-result__text {
       font-size: 14.5px;
@@ -706,12 +713,14 @@ const steps = [
         {resultHighlights.map(r => (
           r.href ? (
             <a href={r.href} class="hsr-result">
+              {r.kicker && <p class="hsr-result__kicker">{r.kicker}</p>}
               <p class={`hsr-result__num${r.small ? ' hsr-result__num--sm' : ''}`}>{r.num}</p>
               <p class="hsr-result__text">{r.text}</p>
               <span class="hsr-result__link">事例を見る →</span>
             </a>
           ) : (
             <div class="hsr-result">
+              {r.kicker && <p class="hsr-result__kicker">{r.kicker}</p>}
               <p class={`hsr-result__num${r.small ? ' hsr-result__num--sm' : ''}`}>{r.num}</p>
               <p class="hsr-result__text">{r.text}</p>
             </div>
