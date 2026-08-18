@@ -112,19 +112,64 @@ const painPoints = [
 const features = [
   {
     title: '両方のCRMを知っているから、正直な設計ができる',
-    body: '代表はHubSpot Japanで約4年カスタマーサクセスマネージャーとして200社以上を支援し、Salesforce認定資格を5つ保有しています。SalesforceとHubSpotは仕様が大きく異なり、Salesforce特有の詳細な画面の作り込みや複雑なアクセス権限など、HubSpotでは再現できない機能もあります。Harekaでは「できること・できないこと」を要件定義の段階で率直にお伝えし、期待値を合わせた上でプロジェクトを進めます。',
+    body: ['代表はHubSpot Japanで約4年カスタマーサクセスマネージャーとして200社以上を支援し、Salesforce認定資格を5つ保有しています。SalesforceとHubSpotは仕様が大きく異なり、Salesforce特有の詳細な画面の作り込みや複雑なアクセス権限など、HubSpotでは再現できない機能もあります。Harekaでは「できること・できないこと」を要件定義の段階で率直にお伝えし、期待値を合わせた上でプロジェクトを進めます。'],
   },
   {
     title: 'AIを活用した、速く正確なデータ移行',
-    body: '移行の失敗で最も多いのはデータ移行です。ファイルインポートを繰り返す従来型の移行は、ミスが多く、修正工数が膨らみ続けます。HarekaはAPIを活用したカスタムインポートとAI技術により、迅速かつ正確なデータ移行を実現します。実績として、他社が提示した見積もり工数の約60%の期間で移行を完了したケースもあります。',
+    body: ['移行の失敗で最も多いのはデータ移行です。ファイルインポートを繰り返す従来型の移行は、ミスが多く、修正工数が膨らみ続けます。HarekaはAPIを活用したカスタムインポートとAI技術により、迅速かつ正確なデータ移行を実現します。実績として、他社が提示した見積もり工数の約60%の期間で移行を完了したケースもあります。'],
   },
   {
     title: '代表が一貫して担当する体制',
-    body: '要件定義から移行完了、運用定着まで、すべて代表が直接担当します。担当者の交代や引き継ぎによる情報の欠落は発生しません。',
+    body: ['要件定義から移行完了、運用定着まで、すべて代表が直接担当します。担当者の交代や引き継ぎによる情報の欠落は発生しません。'],
   },
   {
     title: '「再現」で終わらせず、「自走」をゴールに',
-    body: '移行はまず現在のSalesforceの仕組みをHubSpot上で確実に再現することから始め、基盤が整った後に、旧環境で実現できなかった改善やデータの整理を段階的に進めます。最終的には、お客様自身が設定変更や運用を自走できる状態を目指します。詳細なマニュアルではなく、実務で使える動画マニュアルの残し方や、HubSpot公式サポートの活用方法までレクチャーします。',
+    body: [
+      'Harekaの土台には、キーエンス・WeWorkでの営業現場経験と、HubSpot Japanで200社以上の活用支援に携わった知見があります。だからこそ、「どういうCRMが現場で実際に使われ、どういうCRMが使われなくなるのか」を知っています。',
+      '私たちのポリシーは、お客様が実際に使えて、成果の出るCRMを納品することです。移行はまず現在の仕組みをHubSpot上で確実に再現することから始め、基盤が整った後に改善を段階的に進めます。最終的には、お客様自身が設定変更や運用を自走できる状態がゴールです。実務で使える動画マニュアルの残し方や、HubSpot公式サポートの活用方法までレクチャーします。',
+    ],
+  },
+];
+
+// 数値実績ハイライト
+const resultHighlights = [
+  {
+    num: ['60日', 'で', '50%削減'],
+    text: 'ライセンス費用を50%削減しながら、60日で移行を完了。移行と同時に活用状況も改善しました。',
+    href: '/cases/01-salesforce-hubspot-manufacturing/',
+  },
+  {
+    num: ['70%削減'],
+    text: 'AI活用のCRM再設計で入力工数を70%削減。現場から喜ばれる移行を実現しました。',
+    href: '/cases/02-saas-salesforce-hubspot-datamigration/',
+  },
+  {
+    num: ['30%削減'],
+    text: '分散していたデータベースをHubSpotに統一し、部署間の連携を強化。同時にコストも30%削減しました。',
+    href: '/cases/07-benefits-zendesk-hubspot-consolidation/',
+  },
+];
+
+// よくある失敗（3つ）
+const pitfalls = [
+  {
+    title: '失敗1: データ移行のミスが止まらない',
+    body: [
+      '移行の失敗で最も多いのがデータ移行です。ファイルインポートを何度も繰り返す方法で移行すると、ミスが多発し、その修正にさらに膨大な工数がかかります。この進め方をしている限り、ミスと修正コストは出続けます。API活用やAIによる移行ノウハウを持つパートナーかどうかの確認が、Salesforceに限らずあらゆるシステム移行で極めて重要です。',
+    ],
+  },
+  {
+    title: '失敗2: 要望通りに作った結果、「使われないCRM」になる',
+    body: [
+      '移行の成否は、実は要件定義の段階でほぼ決まります。お客様のご要望をそのまま受け入れて、複雑な自動化・レポート・オブジェクト構成を納品してしまうと、移行プロジェクト自体は成功しても、現場に理解されず、運用が形骸化し、成果につながらないCRMになります。',
+      'お客様が言葉にする要望と、現場が本当に使いこなせる形は、異なることがあります。Harekaは200社以上の活用支援で「使われるCRM」と「使われないCRM」の違いを見てきました。だからこそ要件定義で妥協せずに対話し、本当に使えるCRMを納品します。AIを使える会社はこれからも増えますが、この活用支援の実績こそ、Harekaがどこにも負けない強みです。',
+    ],
+  },
+  {
+    title: '失敗3: 片方の製品しか知らない担当者に依頼してしまう',
+    body: [
+      'Salesforceを知らない担当者が移行を受けると、旧環境の設計意図を読み解けず、移行後に業務が回らなくなります。逆に、Salesforceには詳しくてもHubSpotを知らない担当者が受けると、HubSpotの仕様に合わない設計を持ち込んでしまいます。移行には両製品の深い知識が必要です。',
+    ],
   },
 ];
 ---
@@ -262,6 +307,51 @@ const features = [
       color: var(--text-body);
       line-height: 1.9;
     }
+    .sfm-feature__text + .sfm-feature__text { margin-top: 12px; }
+
+    /* 数値実績ハイライト */
+    .sfm-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .sfm-result {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 30px;
+      color: inherit;
+      transition: border-color var(--transition);
+    }
+    .sfm-result:hover { border-color: var(--navy); }
+    .sfm-result__num {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-head);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    .sfm-result__num em {
+      font-style: normal;
+      font-size: clamp(30px, 3.5vw, 38px);
+      font-weight: 700;
+      color: var(--orange);
+    }
+    .sfm-result__text {
+      font-size: 14.5px;
+      color: var(--text-body);
+      line-height: 1.9;
+      flex: 1;
+    }
+    .sfm-result__link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-head);
+    }
+    .sfm-result:hover .sfm-result__link { color: var(--orange); }
 
     /* フェーズ */
     .sfm-phases {
@@ -347,26 +437,32 @@ const features = [
     }
 
     /* よくある失敗 */
+    .sfm-failures {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 820px;
+    }
     .sfm-failure {
       background: var(--white);
       border: 1px solid var(--border);
       border-left: 4px solid var(--orange);
       border-radius: var(--radius);
-      padding: 32px 36px;
-      max-width: 820px;
+      padding: 28px 32px;
     }
     .sfm-failure__title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-head);
       line-height: 1.5;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .sfm-failure__text {
       font-size: 15px;
       color: var(--text-body);
       line-height: 1.9;
     }
+    .sfm-failure__text + .sfm-failure__text { margin-top: 12px; }
 
     /* FAQ */
     .sfm-faq {
@@ -544,6 +640,7 @@ const features = [
 
     @media (max-width: 960px) {
       .sfm-features,
+      .sfm-results,
       .sfm-cases-grid {
         grid-template-columns: 1fr;
       }
@@ -591,8 +688,27 @@ const features = [
     </div>
   </section>
 
-  <!-- 3. 特徴 -->
+  <!-- 実績ハイライト -->
   <section class="sfm-section">
+    <div class="container">
+      <span class="sfm-eyebrow">Results</span>
+      <h2 class="sfm-heading">数字で見る、Harekaの移行支援</h2>
+      <div class="sfm-results">
+        {resultHighlights.map(r => (
+          <a href={r.href} class="sfm-result">
+            <p class="sfm-result__num">
+              {r.num.map(part => (part.match(/^(で)$/) ? part : <em>{part}</em>))}
+            </p>
+            <p class="sfm-result__text">{r.text}</p>
+            <span class="sfm-result__link">事例を見る →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 特徴 -->
+  <section class="sfm-section sfm-section--soft">
     <div class="container">
       <span class="sfm-eyebrow">Features</span>
       <h2 class="sfm-heading">Harekaの移行支援の特徴</h2>
@@ -601,7 +717,7 @@ const features = [
           <div class="sfm-feature">
             <span class="sfm-feature__num">{String(i + 1).padStart(2, '0')}</span>
             <h3 class="sfm-feature__title">{f.title}</h3>
-            <p class="sfm-feature__text">{f.body}</p>
+            {f.body.map(p => <p class="sfm-feature__text">{p}</p>)}
           </div>
         ))}
       </div>
@@ -609,7 +725,7 @@ const features = [
   </section>
 
   <!-- 4. 進め方 -->
-  <section class="sfm-section sfm-section--soft">
+  <section class="sfm-section">
     <div class="container">
       <span class="sfm-eyebrow">Process</span>
       <h2 class="sfm-heading">移行の進め方（4フェーズ）</h2>
@@ -630,7 +746,7 @@ const features = [
   </section>
 
   <!-- 5. 期間の目安 -->
-  <section class="sfm-section">
+  <section class="sfm-section sfm-section--soft">
     <div class="container">
       <span class="sfm-eyebrow">Timeline</span>
       <h2 class="sfm-heading">期間の目安</h2>
@@ -657,7 +773,7 @@ const features = [
             </tr>
             <tr>
               <th>既存アセット</th>
-              <td>レポート・ワークフローが各10本程度でシンプル</td>
+              <td>ワークフローがなく、レポートも5〜10本程度（2ヶ月程度で完了できる規模）</td>
               <td>本数が多い・複雑・カスタムオブジェクト多数</td>
             </tr>
           </tbody>
@@ -668,18 +784,23 @@ const features = [
   </section>
 
   <!-- 6. よくある失敗 -->
-  <section class="sfm-section sfm-section--soft">
+  <section class="sfm-section">
     <div class="container">
       <span class="sfm-eyebrow">Common Pitfalls</span>
-      <div class="sfm-failure">
-        <h2 class="sfm-failure__title">移行の失敗は、ほとんどが「データ移行」で起こります</h2>
-        <p class="sfm-failure__text">ファイルインポートを何度も繰り返す方法でデータを移行すると、ミスが多発し、その修正にさらに膨大な工数がかかります。この進め方をしている限り、ミスと修正コストは出続けます。移行を依頼する際は、API活用やAIによる移行ノウハウを持つパートナーかどうかを確認することが、Salesforceに限らずあらゆるシステム移行で極めて重要です。</p>
+      <h2 class="sfm-heading">Salesforce→HubSpot移行で起こりがちな3つの失敗</h2>
+      <div class="sfm-failures">
+        {pitfalls.map(item => (
+          <div class="sfm-failure">
+            <h3 class="sfm-failure__title">{item.title}</h3>
+            {item.body.map(p => <p class="sfm-failure__text">{p}</p>)}
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- 7. FAQ -->
-  <section class="sfm-section">
+  <section class="sfm-section sfm-section--soft">
     <div class="container">
       <span class="sfm-eyebrow">FAQ</span>
       <h2 class="sfm-heading">よくあるご質問</h2>
@@ -695,7 +816,7 @@ const features = [
   </section>
 
   <!-- 8. 実績 -->
-  <section class="sfm-section sfm-section--soft">
+  <section class="sfm-section">
     <div class="container">
       <span class="sfm-eyebrow">Case Studies</span>
       <h2 class="sfm-heading">移行支援の実績</h2>
