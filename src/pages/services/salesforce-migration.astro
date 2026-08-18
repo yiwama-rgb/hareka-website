@@ -290,6 +290,89 @@ const pitfalls = [
     }
     .sfm-feature__text + .sfm-feature__text { margin-top: 12px; }
 
+    /* フェーズ */
+    .sfm-phases {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sfm-phase {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .sfm-phase__head {
+      background: var(--navy);
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .sfm-phase__num {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .sfm-phase__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .sfm-phase__body { padding: 26px 30px; }
+    .sfm-phase__body p {
+      font-size: 14.5px;
+      color: var(--text-body);
+      line-height: 1.9;
+    }
+    .sfm-phase__body p + p { margin-top: 14px; }
+
+    /* 期間 */
+    .sfm-period-table-wrap { overflow-x: auto; margin-bottom: 20px; }
+    .sfm-period-table {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14.5px;
+      line-height: 1.7;
+    }
+    .sfm-period-table th,
+    .sfm-period-table td {
+      padding: 14px 20px;
+      border: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    .sfm-period-table thead th {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .sfm-period-table tbody th {
+      background: var(--bg-soft);
+      color: var(--text-head);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .sfm-period-note {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 760px;
+    }
+
     /* よくある失敗 */
     .sfm-failures {
       display: flex;
