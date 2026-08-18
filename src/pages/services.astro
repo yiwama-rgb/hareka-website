@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="サービス | Hareka"
-  description="HubSpot導入支援、SalesforceからHubSpotへの移管支援、HubSpot活用支援の3サービスを提供。代表が一貫して担当します。"
+  description="Salesforce→HubSpot移行支援、HubSpot再活用支援、Zendesk・Excel等からの乗せ換え・導入支援の3サービスを提供。すべての支援で代表が一貫して担当します。"
   ogUrl="https://hareka.io/services/"
 >
   <style>
@@ -15,6 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       border-radius: var(--radius-lg);
       overflow: hidden;
       transition: var(--transition);
+      scroll-margin-top: 96px;
     }
     .service-detail:hover { box-shadow: var(--shadow-hover); border-color: var(--blue); }
     .service-detail__head {
@@ -42,8 +43,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .service-detail__body { padding: 32px 36px; }
     .service-detail__lead {
       font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.85;
+      color: var(--text-body);
+      line-height: 1.9;
       margin-bottom: 24px;
       max-width: 720px;
     }
@@ -66,7 +67,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       align-items: flex-start;
       gap: 10px;
       font-size: 14px;
-      color: var(--text-gray);
+      color: var(--text-body);
       line-height: 1.7;
     }
     .service-detail__list li::before {
@@ -77,19 +78,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       border-radius: 50%;
       margin-top: 8px;
     }
-    .service-detail__who {
-      background: var(--bg-light);
+    .service-detail__results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .service-detail__result {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px 20px;
-      font-size: 13px;
-      color: var(--text-gray);
-      line-height: 1.7;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-head);
+      line-height: 1.6;
     }
-    .service-detail__who strong {
-      color: var(--navy);
-      display: block;
-      margin-bottom: 4px;
+    .service-detail__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--orange);
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+      transition: opacity var(--transition);
     }
+    .service-detail__cta:hover { opacity: 0.75; }
     @media (max-width: 768px) {
       .service-detail__head { padding: 22px 24px; }
       .service-detail__body { padding: 24px; }
@@ -100,8 +118,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="page-hero">
     <div class="container">
       <span class="page-hero__label">Services</span>
-      <h1 class="page-hero__title">サービス一覧</h1>
-      <p class="page-hero__lead">HubSpotの導入から移管・活用まで、お客様の状況に合わせた最適な支援を提供します。すべての案件を代表の岩間が一貫して担当します。</p>
+      <h1 class="page-hero__title">サービス</h1>
+      <p class="page-hero__lead">HarekaはHubSpot専門のコンサルティング会社です。CRMの成果は、どのツールを選ぶかではなく「どれだけ活用されるか」で決まります。事業に合った設計、専門知識にもとづく正しい実装、運用と改善のループ——この3つを、すべての支援で代表が一貫して提供します。</p>
     </div>
   </section>
 
@@ -110,102 +128,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="services-list">
 
-        <div class="service-detail">
+        <div class="service-detail" id="salesforce-migration">
           <div class="service-detail__head">
             <div class="service-detail__num">01</div>
-            <h2 class="service-detail__head-title">HubSpot 導入支援</h2>
+            <h2 class="service-detail__head-title">Salesforce → HubSpot 移行支援</h2>
           </div>
           <div class="service-detail__body">
             <p class="service-detail__lead">
-              HubSpotをはじめて導入する企業に向け、要件定義・設計・初期設定・社内レクチャーまでを一貫してサポートします。「何から始めればいいかわからない」という状態から、チームが自走できる状態まで丁寧に伴走します。
+              両ツールの深い知見をもとに、ただの移管ではなく、活用しやすい構造に再設計して納品します。コスト削減と活用改善を同時に実現します。
             </p>
-            <p class="service-detail__subtitle">支援内容</p>
+            <p class="service-detail__subtitle">こんな企業様に</p>
             <ul class="service-detail__list">
-              <li>ヒアリングによる要件定義・現状把握</li>
-              <li>オブジェクト・プロパティ設計</li>
-              <li>パイプライン・自動化（ワークフロー）設計</li>
-              <li>レポート・ダッシュボード構築</li>
-              <li>チームへのレクチャー・ハンズオン支援</li>
-              <li>導入後フォローアップ</li>
+              <li>Salesforceのコストや運用負荷を見直したい企業</li>
+              <li>機能がオーバースペックになっている企業</li>
             </ul>
-            <div class="service-tags">
-              <span class="tag">Sales Hub</span>
-              <span class="tag">Marketing Hub</span>
-              <span class="tag">Service Hub</span>
-              <span class="tag">オブジェクト設計</span>
-              <span class="tag">ワークフロー</span>
-              <span class="tag">レポート</span>
+            <p class="service-detail__subtitle">実績ハイライト</p>
+            <div class="service-detail__results">
+              <span class="service-detail__result">60日で移行完了・ライセンス費用50%削減</span>
+              <span class="service-detail__result">55万件超のデータ移行・入力工数70%削減</span>
             </div>
-            <div class="service-detail__who" style="margin-top:20px;">
-              <strong>こんな方に</strong>
-              HubSpotを新規導入する企業・部門。どう設計すべきか不安な方、現場への定着を重視したい方。
-            </div>
+            <a href="/services/salesforce-migration/" class="service-detail__cta">移行支援の詳細を見る →</a>
           </div>
         </div>
 
-        <div class="service-detail">
+        <div class="service-detail" id="reactivation">
           <div class="service-detail__head">
             <div class="service-detail__num">02</div>
-            <h2 class="service-detail__head-title">SalesforceからHubSpotへの移管支援</h2>
+            <h2 class="service-detail__head-title">HubSpot 再活用支援</h2>
           </div>
           <div class="service-detail__body">
             <p class="service-detail__lead">
-              Salesforceのコスト・複雑さに課題を感じ、HubSpotへの乗り換えを検討している企業を支援します。データ移行のベストプラクティスを熟知したコンサルタントが、リスクを最小化しながらスムーズな移管を実現します。
+              「契約したのに使われていない」HubSpotを立て直します。200社以上の活用支援経験をもとに、なぜ活用が進まないのか、どこに改善余地があるのか、何をどの順番でやるべきかを分析・整理し、実装まで請け負います。活用度のV字回復と、リード獲得・商談創出・工数削減につなげた実績が複数あります。
             </p>
-            <p class="service-detail__subtitle">支援内容</p>
+            <p class="service-detail__subtitle">こんな企業様に</p>
             <ul class="service-detail__list">
-              <li>Salesforce現状分析・データ棚卸し</li>
-              <li>HubSpot移行設計（オブジェクト・プロパティのマッピング）</li>
-              <li>データローダーを活用したデータ移行</li>
-              <li>関連付け（取引先-担当者-案件等）の再現</li>
-              <li>エラー解消・データクレンジング</li>
-              <li>移行後の動作確認・フォローアップ</li>
+              <li>HubSpotを契約しているが現場で使われていない企業</li>
+              <li>成果が見えずコストになってしまっている企業</li>
             </ul>
-            <div class="service-tags">
-              <span class="tag">データローダー</span>
-              <span class="tag">データ移行</span>
-              <span class="tag">関連付け再現</span>
-              <span class="tag">コスト削減</span>
-              <span class="tag">Salesforce認定資格保持</span>
+            <p class="service-detail__subtitle">実績ハイライト</p>
+            <div class="service-detail__results">
+              <span class="service-detail__result">Sales Hub活用率を60%以上改善</span>
             </div>
-            <div class="service-detail__who" style="margin-top:20px;">
-              <strong>こんな方に</strong>
-              Salesforceのコストや複雑さに課題を感じている企業。移行に踏み出せずにいる方、ベストプラクティスが不明な方。
-            </div>
-            <p style="margin-top:20px;">
-              <a href="/services/salesforce-migration/" style="font-weight:600; color:var(--orange); text-decoration:underline;">Salesforce→HubSpot移行支援の詳細ページを見る →</a>
-            </p>
+            <a href="/contact/" class="service-detail__cta">無料相談で現状を診断する →</a>
           </div>
         </div>
 
-        <div class="service-detail">
+        <div class="service-detail" id="replatform">
           <div class="service-detail__head">
             <div class="service-detail__num">03</div>
-            <h2 class="service-detail__head-title">HubSpot 活用支援</h2>
+            <h2 class="service-detail__head-title">Zendesk・Excel等からの乗せ換え・導入支援</h2>
           </div>
           <div class="service-detail__body">
             <p class="service-detail__lead">
-              HubSpotを導入済みだが十分に活用できていない企業に向け、現状課題を診断し活用度を高めるための支援を行います。形骸化したHubSpotを「経営の武器」に変えるための再設計・再教育を実施します。
+              Zendesk、Notion、Airtable、Excelなどで管理している営業・サポート業務を、売上につながる仕組みに変えます。営業・カスタマーサクセスの業務理解をもとに、ツール選定の設計から実装、現場への定着まで伴走します。チケット管理を「ただのコスト」から「顧客満足度と売上につなげる武器」に変えることがゴールです。
             </p>
-            <p class="service-detail__subtitle">支援内容</p>
+            <p class="service-detail__subtitle">こんな企業様に</p>
             <ul class="service-detail__list">
-              <li>HubSpot活用度診断・課題整理</li>
-              <li>既存設定の見直し・リデザイン</li>
-              <li>未活用機能（ワークフロー・シーケンス・レポート等）の立ち上げ</li>
-              <li>社内への再レクチャー・活用定着支援</li>
-              <li>上層部を巻き込んだ全社CRMプロジェクト推進</li>
+              <li>分散したツールやExcelでの管理に限界を感じている企業</li>
+              <li>サポート業務を売上に接続したい企業</li>
             </ul>
-            <div class="service-tags">
-              <span class="tag">活用診断</span>
-              <span class="tag">リデザイン</span>
-              <span class="tag">定着支援</span>
-              <span class="tag">ワークフロー</span>
-              <span class="tag">レポート設計</span>
+            <p class="service-detail__subtitle">実績ハイライト</p>
+            <div class="service-detail__results">
+              <span class="service-detail__result">ZendeskとSalesforceをHubSpotに統一・コスト30%削減</span>
+              <span class="service-detail__result">Excel管理からHubSpotへ60日で立ち上げ</span>
             </div>
-            <div class="service-detail__who" style="margin-top:20px;">
-              <strong>こんな方に</strong>
-              HubSpotを導入したが現場で使われていない企業。期待した成果につながっていない、活用の方向性を見直したい方。
-            </div>
+            <a href="/contact/" class="service-detail__cta">無料相談で現状を診断する →</a>
           </div>
         </div>
 
@@ -218,10 +205,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="cta-banner__inner">
         <div>
-          <h2 class="cta-banner__title">どのサービスが合うか迷ったら</h2>
-          <p class="cta-banner__text">まずは現状のお悩みをお聞かせください。最適なサービス・進め方をご提案します。</p>
+          <h2 class="cta-banner__title">どのサービスが合うかわからない場合も</h2>
+          <p class="cta-banner__text">どのサービスが合うかわからない場合も、1時間の無料相談で現状をお聞きした上で最適な支援方法をご提案します。</p>
         </div>
-        <a href="/contact/" class="btn btn--blue btn--lg">無料相談を申し込む</a>
+        <a href="/contact/" class="btn btn--blue btn--lg">無料相談を予約する</a>
       </div>
     </div>
   </section>
