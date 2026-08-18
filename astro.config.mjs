@@ -24,6 +24,7 @@ for (const file of readdirSync(blogDir)) {
 
 export default defineConfig({
   site: 'https://hareka.io',
+  trailingSlash: 'always',
   integrations: [
     sitemap({
       serialize(item) {

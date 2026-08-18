@@ -164,6 +164,6 @@ Harekaは、SalesforceからHubSpotへの移行支援を専門としています
 
 「移行を決めたわけではないが、進め方だけ知りたい」という段階でも、ぜひお気軽にご相談ください。
 
-→ [無料相談を申し込む](/contact)
+→ [無料相談を申し込む](/contact/)
 
-→ [Salesforce→HubSpot移行支援サービスの詳細を見る](/services/salesforce-migration)
+→ [Salesforce→HubSpot移行支援サービスの詳細を見る](/services/salesforce-migration/)

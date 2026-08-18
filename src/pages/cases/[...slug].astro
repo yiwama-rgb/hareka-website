@@ -31,7 +31,7 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
   ogTitle={title}
   ogDescription={description}
   ogType="article"
-  ogUrl={`https://hareka.io/cases/${item.slug}`}
+  ogUrl={`https://hareka.io/cases/${item.slug}/`}
 >
   <div class="case-outer">
     <div class="case-container">
@@ -84,7 +84,7 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
 
         <!-- 戻るリンク -->
         <div class="case-footer-nav">
-          <a href="/cases" class="case-back-link">
+          <a href="/cases/" class="case-back-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
             支援実績一覧に戻る
           </a>
@@ -101,7 +101,7 @@ const formattedDate = pubDate.toLocaleDateString('ja-JP', {
           <h2 class="cta-banner__title">自社でも同じことができるか相談したい</h2>
           <p class="cta-banner__text">CRM導入・移管・活用のご相談を承っています。</p>
         </div>
-        <a href="/contact" class="btn btn--blue btn--lg">無料相談を申し込む</a>
+        <a href="/contact/" class="btn btn--blue btn--lg">無料相談を申し込む</a>
       </div>
     </div>
   </section>

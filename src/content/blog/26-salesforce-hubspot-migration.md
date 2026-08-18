@@ -172,6 +172,6 @@ Salesforceを3年間現場で使い続けた経験と、Salesforce認定資格5�
 
 「まだ移行するかどうか迷っている」という段階からでも、ぜひご相談ください。現状のSalesforce運用を伺ったうえで、移行すべきかどうかの判断材料も含めてお伝えします。
 
-→ [無料相談を申し込む](/contact)
+→ [無料相談を申し込む](/contact/)
 
-→ [Salesforce→HubSpot移行支援サービスの詳細を見る](/services/salesforce-migration)
+→ [Salesforce→HubSpot移行支援サービスの詳細を見る](/services/salesforce-migration/)

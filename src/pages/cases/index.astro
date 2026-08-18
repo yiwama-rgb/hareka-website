@@ -9,7 +9,7 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
 <BaseLayout
   title="支援実績 | Hareka"
   description="IT企業・人材企業・IoT製造業・金融企業など、様々な業種のCRM活用・HubSpot導入・移管支援の実績事例を掲載しています。"
-  ogUrl="https://hareka.io/cases"
+  ogUrl="https://hareka.io/cases/"
 >
   <style>
     .cases-grid {
@@ -137,7 +137,7 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
       {allCases.length > 0 ? (
         <div class="cases-grid">
           {allCases.map(item => (
-            <a href={`/cases/${item.slug}`} class="case-card">
+            <a href={`/cases/${item.slug}/`} class="case-card">
               {item.data.heroImage && (
                 <img class="case-card__thumb" src={item.data.heroImage} alt={item.data.title} width="400" height="200" loading="lazy" />
               )}
@@ -180,7 +180,7 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
           <h2 class="cta-banner__title">自社の課題を相談したい</h2>
           <p class="cta-banner__text">CRM導入・移管・活用のご相談を承っています。</p>
         </div>
-        <a href="/contact" class="btn btn--blue btn--lg">お問い合わせ</a>
+        <a href="/contact/" class="btn btn--blue btn--lg">お問い合わせ</a>
       </div>
     </div>
   </section>

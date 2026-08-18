@@ -231,6 +231,6 @@ A. 営業組織が大きく複雑ならSalesforce、マーケティング注力�
 
 HubSpot Japan CSMとして200社以上を支援した経験と、Salesforce認定資格5つの知見の両方を持つ代表が、初回のご相談から導入・定着まで一貫して担当する体制で、**貴社の組織構造・注力領域・予算に照らして本当に合うCRM**を一緒に見極めます。
 
-「まだ何も決まっていない」という段階でのご相談も歓迎です。[お問い合わせはこちらから](/contact)お気軽にどうぞ。
+「まだ何も決まっていない」という段階でのご相談も歓迎です。[お問い合わせはこちらから](/contact/)お気軽にどうぞ。
 
-→ [Salesforce→HubSpot移行支援サービスの詳細を見る](/services/salesforce-migration)
+→ [Salesforce→HubSpot移行支援サービスの詳細を見る](/services/salesforce-migration/)

@@ -18,7 +18,7 @@ const postMeta = allPosts.map(post => ({
 <BaseLayout
   title="ブログ | Hareka"
   description="HubSpotの活用Tips、CRM導入・移管のポイント、AIを活用した業務効率化など、営業・マーケティング・オペレーション担当者に役立つ情報を発信します。"
-  ogUrl="https://hareka.io/blog"
+  ogUrl="https://hareka.io/blog/"
 >
   <style>
     /* ── Filter bar ── */
@@ -240,7 +240,7 @@ const postMeta = allPosts.map(post => ({
             {postMeta.map(post => {
               return (
                 <a
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}/`}
                   class="blog-card"
                   data-category={post.data.category}
                   data-tags={(post.data.tags ?? []).join(',')}
@@ -291,7 +291,7 @@ const postMeta = allPosts.map(post => ({
           <h2 class="cta-banner__title">記事の更新をいち早く受け取る</h2>
           <p class="cta-banner__text">お問い合わせ時にブログ更新通知をご希望いただけます。</p>
         </div>
-        <a href="/contact" class="btn btn--blue btn--lg">お問い合わせ</a>
+        <a href="/contact/" class="btn btn--blue btn--lg">お問い合わせ</a>
       </div>
     </div>
   </section>
