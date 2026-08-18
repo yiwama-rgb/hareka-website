@@ -204,11 +204,13 @@ const salesforceCerts = [
     }
     .stats-bar__grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 900px;
+      margin: 0 auto;
     }
     .stats-bar__item {
       text-align: center;
-      padding: 8px 24px;
+      padding: 8px 32px;
       border-left: 1px solid var(--border-strong);
     }
     .stats-bar__item:first-child {
@@ -491,15 +493,16 @@ const salesforceCerts = [
         padding: 120px 0 56px;
       }
       .stats-bar__grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px 0;
+        grid-template-columns: 1fr;
       }
       .stats-bar__item {
         border-left: none;
-        padding: 8px 12px;
+        border-top: 1px solid var(--border-strong);
+        padding: 24px 12px;
       }
-      .stats-bar__item:nth-child(even) {
-        border-left: 1px solid var(--border-strong);
+      .stats-bar__item:first-child {
+        border-top: none;
+        padding-top: 8px;
       }
       .founder-main {
         flex-direction: column;
@@ -571,10 +574,6 @@ const salesforceCerts = [
         <div class="stats-bar__item">
           <span class="stats-bar__num">8年+</span>
           <span class="stats-bar__label">CRM/SFA/MAの経験</span>
-        </div>
-        <div class="stats-bar__item">
-          <span class="stats-bar__num">10資格</span>
-          <span class="stats-bar__label">HubSpot・Salesforce認定</span>
         </div>
       </div>
     </div>
