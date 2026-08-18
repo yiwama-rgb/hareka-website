@@ -10,7 +10,7 @@ const reactivationCases = allCases
   .slice(0, 3);
 
 const pageUrl = 'https://hareka.io/services/hubspot-reactivation/';
-const pageDescription = '「契約したのに使われていない」HubSpotを立て直す再活用支援。200社以上を支援した元HubSpot CSMが、使われない原因を組織から分析し、実装から定着まで伴走。活用スコア7倍・商談数20%増の実績。1時間の無料相談を実施中。';
+const pageDescription = '「契約したのに使われていない」HubSpotを立て直す再活用支援。200社以上を支援した元HubSpot CSMが、使われない原因を組織から分析し、実装から定着まで伴走。活用スコア7倍・リード獲得ゼロから月20件以上の実績。1時間の無料相談を実施中。';
 
 const faqItems = [
   {
@@ -76,17 +76,19 @@ const painPoints = [
 const resultHighlights = [
   {
     num: '約7倍',
-    text: 'ほぼ未活用の状態から約1年の伴走で、HubSpotの活用スコアを支援開始前の約7倍に改善しました。',
+    text: 'ほぼ未活用の状態から約1年半の伴走で、HubSpot社が定義する活用スコアを支援開始前の約7倍に改善しました。',
     href: '/cases/03-consulting-hubspot-reactivation/',
   },
   {
-    num: '商談数 20%増',
-    text: 'チームごとのExcel案件管理をHubSpotに一元化。全体が見える化され、適切な施策を打てるようになった結果、商談数が約20%増加しました。',
-    href: '/cases/06-investment-fund-hubspot-launch/',
+    num: 'リード 0 → 月20件以上',
+    small: true,
+    text: '問い合わせがゼロだった状態から、コンテンツとフォームの整備で月20件以上のリード獲得を実現しました。',
+    href: '/cases/05-trading-marketinghub-content/',
   },
   {
-    num: 'メール配信工数 50%削減',
-    text: '個別ツールやBCCでの一斉送信をHubSpotのマーケティングメールに統合し、配信工数を半減させました。',
+    num: 'BCC送信 → Marketing Hubに統合',
+    small: true,
+    text: '個別ツールやBCCでの一斉送信をMarketing Hubに統合。配信工数を削減し、開封データにもとづくフォローが初めて可能になりました。',
     href: '/cases/03-consulting-hubspot-reactivation/',
   },
 ];
@@ -286,6 +288,10 @@ const steps = [
       color: var(--orange);
       line-height: 1.3;
       letter-spacing: -0.01em;
+    }
+    .hsr-result__num--sm {
+      font-size: clamp(20px, 2.2vw, 25px);
+      line-height: 1.45;
     }
     .hsr-result__text {
       font-size: 14.5px;
@@ -700,13 +706,13 @@ const steps = [
         {resultHighlights.map(r => (
           r.href ? (
             <a href={r.href} class="hsr-result">
-              <p class="hsr-result__num">{r.num}</p>
+              <p class={`hsr-result__num${r.small ? ' hsr-result__num--sm' : ''}`}>{r.num}</p>
               <p class="hsr-result__text">{r.text}</p>
               <span class="hsr-result__link">事例を見る →</span>
             </a>
           ) : (
             <div class="hsr-result">
-              <p class="hsr-result__num">{r.num}</p>
+              <p class={`hsr-result__num${r.small ? ' hsr-result__num--sm' : ''}`}>{r.num}</p>
               <p class="hsr-result__text">{r.text}</p>
             </div>
           )

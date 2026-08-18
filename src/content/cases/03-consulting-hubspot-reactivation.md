@@ -38,7 +38,7 @@ implementation: "構築代行なし"
 | 移行前の運用 | 営業はExcel管理、マーケはGmailのBCCで一斉配信 |
 | 活用したツール | HubSpot Sales Hub Enterprise ＋ Marketing Hub Professional |
 
-> 本事例は、代表の岩間がHubSpot Japan CSMとして支援した取り組みです。
+※本事例は、代表がHubSpot Japan在籍時にカスタマーサクセスマネージャーとして支援した案件です。
 
 ## 課題（Before）
 
