@@ -1,6 +1,6 @@
 ---
-title: "SalesforceからHubSpotへの移行費用と期間【元HubSpot Japan社員が解説】"
-description: "SalesforceからHubSpotへの移行を検討している方へ。費用・期間・失敗パターン・契約前チェックリストを、元HubSpot Japan CSMが実体験をもとに解説。"
+title: "SalesforceからHubSpotへの移行｜費用・期間・進め方を専門家が解説"
+description: "SalesforceからHubSpotへの移行を依頼する前に知っておくべき費用の考え方・期間の目安・失敗パターン・パートナー選定のチェックリストを、両CRMに精通した移行支援の専門家が解説。"
 pubDate: 2026-06-27
 category: "CRM導入・移管"
 tags: ["HubSpot", "Salesforce", "移行", "費用", "CRM"]
@@ -173,3 +173,5 @@ Salesforceを3年間現場で使い続けた経験と、Salesforce認定資格5�
 「まだ移行するかどうか迷っている」という段階からでも、ぜひご相談ください。現状のSalesforce運用を伺ったうえで、移行すべきかどうかの判断材料も含めてお伝えします。
 
 → [無料相談を申し込む](/contact)
+
+→ [Salesforce→HubSpot移行支援サービスの詳細を見る](/services/salesforce-migration)

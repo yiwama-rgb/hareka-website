@@ -176,10 +176,16 @@ const salesforceCerts = [
       gap: 24px;
     }
     .service-item {
+      display: block;
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 32px 30px;
+      color: inherit;
+      transition: border-color var(--transition);
+    }
+    .service-item:hover {
+      border-color: var(--navy);
     }
     .service-item__num {
       display: block;
@@ -500,21 +506,21 @@ const salesforceCerts = [
       <span class="eyebrow">Services</span>
       <h2 class="top-heading">支援メニュー</h2>
       <div class="services-grid">
-        <div class="service-item">
+        <a href="/services" class="service-item">
           <span class="service-item__num">01</span>
           <h3 class="service-item__title">HubSpot導入支援</h3>
           <p class="service-item__text">初期設計から運用立ち上げまで。事業に合わせた設計で「使われるCRM」を作ります。</p>
-        </div>
-        <div class="service-item">
+        </a>
+        <a href="/services/salesforce-migration" class="service-item">
           <span class="service-item__num">02</span>
           <h3 class="service-item__title">Salesforce移管支援</h3>
           <p class="service-item__text">両ツールに精通。データと関連付けを正確に再現し、SaaSコストを削減します。</p>
-        </div>
-        <div class="service-item">
+        </a>
+        <a href="/services" class="service-item">
           <span class="service-item__num">03</span>
           <h3 class="service-item__title">活用・定着支援</h3>
           <p class="service-item__text">「導入したのに使われない」を解消。レポート整備と運用改善で成果につなげます。</p>
-        </div>
+        </a>
       </div>
     </div>
   </section>

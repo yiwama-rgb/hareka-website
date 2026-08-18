@@ -170,3 +170,5 @@ Harekaでは、SalesforceからHubSpotへの移管支援と、その前段階と
 「まだ乗り換えると決めたわけではない」という段階でも、ぜひお気軽にご相談ください。
 
 → [無料相談を申し込む](/contact)
+
+→ [Salesforce→HubSpot移行支援サービスの詳細を見る](/services/salesforce-migration)
