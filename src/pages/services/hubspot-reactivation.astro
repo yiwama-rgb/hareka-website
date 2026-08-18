@@ -75,13 +75,14 @@ const painPoints = [
 
 const resultHighlights = [
   {
+    kicker: 'HubSpot活用スコア',
     num: '約7倍',
     text: 'ほぼ未活用の状態から約1年半の伴走で、HubSpot社が定義する活用スコアを支援開始前の約7倍に改善しました。',
     href: '/cases/03-consulting-hubspot-reactivation/',
   },
   {
-    num: 'リード 0 → 月20件以上',
-    small: true,
+    kicker: 'リード獲得',
+    num: '0 → 月20件以上',
     text: '問い合わせがゼロだった状態から、コンテンツとフォームの整備で月20件以上のリード獲得を実現しました。',
     href: '/cases/05-trading-marketinghub-content/',
   },
@@ -282,23 +283,20 @@ const steps = [
       transition: border-color var(--transition);
     }
     a.hsr-result:hover { border-color: var(--navy); }
-    .hsr-result__num {
-      font-size: clamp(26px, 3vw, 34px);
-      font-weight: 700;
-      color: var(--orange);
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-    .hsr-result__num--sm {
-      font-size: clamp(20px, 2.2vw, 25px);
-      line-height: 1.45;
-    }
     .hsr-result__kicker {
       font-size: 13px;
       font-weight: 600;
       color: var(--text-muted);
       line-height: 1.5;
       margin-bottom: -6px;
+    }
+    .hsr-result__num {
+      font-size: clamp(24px, 2.8vw, 31px);
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
     }
     .hsr-result__text {
       font-size: 14.5px;
@@ -713,15 +711,15 @@ const steps = [
         {resultHighlights.map(r => (
           r.href ? (
             <a href={r.href} class="hsr-result">
-              {r.kicker && <p class="hsr-result__kicker">{r.kicker}</p>}
-              <p class={`hsr-result__num${r.small ? ' hsr-result__num--sm' : ''}`}>{r.num}</p>
+              <p class="hsr-result__kicker">{r.kicker}</p>
+              <p class="hsr-result__num">{r.num}</p>
               <p class="hsr-result__text">{r.text}</p>
               <span class="hsr-result__link">事例を見る →</span>
             </a>
           ) : (
             <div class="hsr-result">
-              {r.kicker && <p class="hsr-result__kicker">{r.kicker}</p>}
-              <p class={`hsr-result__num${r.small ? ' hsr-result__num--sm' : ''}`}>{r.num}</p>
+              <p class="hsr-result__kicker">{r.kicker}</p>
+              <p class="hsr-result__num">{r.num}</p>
               <p class="hsr-result__text">{r.text}</p>
             </div>
           )
