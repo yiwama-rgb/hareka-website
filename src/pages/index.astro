@@ -180,13 +180,17 @@ const salesforceCerts = [
       color: var(--orange);
       margin-top: 3px;
     }
+    .fit-list__text {
+      flex: 1;
+    }
     .fit-list__link {
-      display: inline-block;
-      margin-left: 8px;
+      flex-shrink: 0;
+      margin-left: 24px;
       font-size: 14px;
       font-weight: 600;
       color: var(--orange);
       border-bottom: 1px solid currentColor;
+      white-space: nowrap;
       transition: opacity var(--transition);
     }
     .fit-list__link:hover { opacity: 0.75; }
@@ -492,6 +496,18 @@ const salesforceCerts = [
       .top-hero {
         padding: 120px 0 56px;
       }
+      .fit-list li {
+        flex-wrap: wrap;
+        padding: 18px 20px;
+      }
+      .fit-list__text {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .fit-list__link {
+        margin-left: 32px;
+        margin-top: 10px;
+      }
       .stats-bar__grid {
         grid-template-columns: 1fr;
       }
@@ -680,19 +696,22 @@ const salesforceCerts = [
           <span class="fit-list__check" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </span>
-          <span>Salesforceのコストや運用負荷を見直したい<a href="/services/salesforce-migration/" class="fit-list__link">移行支援を見る →</a></span>
+          <span class="fit-list__text">Salesforceのコストや運用負荷を見直したい</span>
+          <a href="/services/salesforce-migration/" class="fit-list__link">移行支援を見る →</a>
         </li>
         <li>
           <span class="fit-list__check" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </span>
-          <span>Zendeskやエクセルのチケット管理を、売上につながる仕組みに変えたい</span>
+          <span class="fit-list__text">Zendeskやエクセルのチケット管理を、売上につながる仕組みに変えたい</span>
+          <a href="/services/#replatform" class="fit-list__link">乗せ換え支援を見る →</a>
         </li>
         <li>
           <span class="fit-list__check" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </span>
-          <span>HubSpotを契約しているが、現場で活用されず成果が見えない</span>
+          <span class="fit-list__text">HubSpotを契約しているが、現場で活用されず成果が見えない</span>
+          <a href="/services/hubspot-reactivation/" class="fit-list__link">再活用支援を見る →</a>
         </li>
       </ul>
       <p class="fit-note">対象は、営業・CS・マーケのチーム規模が10〜50名ほどの組織です。企業全体の規模は問いません。大企業の新規事業部門から成長中のスタートアップまで支援しています。</p>
