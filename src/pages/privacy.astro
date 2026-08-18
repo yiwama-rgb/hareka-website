@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="プライバシーポリシー | Hareka"
+  description="Hareka合同会社のプライバシーポリシー。個人情報の取得・利用目的・管理方針について定めています。"
+  ogUrl="https://hareka.io/privacy/"
+>
+  <style>
+    .privacy-body {
+      max-width: 760px;
+      padding: 56px 0 72px;
+    }
+    .privacy-intro {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+    .privacy-date {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+    .privacy-section + .privacy-section { margin-top: 36px; }
+    .privacy-section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-head);
+      line-height: 1.5;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+    .privacy-section p {
+      font-size: 14.5px;
+      color: var(--text-body);
+      line-height: 1.9;
+    }
+    .privacy-section p + p { margin-top: 10px; }
+    .privacy-section ul {
+      list-style: none;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .privacy-section ul li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 14.5px;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+    .privacy-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 5px;
+      height: 5px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+    @media (max-width: 768px) {
+      .privacy-body { padding: 40px 0 56px; }
+    }
+  </style>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero__label">Privacy Policy</span>
+      <h1 class="page-hero__title">プライバシーポリシー</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="privacy-body">
+        <p class="privacy-intro">Hareka合同会社（以下「当社」といいます）は、当社ウェブサイト（hareka.io）およびサービスの提供にあたり、お客様の個人情報を以下の方針に基づき取り扱います。</p>
+        <p class="privacy-date">制定日: 2026年8月18日</p>
+
+        <div class="privacy-section">
+          <h2>1. 事業者情報</h2>
+          <ul>
+            <li>名称: Hareka合同会社</li>
+            <li>代表者: 代表社員 岩間 悠一</li>
+            <li>所在地: 東京都渋谷区道玄坂一丁目10番8号 渋谷道玄坂東急ビル2F-C</li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2>2. 取得する個人情報</h2>
+          <p>当社は、以下の場合に個人情報を取得します。</p>
+          <ul>
+            <li>お問い合わせフォームのご利用時: 氏名、会社名、メールアドレス、お問い合わせ内容</li>
+            <li>無料相談のお申し込み時: 上記に加え、ご相談内容に関する情報</li>
+            <li>コンサルティングサービスのご提供時: 契約の履行に必要な範囲の情報</li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2>3. 利用目的</h2>
+          <p>取得した個人情報は、以下の目的で利用します。</p>
+          <ul>
+            <li>お問い合わせ・ご相談への対応</li>
+            <li>サービスの提供、契約の履行および進行管理</li>
+            <li>サービスに関するご案内・ご連絡</li>
+            <li>サービス品質の向上のための分析</li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2>4. 第三者への提供</h2>
+          <p>当社は、次の場合を除き、ご本人の同意なく個人情報を第三者に提供しません。</p>
+          <ul>
+            <li>法令に基づく場合</li>
+            <li>人の生命、身体または財産の保護のために必要がある場合であって、ご本人の同意を得ることが困難であるとき</li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2>5. 業務委託先への提供</h2>
+          <p>当社は、利用目的の達成に必要な範囲内において、個人情報の取り扱いを外部サービス（フォーム管理・ホスティング等）に委託することがあります。委託先に対しては、適切な管理を求めます。</p>
+        </div>
+
+        <div class="privacy-section">
+          <h2>6. アクセス解析ツールについて</h2>
+          <p>当社ウェブサイトでは、Googleによるアクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスはトラフィックデータの収集のためにCookieを使用します。このデータは匿名で収集されており、個人を特定するものではありません。</p>
+          <p>Cookieの利用はブラウザの設定により無効にすることができます。詳細は、Google アナリティクス利用規約およびGoogleのプライバシーポリシーをご確認ください。</p>
+        </div>
+
+        <div class="privacy-section">
+          <h2>7. 安全管理措置</h2>
+          <p>当社は、個人情報の漏えい、滅失または毀損の防止のため、必要かつ適切な安全管理措置を講じます。</p>
+        </div>
+
+        <div class="privacy-section">
+          <h2>8. 個人情報の開示・訂正・削除</h2>
+          <p>ご本人からの個人情報の開示、訂正、追加、削除、利用停止のご請求に対しては、ご本人であることを確認のうえ、法令に従い速やかに対応します。ご請求は下記の窓口までご連絡ください。</p>
+        </div>
+
+        <div class="privacy-section">
+          <h2>9. 本ポリシーの改定</h2>
+          <p>当社は、法令の変更や事業内容の変更に応じて、本ポリシーを改定することがあります。改定後の内容は、当社ウェブサイトに掲載した時点から効力を生じるものとします。</p>
+        </div>
+
+        <div class="privacy-section">
+          <h2>10. お問い合わせ窓口</h2>
+          <p>本ポリシーおよび個人情報の取り扱いに関するお問い合わせは、当社ウェブサイトの<a href="/contact/" style="color:var(--orange); text-decoration:underline;">お問い合わせフォーム</a>よりご連絡ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
