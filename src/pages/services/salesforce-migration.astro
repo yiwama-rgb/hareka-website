@@ -131,25 +131,6 @@ const features = [
   },
 ];
 
-// 数値実績ハイライト
-const resultHighlights = [
-  {
-    num: ['60日', 'で', '50%削減'],
-    text: 'ライセンス費用を50%削減しながら、60日で移行を完了。移行と同時に活用状況も改善しました。',
-    href: '/cases/01-salesforce-hubspot-manufacturing/',
-  },
-  {
-    num: ['12回 → 1クリック'],
-    text: 'AI活用のCRM再設計で、12回のクリック作業をワンクリックに自動化。現場から喜ばれる移行を実現しました。',
-    href: '/cases/02-saas-salesforce-hubspot-datamigration/',
-  },
-  {
-    num: ['3ツール → 1つ'],
-    text: '3つのツールを1つに統一し、部署間の連携を強化。重複コストも解消しました。',
-    href: '/cases/07-benefits-zendesk-hubspot-consolidation/',
-  },
-];
-
 // よくある失敗（3つ）
 const pitfalls = [
   {
@@ -308,133 +289,6 @@ const pitfalls = [
       line-height: 1.9;
     }
     .sfm-feature__text + .sfm-feature__text { margin-top: 12px; }
-
-    /* 数値実績ハイライト */
-    .sfm-results {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .sfm-result {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px 30px;
-      color: inherit;
-      transition: border-color var(--transition);
-    }
-    .sfm-result:hover { border-color: var(--navy); }
-    .sfm-result__num {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-head);
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-    .sfm-result__num em {
-      font-style: normal;
-      font-size: clamp(26px, 3vw, 32px);
-      font-weight: 700;
-      color: var(--orange);
-    }
-    .sfm-result__text {
-      font-size: 14.5px;
-      color: var(--text-body);
-      line-height: 1.9;
-      flex: 1;
-    }
-    .sfm-result__link {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-head);
-    }
-    .sfm-result:hover .sfm-result__link { color: var(--orange); }
-
-    /* フェーズ */
-    .sfm-phases {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .sfm-phase {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .sfm-phase__head {
-      background: var(--navy);
-      padding: 20px 30px;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-    .sfm-phase__num {
-      flex-shrink: 0;
-      width: 42px;
-      height: 42px;
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--white);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      font-weight: 800;
-    }
-    .sfm-phase__title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .sfm-phase__body { padding: 26px 30px; }
-    .sfm-phase__body p {
-      font-size: 14.5px;
-      color: var(--text-body);
-      line-height: 1.9;
-    }
-    .sfm-phase__body p + p { margin-top: 14px; }
-
-    /* 期間 */
-    .sfm-period-table-wrap { overflow-x: auto; margin-bottom: 20px; }
-    .sfm-period-table {
-      width: 100%;
-      min-width: 640px;
-      border-collapse: collapse;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-size: 14.5px;
-      line-height: 1.7;
-    }
-    .sfm-period-table th,
-    .sfm-period-table td {
-      padding: 14px 20px;
-      border: 1px solid var(--border);
-      text-align: left;
-      vertical-align: top;
-    }
-    .sfm-period-table thead th {
-      background: var(--navy);
-      color: var(--white);
-      font-weight: 700;
-      font-size: 14px;
-    }
-    .sfm-period-table tbody th {
-      background: var(--bg-soft);
-      color: var(--text-head);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .sfm-period-note {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      max-width: 760px;
-    }
 
     /* よくある失敗 */
     .sfm-failures {
@@ -640,7 +494,6 @@ const pitfalls = [
 
     @media (max-width: 960px) {
       .sfm-features,
-      .sfm-results,
       .sfm-cases-grid {
         grid-template-columns: 1fr;
       }
@@ -688,27 +541,8 @@ const pitfalls = [
     </div>
   </section>
 
-  <!-- 実績ハイライト -->
-  <section class="sfm-section">
-    <div class="container">
-      <span class="sfm-eyebrow">Results</span>
-      <h2 class="sfm-heading">数字で見る、Harekaの移行支援</h2>
-      <div class="sfm-results">
-        {resultHighlights.map(r => (
-          <a href={r.href} class="sfm-result">
-            <p class="sfm-result__num">
-              {r.num.map(part => (part.match(/^(で)$/) ? part : <em>{part}</em>))}
-            </p>
-            <p class="sfm-result__text">{r.text}</p>
-            <span class="sfm-result__link">事例を見る →</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- 3. 特徴 -->
-  <section class="sfm-section sfm-section--soft">
+  <section class="sfm-section">
     <div class="container">
       <span class="sfm-eyebrow">Features</span>
       <h2 class="sfm-heading">Harekaの移行支援の特徴</h2>
@@ -725,7 +559,7 @@ const pitfalls = [
   </section>
 
   <!-- 4. 進め方 -->
-  <section class="sfm-section">
+  <section class="sfm-section sfm-section--soft">
     <div class="container">
       <span class="sfm-eyebrow">Process</span>
       <h2 class="sfm-heading">移行の進め方（4フェーズ）</h2>
@@ -746,7 +580,7 @@ const pitfalls = [
   </section>
 
   <!-- 5. 期間の目安 -->
-  <section class="sfm-section sfm-section--soft">
+  <section class="sfm-section">
     <div class="container">
       <span class="sfm-eyebrow">Timeline</span>
       <h2 class="sfm-heading">期間の目安</h2>
@@ -784,7 +618,7 @@ const pitfalls = [
   </section>
 
   <!-- 6. よくある失敗 -->
-  <section class="sfm-section">
+  <section class="sfm-section sfm-section--soft">
     <div class="container">
       <span class="sfm-eyebrow">Common Pitfalls</span>
       <h2 class="sfm-heading">Salesforce→HubSpot移行で起こりがちな3つの失敗</h2>
@@ -800,7 +634,7 @@ const pitfalls = [
   </section>
 
   <!-- 7. FAQ -->
-  <section class="sfm-section sfm-section--soft">
+  <section class="sfm-section">
     <div class="container">
       <span class="sfm-eyebrow">FAQ</span>
       <h2 class="sfm-heading">よくあるご質問</h2>
@@ -816,7 +650,7 @@ const pitfalls = [
   </section>
 
   <!-- 8. 実績 -->
-  <section class="sfm-section">
+  <section class="sfm-section sfm-section--soft">
     <div class="container">
       <span class="sfm-eyebrow">Case Studies</span>
       <h2 class="sfm-heading">移行支援の実績</h2>
