@@ -153,3 +153,5 @@ Harekaでは、HubSpotの導入・移管支援に加えて、「導入したの�
 「導入済みのCRMがうまく回っていない」という段階からでも、ぜひお気軽にご相談ください。
 
 → [無料相談を申し込む](/contact/)
+
+→ [HubSpot再活用・定着支援サービスの詳細を見る](/services/hubspot-reactivation/)
