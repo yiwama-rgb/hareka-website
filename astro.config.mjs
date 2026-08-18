@@ -27,6 +27,8 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
+      // noindexページはsitemapから除外
+      filter: (page) => page !== 'https://hareka.io/thanks/',
       serialize(item) {
         const lastmod = blogDates.get(item.url);
         if (lastmod) {

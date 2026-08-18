@@ -8,6 +8,7 @@ export interface Props {
   ogUrl?: string;
   ogType?: string;
   currentPath?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   ogUrl,
   ogType = 'website',
   currentPath,
+  noindex = false,
 } = Astro.props;
 
 // URLは末尾スラッシュありに統一（trailingSlash: 'always' と一致させる）
@@ -70,6 +72,7 @@ const organizationSchema = {
   <link rel="icon" href="/favicon-16.png?v=2" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
   <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
   <link rel="canonical" href={canonicalUrl} />
 
   <!-- OGP -->
