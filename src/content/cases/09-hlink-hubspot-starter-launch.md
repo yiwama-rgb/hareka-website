@@ -10,6 +10,7 @@ highlight: "問い合わせ前の行動履歴まで見える化"
 pubDate: 2026-08-13
 draft: false
 description: "設定の複雑さで止まっていたHubSpot Starter導入を2ヶ月で稼働まで伴走。Gmailに散在した顧客情報を一元化し、問い合わせ前のページ閲覧履歴まで可視化した実名事例。"
+heroImage: "/images/cases/case-09.jpg"
 products: ["Marketing Hub"]
 supportType: ["導入支援"]
 implementation: "構築代行なし"
