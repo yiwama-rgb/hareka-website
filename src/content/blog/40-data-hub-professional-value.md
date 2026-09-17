@@ -4,6 +4,7 @@ description: "Data Hub Professional（旧Operations Hub Professional）は、カ
 pubDate: 2026-09-17
 category: "HubSpot活用"
 tags: ["HubSpot", "Data Hub", "Operations Hub", "カスタムコード", "自動化"]
+heroImage: "/images/blog/data-hub-professional-value.png"
 draft: false
 ---
 
