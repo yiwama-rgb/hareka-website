@@ -4,6 +4,7 @@ description: "ZendeskからHubSpotへの移行で実際に手間がかかるの�
 pubDate: 2026-09-18
 category: "CRM導入・移管"
 tags: ["Zendesk", "HubSpot", "Service Hub", "移行", "カスタマーサポート"]
+heroImage: "/images/blog/zendesk-hubspot-migration.png"
 draft: false
 ---
 
