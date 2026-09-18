@@ -107,3 +107,5 @@ GmailのBCCで送っていた一斉配信を、HubSpotからの配信に切り�
 ---
 
 移行そのものを検討している段階の方は、[SalesforceからHubSpotへの移行](/blog/26-salesforce-hubspot-migration/)の費用・期間・進め方をまとめた記事もあわせてご覧ください。
+
+[HubSpotが使いづらいと感じたときの対処](/blog/45-hubspot-hard-to-use/)は、原因の切り分け方を別記事にまとめています。

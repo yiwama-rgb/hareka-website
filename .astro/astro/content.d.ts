@@ -274,6 +274,69 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"43-excel-to-hubspot.md": {
+	id: "43-excel-to-hubspot.md";
+  slug: "43-excel-to-hubspot";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"44-crm-switch-timing.md": {
+	id: "44-crm-switch-timing.md";
+  slug: "44-crm-switch-timing";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"45-hubspot-hard-to-use.md": {
+	id: "45-hubspot-hard-to-use.md";
+  slug: "45-hubspot-hard-to-use";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"46-finance-hubspot.md": {
+	id: "46-finance-hubspot.md";
+  slug: "46-finance-hubspot";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"47-kintone-to-hubspot.md": {
+	id: "47-kintone-to-hubspot.md";
+  slug: "47-kintone-to-hubspot";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"48-zoho-to-hubspot.md": {
+	id: "48-zoho-to-hubspot.md";
+  slug: "48-zoho-to-hubspot";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"49-service-hub-implementation.md": {
+	id: "49-service-hub-implementation.md";
+  slug: "49-service-hub-implementation";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"50-hubspot-starter-limits.md": {
+	id: "50-hubspot-starter-limits.md";
+  slug: "50-hubspot-starter-limits";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"51-hubspot-data-migration.md": {
+	id: "51-hubspot-data-migration.md";
+  slug: "51-hubspot-data-migration";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hubspot-claude-mcp-personalized-mail.md": {
 	id: "hubspot-claude-mcp-personalized-mail.md";
   slug: "hubspot-claude-mcp-personalized-mail";

@@ -155,3 +155,5 @@ CRM移行のプロジェクトは、限られた期間の中で膨大な作業�
 ---
 
 [SalesforceからHubSpotへの移行](/blog/26-salesforce-hubspot-migration/)の費用の考え方・期間の目安・進め方は、解説記事にまとめています。実際の支援内容は[SalesforceからHubSpotへの移行支援](/services/salesforce-migration/)のページをご覧ください。
+
+[HubSpotへのデータ移行の進め方](/blog/51-hubspot-data-migration/)は、3つの方法と自力でやれる範囲を別記事にまとめています。
