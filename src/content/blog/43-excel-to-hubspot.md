@@ -4,6 +4,7 @@ description: "Excelの顧客管理からHubSpotへ移るとき、詰まるポイ
 pubDate: 2026-09-19
 category: "CRM導入・移管"
 tags: ["HubSpot", "Excel", "CRM", "移行", "顧客管理"]
+heroImage: "/images/blog/excel-to-hubspot.png"
 draft: false
 ---
 

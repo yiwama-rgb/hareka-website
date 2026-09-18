@@ -4,6 +4,7 @@ description: "CRMの乗り換えを検討すべきタイミングは、契約更
 pubDate: 2026-09-19
 category: "CRM導入・移管"
 tags: ["CRM", "乗り換え", "移行", "HubSpot", "ツール選定"]
+heroImage: "/images/blog/crm-switch-timing.png"
 draft: false
 ---
 

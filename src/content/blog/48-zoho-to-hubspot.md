@@ -4,6 +4,7 @@ description: "ZohoからHubSpotへの移行では、コストが上がる可能�
 pubDate: 2026-09-19
 category: "CRM導入・移管"
 tags: ["Zoho", "HubSpot", "移行", "CRM", "ツール選定"]
+heroImage: "/images/blog/zoho-to-hubspot.png"
 draft: false
 ---
 

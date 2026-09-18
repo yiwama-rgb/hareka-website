@@ -4,6 +4,7 @@ description: "HubSpotへのデータ移行にはCSV・アプリ連携・APIの3�
 pubDate: 2026-09-19
 category: "CRM導入・移管"
 tags: ["HubSpot", "データ移行", "インポート", "API", "CRM"]
+heroImage: "/images/blog/hubspot-data-migration.png"
 draft: false
 ---
 

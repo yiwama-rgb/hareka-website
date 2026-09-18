@@ -4,6 +4,7 @@ description: "HubSpot Starterで何ができて、何ができないのか。基
 pubDate: 2026-09-19
 category: "HubSpot活用"
 tags: ["HubSpot", "Starter", "プラン選定", "CRM", "中小企業"]
+heroImage: "/images/blog/hubspot-starter-limits.png"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "金融・保険・投資業界でHubSpotを使うなら、デー�
 pubDate: 2026-09-19
 category: "CRM導入・移管"
 tags: ["HubSpot", "金融", "投資ファンド", "CRM", "データ品質"]
+heroImage: "/images/blog/finance-hubspot.png"
 draft: false
 ---
 

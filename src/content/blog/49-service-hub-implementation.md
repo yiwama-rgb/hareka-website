@@ -4,6 +4,7 @@ description: "Service Hub導入の最大の難所はプロジェクトマネジ�
 pubDate: 2026-09-19
 category: "CRM導入・移管"
 tags: ["HubSpot", "Service Hub", "チケット管理", "導入", "カスタマーサポート"]
+heroImage: "/images/blog/service-hub-implementation.png"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "HubSpotが使いづらいと感じる原因の多くは、多機�
 pubDate: 2026-09-19
 category: "HubSpot活用"
 tags: ["HubSpot", "使いづらい", "定着", "CRM", "活用支援"]
+heroImage: "/images/blog/hubspot-hard-to-use.png"
 draft: false
 ---
 
