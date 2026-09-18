@@ -4,6 +4,7 @@ description: "製造業でHubSpotは現場に定着するのか。ITツールへ
 pubDate: 2026-09-19
 category: "CRM導入・移管"
 tags: ["HubSpot", "製造業", "CRM", "導入", "定着"]
+heroImage: "/images/blog/manufacturing-hubspot.png"
 draft: false
 ---
 
