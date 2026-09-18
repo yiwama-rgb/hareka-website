@@ -103,7 +103,7 @@ ZendeskとHubSpotでは、対応チャネルに差があります。ここは機
 
 2つ目は補足が必要でしょう。**顧客データが一箇所にあることが、AIに何かをさせる前提になります。** データが3つのツールに散っている状態では、AIに渡す材料を人間が集めて回ることになり、そこで手間が発生します。統合は、その前提条件を整える作業でもあります。
 
-Harekaで支援した福利厚生サービス企業の事例では、ZendeskとSalesforceに分かれていたツールをHubSpotに統合しています。
+Harekaで支援した福利厚生サービス企業の事例では、ZendeskとSalesforceに分かれていたツールをHubSpotに統合しています。営業側でSalesforceを使っている場合は、[SalesforceからHubSpotへの移行](/blog/26-salesforce-hubspot-migration/)の費用・期間・進め方もあわせて確認してください。
 
 → [ZendeskとSalesforceをHubSpotに統一した事例を見る](/cases/07-benefits-zendesk-hubspot-consolidation/)
 

@@ -94,3 +94,7 @@ HubSpotのレコード画面などUIの設定箇所と設計方針を解説。�
 ## まとめ ― なぜHarekaだったのか
 
 SalesforceとHubSpotの両方に精通しているからこそ、データ移管をスムーズに再現できる。さらに「SalesforceでやっていたことをHubSpotでどう再現するか」だけでなく、**HubSpotをフル活用してSalesforce以上に業務効率化につなげる**ところまで踏み込める ― ここが、Harekaにご依頼いただいた価値だと考えています。
+
+---
+
+[SalesforceからHubSpotへの移行](/blog/26-salesforce-hubspot-migration/)の費用の考え方・期間の目安・進め方は、解説記事にまとめています。実際の支援内容は[SalesforceからHubSpotへの移行支援](/services/salesforce-migration/)のページをご覧ください。

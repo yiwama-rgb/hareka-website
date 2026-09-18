@@ -2,6 +2,7 @@
 title: "HubSpotを導入したのに誰も使わなくなる理由と解決策【元HubSpot Japan CSMが解説】"
 description: "HubSpotを導入したのに誰も使わない、現場が入力してくれない――。元HubSpot Japan CSMが、定着しない本当の理由と、現場に根付かせるための具体的な解決策を解説。HubSpot公式の好事例も紹介。"
 pubDate: 2026-06-27
+updatedDate: 2026-09-18
 category: "HubSpot活用"
 tags: ["HubSpot", "CRM", "定着", "活用支援"]
 heroImage: "/images/blog/hubspot-adoption-failure.png"
@@ -104,6 +105,11 @@ draft: false
 
 実際にHarekaが支援した企業で効果のあった取り組みを、企業が特定されない範囲でご紹介します。
 
+具体的な支援の流れは、次の2つの事例が参考になります。
+
+- [放置されたHubSpotを再生――利用スコアを10→70へ](/cases/03-consulting-hubspot-reactivation/)：営業がデータで回る組織になるまでの約1年半
+- [Marketing Hub再活用で契約が生まれる仕組みに](/cases/04-staffing-marketinghub-launch/)：眠っていたハウスリストを成果につなげるまで
+
 **1. トップから各部門マネージャーへ明確なメッセージ**
 
 特に営業マネージャーに対して、「あなたのチームが数字を入力すること、入力させることも、あなたの仕事だ」と社長が直接伝えました。マネージャーが責任者として機能することで、チーム全体の動きが変わりました。
@@ -194,3 +200,7 @@ HarekaではHubSpotの導入支援にとどまらず、定着・活用フェー�
 → [無料相談を申し込む](/contact/)
 
 → [HubSpot再活用・定着支援サービスの詳細を見る](/services/hubspot-reactivation/)
+
+### 定着しない状態からの立て直し
+
+すでに「導入したが使われていない」状態になっている場合は、新規導入とは進め方が変わります。何を残し、何を捨て、どこから現場に戻すかを見極めるところから始まります。[HubSpot再活用・定着支援](/services/hubspot-reactivation/)では、その立て直しを専門にご支援しています。

@@ -1,7 +1,8 @@
 ---
-title: "SalesforceからHubSpotへの移行｜費用・期間・進め方を専門家が解説"
+title: "SalesforceからHubSpotへ移行｜費用・期間と進め方"
 description: "SalesforceからHubSpotへの移行を依頼する前に知っておくべき費用の考え方・期間の目安・失敗パターン・パートナー選定のチェックリストを、両CRMに精通した移行支援の専門家が解説。"
 pubDate: 2026-06-27
+updatedDate: 2026-09-18
 category: "CRM導入・移管"
 tags: ["HubSpot", "Salesforce", "移行", "費用", "CRM"]
 heroImage: "/images/blog/salesforce-hubspot-migration.png"
@@ -148,6 +149,16 @@ SalesforceからHubSpotへの移行費用・期間は、スコープと担当者
 
 ---
 
+## 移行事例
+
+実際にHarekaが支援した、SalesforceからHubSpotへの移行事例です。自社の状況に近いものがあれば、進め方の参考にしてください。
+
+- [SalesforceからHubSpotへ――60日でライセンス費用50%削減](/cases/01-salesforce-hubspot-manufacturing/)（製造業）
+- [Salesforce移行で入力作業を12分の1に――AI活用のCRM再設計](/cases/02-saas-salesforce-hubspot-datamigration/)（BtoB SaaS）
+- [放置されたHubSpotを再生――利用スコアを10→70へ](/cases/03-consulting-hubspot-reactivation/)（移行後の定着フェーズ）
+
+---
+
 ## よくある質問
 
 **Q. SalesforceからHubSpotへの移行期間はどれくらいかかりますか？**
@@ -166,7 +177,7 @@ A. データ移行の進め方と、長期目線のない設計の2点です。�
 
 ## Harekaにご相談ください
 
-HarekaではSalesforceからHubSpotへの移管支援を得意としています。代表の岩間が全案件に一貫して担当する体制を取っており、営業から設計・実装・運用支援まで担当が変わることなく最後まで関わります。
+Harekaでは[SalesforceからHubSpotへの移行支援](/services/salesforce-migration/)を得意としています。代表の岩間が全案件に一貫して担当する体制を取っており、営業から設計・実装・運用支援まで担当が変わることなく最後まで関わります。
 
 Salesforceを3年間現場で使い続けた経験と、Salesforce認定資格5つ・HubSpot Japanでのcsm経験を持つことで、「SalesforceでできていたことをHubSpotでどう再現するか」という視点で設計ができることがHarekaの強みです。
 

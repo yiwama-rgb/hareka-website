@@ -12,9 +12,9 @@ SalesforceからHubSpotへの移行は、事前準備で成否の大半が決ま
 
 移行というと「支援会社に依頼した後」の作業に目が行きがちですが、実際にプロジェクトを左右するのは、依頼する前の準備です。支援会社に丸投げするのではなく、発注側が「自社に必要なものは何か」を把握しておくこと——これが、スムーズな移行の最大の鍵になります。
 
-私はHubSpot Japanのカスタマーサクセスマネージャーとして200社以上を支援し、現在はSalesforceからHubSpotへの移行支援を専門に行っています。この記事では、移行を支援してきた立場から、移行前に発注側が確認・準備しておくべきことをチェックリスト形式でまとめます。
+私はHubSpot Japanのカスタマーサクセスマネージャーとして200社以上を支援し、現在は[SalesforceからHubSpotへの移行支援](/services/salesforce-migration/)を専門に行っています。この記事では、移行を支援してきた立場から、移行前に発注側が確認・準備しておくべきことをチェックリスト形式でまとめます。
 
-なお、移行プロジェクト全体の進め方については、[SalesforceからHubSpotへの移行の進め方](/blog/31-salesforce-hubspot-migration-process/)で解説しています。あわせてお読みください。
+なお、移行プロジェクト全体の進め方については、[SalesforceからHubSpotへの移行の進め方](/blog/31-salesforce-hubspot-migration-process/)で解説しています。費用の考え方や期間の目安も含めた[SalesforceからHubSpotへの移行](/blog/26-salesforce-hubspot-migration/)の全体像は、こちらにまとめています。あわせてお読みください。
 
 ---
 
