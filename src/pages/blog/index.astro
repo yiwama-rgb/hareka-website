@@ -175,6 +175,48 @@ const postMeta = allPosts.map(post => ({
       margin-top: auto;
     }
 
+    /* ── Pagination ── */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .pagination[hidden] { display: none; }
+    .pagination :global(.page-btn) {
+      min-width: 40px;
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1.5px solid #D0D9E3;
+      color: #4A5568;
+      background: #fff;
+      cursor: pointer;
+      transition: background .18s, color .18s, border-color .18s;
+    }
+    .pagination :global(.page-btn:hover:not(:disabled):not(.active)) {
+      border-color: #1B3B47;
+      color: #1B3B47;
+    }
+    .pagination :global(.page-btn.active) {
+      background: #1B3B47;
+      color: #fff;
+      border-color: #1B3B47;
+      cursor: default;
+    }
+    .pagination :global(.page-btn:disabled) {
+      opacity: .4;
+      cursor: default;
+    }
+    .pagination :global(.page-btn--nav) { padding: 0 16px; }
+    @media (max-width: 600px) {
+      .pagination :global(.page-btn--nav) { padding: 0 12px; }
+    }
+
     /* ── Coming soon ── */
     .blog-coming-soon {
       background: #F7FAFC;
@@ -269,6 +311,9 @@ const postMeta = allPosts.map(post => ({
               );
             })}
           </div>
+
+          <!-- Pagination -->
+          <nav class="pagination" id="pagination" aria-label="ブログ記事のページ送り" hidden></nav>
         </>
       ) : (
         <div class="blog-coming-soon">
@@ -298,28 +343,98 @@ const postMeta = allPosts.map(post => ({
 </BaseLayout>
 
 <script>
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const blogCards = document.querySelectorAll<HTMLElement>('.blog-card');
-  const postCount = document.getElementById('post-count');
+  const PAGE_SIZE = 12;
 
-  function updateCount(visible: number) {
-    if (postCount) {
-      postCount.innerHTML = `<strong>${visible}</strong> 件の記事`;
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const blogCards = Array.from(document.querySelectorAll<HTMLElement>('.blog-card'));
+  const postCount = document.getElementById('post-count');
+  const pagination = document.getElementById('pagination');
+  const filterBar = document.getElementById('filter-bar');
+
+  let currentCat = 'すべて';
+  let currentPage = 1;
+
+  function readUrl() {
+    const params = new URLSearchParams(location.search);
+    const cat = params.get('cat');
+    const page = parseInt(params.get('page') ?? '1', 10);
+    const exists = Array.from(filterBtns).some(b => b.dataset.category === cat);
+    currentCat = cat && exists ? cat : 'すべて';
+    currentPage = Number.isFinite(page) && page > 0 ? page : 1;
+  }
+
+  function writeUrl() {
+    const params = new URLSearchParams();
+    if (currentCat !== 'すべて') params.set('cat', currentCat);
+    if (currentPage > 1) params.set('page', String(currentPage));
+    const qs = params.toString();
+    history.pushState(null, '', qs ? `${location.pathname}?${qs}` : location.pathname);
+  }
+
+  function pageButton(label: string, page: number, opts: { active?: boolean; disabled?: boolean; nav?: boolean; aria?: string } = {}) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `page-btn${opts.nav ? ' page-btn--nav' : ''}${opts.active ? ' active' : ''}`;
+    btn.textContent = label;
+    if (opts.aria) btn.setAttribute('aria-label', opts.aria);
+    if (opts.active) btn.setAttribute('aria-current', 'page');
+    if (opts.disabled) btn.disabled = true;
+    if (!opts.disabled && !opts.active) {
+      btn.addEventListener('click', () => {
+        currentPage = page;
+        writeUrl();
+        render();
+        filterBar?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     }
+    return btn;
+  }
+
+  function render() {
+    filterBtns.forEach(b => b.classList.toggle('active', b.dataset.category === currentCat));
+
+    const matched = blogCards.filter(card => currentCat === 'すべて' || card.dataset.category === currentCat);
+    const totalPages = Math.max(1, Math.ceil(matched.length / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const visible = new Set(matched.slice(start, start + PAGE_SIZE));
+    blogCards.forEach(card => {
+      card.style.display = visible.has(card) ? '' : 'none';
+    });
+
+    if (postCount) {
+      postCount.innerHTML = totalPages > 1
+        ? `<strong>${matched.length}</strong> 件の記事（${start + 1}〜${start + visible.size} 件目を表示）`
+        : `<strong>${matched.length}</strong> 件の記事`;
+    }
+
+    if (!pagination) return;
+    pagination.innerHTML = '';
+    pagination.hidden = totalPages <= 1;
+    if (totalPages <= 1) return;
+
+    pagination.appendChild(pageButton('← 前へ', currentPage - 1, { nav: true, disabled: currentPage === 1, aria: '前のページ' }));
+    for (let p = 1; p <= totalPages; p++) {
+      pagination.appendChild(pageButton(String(p), p, { active: p === currentPage, aria: `${p}ページ目` }));
+    }
+    pagination.appendChild(pageButton('次へ →', currentPage + 1, { nav: true, disabled: currentPage === totalPages, aria: '次のページ' }));
   }
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cat = btn.dataset.category;
-      let count = 0;
-      blogCards.forEach(card => {
-        const show = cat === 'すべて' || card.dataset.category === cat;
-        card.style.display = show ? '' : 'none';
-        if (show) count++;
-      });
-      updateCount(count);
+      currentCat = btn.dataset.category ?? 'すべて';
+      currentPage = 1;
+      writeUrl();
+      render();
     });
   });
+
+  window.addEventListener('popstate', () => {
+    readUrl();
+    render();
+  });
+
+  readUrl();
+  render();
 </script>
