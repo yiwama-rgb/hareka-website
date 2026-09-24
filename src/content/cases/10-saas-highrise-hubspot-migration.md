@@ -103,3 +103,9 @@ APIを持たない旧CRMからの移行は、「どのツールを使えば移�
 ---
 
 [Service Hub導入の進め方](/blog/49-service-hub-implementation/)は、運用を止めない手順を別記事にまとめています。
+
+[HubSpotヘルプデスクと受信トレイの違い｜どちらを使うか](/blog/55-helpdesk-vs-inbox/)は、ヘルプデスクの画面構成と運用で知っておくべき仕様をまとめています。
+
+[HubSpotとGmailを連携する方法｜記録の範囲と注意点](/blog/57-hubspot-gmail-integration/)は、Gmail共有アドレスからの切り替えで押さえるべき点をまとめています。
+
+[HubSpotの権限とチーム設計｜レポートが崩れない作り方](/blog/59-hubspot-permissions-teams/)は、営業とサポートが同じデータベースを使うときのチーム設計をまとめています。

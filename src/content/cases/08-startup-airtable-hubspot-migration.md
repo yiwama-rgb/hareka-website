@@ -111,3 +111,7 @@ Sales Hub・Service Hubそれぞれのレポートを作成し、事業の状況
 ---
 
 [Service Hub導入の進め方](/blog/49-service-hub-implementation/)は、運用を止めない手順を別記事にまとめています。
+
+[AirtableからHubSpotへ移行する際の設計](/blog/52-airtable-to-hubspot/)は、自由な構造をオブジェクトに整理する手順とAirtableのままでいい会社の判断基準を別記事にまとめています。
+
+[スタートアップがHubSpotを導入するタイミング](/blog/53-startup-hubspot/)は、組織化の前に入れるべき理由を別記事にまとめています。

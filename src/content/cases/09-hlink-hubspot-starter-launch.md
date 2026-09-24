@@ -105,3 +105,7 @@ HubSpot Japan CSMとして200社以上を支援した経験にもとづき、代
 ---
 
 [HubSpot Starterでできること・できないこと](/blog/50-hubspot-starter-limits/)は、プランの線引きを別記事にまとめています。
+
+[スタートアップがHubSpotを導入するタイミング](/blog/53-startup-hubspot/)は、組織化の前に入れるべき理由を別記事にまとめています。
+
+[HubSpot導入にかかる期間](/blog/54-hubspot-implementation-period/)は、プラン別の目安と期間が延びる原因を別記事にまとめています。

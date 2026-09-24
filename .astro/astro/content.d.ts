@@ -337,6 +337,76 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"52-airtable-to-hubspot.md": {
+	id: "52-airtable-to-hubspot.md";
+  slug: "52-airtable-to-hubspot";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"53-startup-hubspot.md": {
+	id: "53-startup-hubspot.md";
+  slug: "53-startup-hubspot";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"54-hubspot-implementation-period.md": {
+	id: "54-hubspot-implementation-period.md";
+  slug: "54-hubspot-implementation-period";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"55-helpdesk-vs-inbox.md": {
+	id: "55-helpdesk-vs-inbox.md";
+  slug: "55-helpdesk-vs-inbox";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"56-hubspot-customer-agent.md": {
+	id: "56-hubspot-customer-agent.md";
+  slug: "56-hubspot-customer-agent";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"57-hubspot-gmail-integration.md": {
+	id: "57-hubspot-gmail-integration.md";
+  slug: "57-hubspot-gmail-integration";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"58-hubspot-reports-howto.md": {
+	id: "58-hubspot-reports-howto.md";
+  slug: "58-hubspot-reports-howto";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"59-hubspot-permissions-teams.md": {
+	id: "59-hubspot-permissions-teams.md";
+  slug: "59-hubspot-permissions-teams";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"60-saas-hubspot-mrr.md": {
+	id: "60-saas-hubspot-mrr.md";
+  slug: "60-saas-hubspot-mrr";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"61-salesforce-cancellation.md": {
+	id: "61-salesforce-cancellation.md";
+  slug: "61-salesforce-cancellation";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hubspot-claude-mcp-personalized-mail.md": {
 	id: "hubspot-claude-mcp-personalized-mail.md";
   slug: "hubspot-claude-mcp-personalized-mail";

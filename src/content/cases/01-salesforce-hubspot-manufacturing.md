@@ -100,3 +100,5 @@ SalesforceとHubSpotの両方に精通しているからこそ、データ移管
 [製造業のHubSpot導入で押さえるべきポイント](/blog/42-manufacturing-hubspot/)は、費用の目安や見送るべきケースも含めて別記事にまとめています。
 
 [SalesforceからHubSpotへの移行](/blog/26-salesforce-hubspot-migration/)の費用の考え方・期間の目安・進め方は、解説記事にまとめています。実際の支援内容は[SalesforceからHubSpotへの移行支援](/services/salesforce-migration/)のページをご覧ください。
+
+[Salesforceを解約する前に確認すること](/blog/61-salesforce-cancellation/)は、1シート残す理由と並行運用の期間を別記事にまとめています。
