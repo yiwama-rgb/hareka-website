@@ -4,6 +4,17 @@ import { getCollection } from 'astro:content';
 
 const allCases = (await getCollection('cases', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// 絞り込みの選択肢（データに存在するものだけ、固定の並び順で表示）
+const productOrder = ['Sales Hub', 'Marketing Hub', 'Service Hub'];
+const productOptions = productOrder.filter(p => allCases.some(c => c.data.products?.includes(p)));
+
+const supportOf = (c: typeof allCases[number]) => [
+  ...(c.data.supportType ?? []),
+  ...(c.data.implementation === '構築代行あり' ? ['構築代行あり'] : []),
+];
+const supportOrder = ['導入支援', '活用支援', '構築代行あり'];
+const supportOptions = supportOrder.filter(s => allCases.some(c => supportOf(c).includes(s)));
 ---
 
 <BaseLayout
@@ -12,6 +23,73 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
   ogUrl="https://hareka.io/cases/"
 >
   <style>
+    /* ── Filter ── */
+    .case-filter {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .case-filter__row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .case-filter__label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #718096;
+      min-width: 64px;
+    }
+    .filter-btn {
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1.5px solid #D0D9E3;
+      color: #4A5568;
+      background: #fff;
+      cursor: pointer;
+      transition: background .18s, color .18s, border-color .18s;
+      white-space: nowrap;
+    }
+    .filter-btn:hover {
+      border-color: #1B3B47;
+      color: #1B3B47;
+    }
+    .filter-btn.active {
+      background: #1B3B47;
+      color: #fff;
+      border-color: #1B3B47;
+    }
+    @media (max-width: 600px) {
+      .case-filter__label { width: 100%; }
+    }
+    .case-count {
+      font-size: 13px;
+      color: #718096;
+      margin-bottom: 24px;
+    }
+    .case-count strong {
+      color: #1B3B47;
+      font-weight: 700;
+    }
+    .case-empty {
+      background: #F7FAFC;
+      border: 1px dashed #CBD5E0;
+      border-radius: 12px;
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 14px;
+      color: #718096;
+      line-height: 1.8;
+    }
+    .case-empty[hidden] { display: none; }
+    .case-empty button {
+      margin-top: 12px;
+    }
+
     .cases-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -136,9 +214,39 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
     <div class="container">
 
       {allCases.length > 0 ? (
+        <>
+        <div class="case-filter" id="case-filter">
+          <div class="case-filter__row" role="group" aria-label="製品で絞り込む">
+            <span class="case-filter__label">製品</span>
+            <button type="button" class="filter-btn active" data-group="product" data-value="">すべて</button>
+            {productOptions.map(p => (
+              <button type="button" class="filter-btn" data-group="product" data-value={p}>{p}</button>
+            ))}
+          </div>
+          <div class="case-filter__row" role="group" aria-label="支援内容で絞り込む">
+            <span class="case-filter__label">支援内容</span>
+            <button type="button" class="filter-btn active" data-group="support" data-value="">すべて</button>
+            {supportOptions.map(s => (
+              <button type="button" class="filter-btn" data-group="support" data-value={s}>{s}</button>
+            ))}
+          </div>
+        </div>
+
+        <p class="case-count" id="case-count"><strong>{allCases.length}</strong> 件の事例</p>
+
+        <div class="case-empty" id="case-empty" hidden>
+          条件に合う事例はまだありません。<br />
+          <button type="button" class="filter-btn" id="case-reset">条件をリセット</button>
+        </div>
+
         <div class="cases-grid">
           {allCases.map(item => (
-            <a href={`/cases/${item.slug}/`} class="case-card">
+            <a
+              href={`/cases/${item.slug}/`}
+              class="case-card"
+              data-products={(item.data.products ?? []).join('|')}
+              data-support={supportOf(item).join('|')}
+            >
               {item.data.heroImage && (
                 <img class="case-card__thumb" src={item.data.heroImage} alt={item.data.title} width="400" height="200" loading="lazy" />
               )}
@@ -163,6 +271,7 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
             </a>
           ))}
         </div>
+        </>
       ) : (
         <div class="cases-coming-soon">
           <h2 class="cases-coming-soon__title">事例を準備中です</h2>
@@ -186,3 +295,70 @@ const allCases = (await getCollection('cases', ({ data }) => !data.draft))
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('#case-filter .filter-btn'));
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.case-card'));
+  const count = document.getElementById('case-count');
+  const empty = document.getElementById('case-empty');
+  const reset = document.getElementById('case-reset');
+
+  const state: Record<string, string> = { product: '', support: '' };
+  const valid = (group: string, value: string) =>
+    buttons.some(b => b.dataset.group === group && b.dataset.value === value);
+
+  function readUrl() {
+    const params = new URLSearchParams(location.search);
+    for (const group of ['product', 'support']) {
+      const v = params.get(group) ?? '';
+      state[group] = valid(group, v) ? v : '';
+    }
+  }
+
+  function writeUrl() {
+    const params = new URLSearchParams();
+    for (const [group, value] of Object.entries(state)) {
+      if (value) params.set(group, value);
+    }
+    const qs = params.toString();
+    history.pushState(null, '', qs ? `${location.pathname}?${qs}` : location.pathname);
+  }
+
+  function render() {
+    buttons.forEach(b => b.classList.toggle('active', state[b.dataset.group ?? ''] === b.dataset.value));
+    let visible = 0;
+    cards.forEach(card => {
+      const products = (card.dataset.products ?? '').split('|');
+      const support = (card.dataset.support ?? '').split('|');
+      const show = (!state.product || products.includes(state.product))
+        && (!state.support || support.includes(state.support));
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    if (count) count.innerHTML = `<strong>${visible}</strong> 件の事例`;
+    if (empty) empty.hidden = visible > 0;
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      state[btn.dataset.group ?? ''] = btn.dataset.value ?? '';
+      writeUrl();
+      render();
+    });
+  });
+
+  reset?.addEventListener('click', () => {
+    state.product = '';
+    state.support = '';
+    writeUrl();
+    render();
+  });
+
+  window.addEventListener('popstate', () => {
+    readUrl();
+    render();
+  });
+
+  readUrl();
+  render();
+</script>
