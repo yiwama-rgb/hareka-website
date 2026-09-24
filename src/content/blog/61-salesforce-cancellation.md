@@ -4,6 +4,7 @@ description: "HubSpotへ移行した後のSalesforce解約は、HubSpotで仕事
 pubDate: 2026-09-24
 category: "CRM導入・移管"
 tags: ["Salesforce", "HubSpot", "解約", "移行", "CRM"]
+heroImage: "/images/blog/salesforce-cancellation.png"
 draft: false
 ---
 

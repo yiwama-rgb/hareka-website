@@ -4,6 +4,7 @@ description: "資金調達をしている拡大志向のスタートアップは
 pubDate: 2026-09-24
 category: "CRM導入・移管"
 tags: ["HubSpot", "スタートアップ", "CRM", "導入", "Starter"]
+heroImage: "/images/blog/startup-hubspot.png"
 draft: false
 ---
 

@@ -4,6 +4,7 @@ description: "SaaS企業はHubSpotと非常に相性が良い一方、MRR・解�
 pubDate: 2026-09-24
 category: "HubSpot活用"
 tags: ["HubSpot", "SaaS", "MRR", "RevOps", "Data Hub", "カスタムコード"]
+heroImage: "/images/blog/saas-hubspot-mrr.png"
 draft: false
 ---
 

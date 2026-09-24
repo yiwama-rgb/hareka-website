@@ -4,6 +4,7 @@ description: "HubSpotとGmailの連携は、個人メール接続とGmail拡張�
 pubDate: 2026-09-24
 category: "HubSpot活用"
 tags: ["HubSpot", "Gmail", "メール連携", "Sales Hub", "ヘルプデスク"]
+heroImage: "/images/blog/hubspot-gmail-integration.png"
 draft: false
 ---
 

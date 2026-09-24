@@ -4,6 +4,7 @@ description: "HubSpotのチーム機能は、権限管理とレポーティン�
 pubDate: 2026-09-24
 category: "HubSpot活用"
 tags: ["HubSpot", "権限", "チーム", "ユーザー管理", "レポート"]
+heroImage: "/images/blog/hubspot-permissions-teams.png"
 draft: false
 ---
 

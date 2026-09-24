@@ -4,6 +4,7 @@ description: "HubSpotのカスタマーエージェントは、会社が用意�
 pubDate: 2026-09-24
 category: "HubSpot×AI"
 tags: ["HubSpot", "Service Hub", "カスタマーエージェント", "Breeze", "AI", "カスタマーサポート"]
+heroImage: "/images/blog/hubspot-customer-agent.png"
 draft: false
 ---
 

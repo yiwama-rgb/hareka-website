@@ -4,6 +4,7 @@ description: "HubSpotのレポートは、テンプレートを確認し、次�
 pubDate: 2026-09-24
 category: "HubSpot活用"
 tags: ["HubSpot", "レポート", "ダッシュボード", "カスタムレポート", "AI"]
+heroImage: "/images/blog/hubspot-reports-howto.png"
 draft: false
 ---
 

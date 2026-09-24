@@ -4,6 +4,7 @@ description: "HubSpotの受信トレイはチームの共有受信トレイ、�
 pubDate: 2026-09-24
 category: "HubSpot活用"
 tags: ["HubSpot", "Service Hub", "ヘルプデスク", "受信トレイ", "チケット管理"]
+heroImage: "/images/blog/helpdesk-vs-inbox.png"
 draft: false
 ---
 

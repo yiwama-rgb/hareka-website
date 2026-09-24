@@ -4,6 +4,7 @@ description: "AirtableからHubSpotへの移行で最初に詰まるのは、Air
 pubDate: 2026-09-24
 category: "CRM導入・移管"
 tags: ["HubSpot", "Airtable", "データ移行", "CRM", "乗り換え"]
+heroImage: "/images/blog/airtable-to-hubspot.png"
 draft: false
 ---
 

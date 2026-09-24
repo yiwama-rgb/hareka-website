@@ -4,6 +4,7 @@ description: "HubSpotの導入期間は、Starterなら簡単なもので1日、
 pubDate: 2026-09-24
 category: "CRM導入・移管"
 tags: ["HubSpot", "導入", "期間", "スケジュール", "Starter", "Professional"]
+heroImage: "/images/blog/hubspot-implementation-period.png"
 draft: false
 ---
 
