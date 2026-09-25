@@ -407,6 +407,34 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"62-deal-stage-design.md": {
+	id: "62-deal-stage-design.md";
+  slug: "62-deal-stage-design";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"63-sales-manager-metrics.md": {
+	id: "63-sales-manager-metrics.md";
+  slug: "63-sales-manager-metrics";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"64-health-score-design.md": {
+	id: "64-health-score-design.md";
+  slug: "64-health-score-design";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"65-churn-signals.md": {
+	id: "65-churn-signals.md";
+  slug: "65-churn-signals";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hubspot-claude-mcp-personalized-mail.md": {
 	id: "hubspot-claude-mcp-personalized-mail.md";
   slug: "hubspot-claude-mcp-personalized-mail";
