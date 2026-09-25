@@ -435,6 +435,27 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"66-crm-input-incentive.md": {
+	id: "66-crm-input-incentive.md";
+  slug: "66-crm-input-incentive";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"67-sales-activity-tracking.md": {
+	id: "67-sales-activity-tracking.md";
+  slug: "67-sales-activity-tracking";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"68-inside-field-sales-handoff.md": {
+	id: "68-inside-field-sales-handoff.md";
+  slug: "68-inside-field-sales-handoff";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hubspot-claude-mcp-personalized-mail.md": {
 	id: "hubspot-claude-mcp-personalized-mail.md";
   slug: "hubspot-claude-mcp-personalized-mail";
