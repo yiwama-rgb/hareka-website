@@ -4,6 +4,7 @@ description: "カスタマーサクセスのヘルススコアで本当に効い
 pubDate: 2026-09-26
 category: "営業・CS実践"
 tags: ["カスタマーサクセス", "ヘルススコア", "解約防止", "CSM", "HubSpot"]
+heroImage: "/images/blog/health-score-design.png"
 draft: false
 ---
 

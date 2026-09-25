@@ -4,6 +4,7 @@ description: "解約の前兆は、ログイン頻度の低下、問い合わせ
 pubDate: 2026-09-26
 category: "営業・CS実践"
 tags: ["カスタマーサクセス", "解約防止", "チャーン", "CSM", "HubSpot"]
+heroImage: "/images/blog/churn-signals.png"
 draft: false
 ---
 

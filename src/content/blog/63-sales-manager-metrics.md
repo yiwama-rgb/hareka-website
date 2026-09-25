@@ -4,6 +4,7 @@ description: "ダッシュボードにレポートが30個並んでいるのに�
 pubDate: 2026-09-26
 category: "営業・CS実践"
 tags: ["営業", "ダッシュボード", "KPI", "レポート", "営業マネージャー", "HubSpot"]
+heroImage: "/images/blog/sales-manager-metrics.png"
 draft: false
 ---
 

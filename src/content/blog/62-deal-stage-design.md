@@ -4,6 +4,7 @@ description: "フォーキャストが毎回ずれる会社は、商談ステー
 pubDate: 2026-09-26
 category: "営業・CS実践"
 tags: ["営業", "商談ステージ", "パイプライン", "SFA", "フォーキャスト", "HubSpot"]
+heroImage: "/images/blog/deal-stage-design.png"
 draft: false
 ---
 
